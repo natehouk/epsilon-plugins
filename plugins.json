@@ -4,9 +4,21 @@
   "license": "MIT",
   "framework": "DPF",
   "platforms": {
-    "macos-universal": ["VST3", "AU", "CLAP"],
-    "windows-x64": ["VST3", "CLAP", "VST2"],
-    "linux-x64": ["VST3", "CLAP", "VST2"]
+    "macos-universal": [
+      "VST3",
+      "AU",
+      "CLAP"
+    ],
+    "windows-x64": [
+      "VST3",
+      "CLAP",
+      "VST2"
+    ],
+    "linux-x64": [
+      "VST3",
+      "CLAP",
+      "VST2"
+    ]
   },
   "plugins": [
     {
@@ -70,6 +82,19 @@
       "uri": "https://epsilonrecords.com/plugins/basalt",
       "clap_id": "com.epsilonrecords.basalt",
       "feature_set_of": "FabFilter Simplon (2006)"
+    },
+    {
+      "name": "Gneiss",
+      "repo": "https://github.com/natehouk/gneiss",
+      "type": "effect",
+      "category": "dynamics",
+      "version": "1.0.0",
+      "summary": "Stereo compressor with three styles, mid/side and external sidechain.",
+      "factory_presets": 31,
+      "sidechain": true,
+      "uri": "https://epsilonrecords.com/plugins/gneiss",
+      "clap_id": "com.epsilonrecords.gneiss",
+      "feature_set_of": "FabFilter Pro-C (2007)"
     }
   ]
 }
