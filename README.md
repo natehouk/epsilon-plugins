@@ -12,7 +12,7 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/caldera/main/screenshot.png" width="160"> | [**Caldera**](https://github.com/natehouk/caldera) | Dual filter (effect) | 1.0 | Two filters, seven styles from Clean to Raw, serial/parallel, 2 LFOs, envelope follower, MIDI key tracking. 41 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/obsidian/main/screenshot.png" width="160"> | [**Obsidian**](https://github.com/natehouk/obsidian) | Polysynth (instrument) | 1.0 | Two oscillators, two filters (serial / parallel / split), up to 24 voices with unison, modulation matrix. 42 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png" width="160"> | [**Strata**](https://github.com/natehouk/strata) | Tape delay (effect) | 1.0 | Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo, Obsidian's modulation. 43 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png" width="160"> | [**Basalt**](https://github.com/natehouk/basalt) | Dual filter, live (effect) | 1.0 | Caldera stripped down for performance: big controls, large drag display, Link Filters, undo/redo. 31 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png" width="160"> | [**Basalt**](https://github.com/natehouk/basalt) | Dual filter, live (effect) | 1.1 | Caldera stripped down for performance: big controls, large drag display, Link Filters, undo/redo, hover tips and a built-in help window. 31 factory presets. |
 
 ## How they fit together
 

@@ -64,7 +64,7 @@
       "repo": "https://github.com/natehouk/basalt",
       "type": "effect",
       "category": "filter",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "summary": "Stereo dual filter for live use.",
       "factory_presets": 31,
       "uri": "https://epsilonrecords.com/plugins/basalt",
