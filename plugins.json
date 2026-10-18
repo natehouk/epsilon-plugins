@@ -1,0 +1,75 @@
+{
+  "brand": "Epsilon Audio",
+  "publisher": "Epsilon Records",
+  "license": "MIT",
+  "framework": "DPF",
+  "platforms": {
+    "macos-universal": ["VST3", "AU", "CLAP"],
+    "windows-x64": ["VST3", "CLAP", "VST2"],
+    "linux-x64": ["VST3", "CLAP", "VST2"]
+  },
+  "plugins": [
+    {
+      "name": "Monolith",
+      "repo": "https://github.com/natehouk/monolith",
+      "type": "instrument",
+      "category": "synth",
+      "version": "1.3.0",
+      "summary": "Subtractive synthesizer, mono or 10-voice poly.",
+      "factory_presets": 42,
+      "uri": "https://epsilonrecords.com/plugins/monolith",
+      "clap_id": "com.epsilonrecords.monolith",
+      "feature_set_of": "FabFilter One (2002)"
+    },
+    {
+      "name": "Caldera",
+      "repo": "https://github.com/natehouk/caldera",
+      "type": "effect",
+      "category": "filter",
+      "version": "1.0.0",
+      "summary": "Stereo dual-filter effect with seven filter styles and LFO/envelope modulation.",
+      "factory_presets": 41,
+      "accepts_midi": true,
+      "uri": "https://epsilonrecords.com/plugins/caldera",
+      "clap_id": "com.epsilonrecords.caldera",
+      "feature_set_of": "FabFilter Volcano (2005)"
+    },
+    {
+      "name": "Obsidian",
+      "repo": "https://github.com/natehouk/obsidian",
+      "type": "instrument",
+      "category": "synth",
+      "version": "1.0.0",
+      "summary": "Polyphonic two-oscillator, two-filter synthesizer, up to 24 voices.",
+      "factory_presets": 42,
+      "uri": "https://epsilonrecords.com/plugins/obsidian",
+      "clap_id": "com.epsilonrecords.obsidian",
+      "feature_set_of": "FabFilter Twin (2005)"
+    },
+    {
+      "name": "Strata",
+      "repo": "https://github.com/natehouk/strata",
+      "type": "effect",
+      "category": "delay",
+      "version": "1.0.0",
+      "summary": "Stereo tape delay with filters in the feedback loop.",
+      "factory_presets": 43,
+      "accepts_midi": true,
+      "uri": "https://epsilonrecords.com/plugins/strata",
+      "clap_id": "com.epsilonrecords.strata",
+      "feature_set_of": "FabFilter Timeless (2006)"
+    },
+    {
+      "name": "Basalt",
+      "repo": "https://github.com/natehouk/basalt",
+      "type": "effect",
+      "category": "filter",
+      "version": "1.0.0",
+      "summary": "Stereo dual filter for live use.",
+      "factory_presets": 31,
+      "uri": "https://epsilonrecords.com/plugins/basalt",
+      "clap_id": "com.epsilonrecords.basalt",
+      "feature_set_of": "FabFilter Simplon (2006)"
+    }
+  ]
+}
