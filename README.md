@@ -14,6 +14,8 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png" width="160"> | [**Strata**](https://github.com/natehouk/strata) | Tape delay (effect) | 1.0 | Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo, Obsidian's modulation. 43 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png" width="160"> | [**Basalt**](https://github.com/natehouk/basalt) | Dual filter, live (effect) | 1.1 | Caldera stripped down for performance: big controls, large drag display, Link Filters, undo/redo, hover tips and a built-in help window. 31 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/gneiss/main/screenshot.png" width="160"> | [**Gneiss**](https://github.com/natehouk/gneiss) | Compressor (effect) | 1.0 | Clean, Classic and Opto styles, mid/side, external sidechain with 48 dB/oct detector filters, A/B and undo/redo, zero latency. 31 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png" width="160"> | [**Mica**](https://github.com/natehouk/mica) | Equalizer (effect) | 1.0 | Up to 24 bands (bell, shelf, cut up to 48 dB/oct), zero-latency or linear-phase, mid/side and per-band channel, spectrum analyser, A/B and undo/redo. 31 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/flint/main/screenshot.png" width="160"> | [**Flint**](https://github.com/natehouk/flint) | Saturating filter (effect) | 1.0 | Monolith's 12 dB filter as a lightweight low/high pass with input drive, self-oscillation and an envelope follower (±6 octaves). 24 factory presets. |
 
 ## How they fit together
 
@@ -21,13 +23,16 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 Monolith ──filter──► Caldera ──filters──► Strata (filters in the feedback loop)
     │                   │
     │                   └──simplified──► Basalt (live version)
-    └──filter──► Obsidian ──modulation system──► Strata
+    ├──filter──► Obsidian ──modulation system──► Strata
+    └──filter──► Flint (single filter + envelope follower)
 ```
 
-- **Monolith's filter** is a style in Caldera, Obsidian, Strata and Basalt (where it's called *Fat*).
+- **Monolith's filter** is a style in Caldera, Obsidian, Strata and Basalt (where it's called *Fat*), and Flint is built on it.
 - **Strata** combines Caldera's filters with Obsidian's modulation system.
 - **Basalt** is Caldera with the modulation removed and the controls enlarged for live use.
 - **Gneiss** is the first dynamics plugin, a stereo compressor with sidechain.
+- **Mica** is the first mixing EQ.
+- **Flint** is a small, CPU-light filter with an envelope follower.
 
 ## Download
 
@@ -47,6 +52,8 @@ Each plugin's **Releases** page has three zips:
 | Strata | [natehouk/strata/releases](https://github.com/natehouk/strata/releases/latest) |
 | Basalt | [natehouk/basalt/releases](https://github.com/natehouk/basalt/releases/latest) |
 | Gneiss | [natehouk/gneiss/releases](https://github.com/natehouk/gneiss/releases/latest) |
+| Mica | [natehouk/mica/releases](https://github.com/natehouk/mica/releases/latest) |
+| Flint | [natehouk/flint/releases](https://github.com/natehouk/flint/releases/latest) |
 
 ### Install
 
@@ -59,7 +66,7 @@ Each plugin's **Releases** page has three zips:
 **macOS:** builds are ad-hoc signed, not notarized. After copying, clear the quarantine flag for all Epsilon plugins at once:
 
 ```
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss}*
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint}*
 ```
 
 **MIDI on effects:** Caldera and Strata accept MIDI (key tracking, MIDI-triggered envelopes, LFO retrigger, MIDI Learn). In Logic Pro, insert them as **AU MIDI-controlled effects**; in other DAWs, route a MIDI track to the plugin.
@@ -67,7 +74,7 @@ xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsi
 ## Common to every plugin
 
 - **Factory presets** browsable from the plugin header.
-- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss; Monolith leaves these to the DAW).
+- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss, Mica, Flint; Monolith leaves these to the DAW).
 - **Built from published DSP techniques**: PolyBLEP oscillators, Zavalishin topology-preserving state-variable filters, one-pole envelopes.
 - **Tests** in each repo's `tests/` folder.
 - **Build from source** with DPF:
@@ -90,6 +97,8 @@ The series works through FabFilter's early catalogue in release order, recreatin
 | Strata | FabFilter Timeless | October 2006 |
 | Basalt | FabFilter Simplon | October 2006 |
 | Gneiss | FabFilter Pro-C | August 2007 |
+| Mica | FabFilter Pro-Q | November 2009 |
+| Flint | FabFilter Micro | January 2010 |
 
 Each plugin was written from scratch, working only from FabFilter's public press releases, product descriptions, manuals and contemporary reviews. No FabFilter code, binaries, presets, artwork or trademarks were used. FabFilter is a trademark of its owner; Epsilon Audio is not affiliated with or endorsed by FabFilter.
 

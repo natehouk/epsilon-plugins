@@ -95,6 +95,30 @@
       "uri": "https://epsilonrecords.com/plugins/gneiss",
       "clap_id": "com.epsilonrecords.gneiss",
       "feature_set_of": "FabFilter Pro-C (2007)"
+    },
+    {
+      "name": "Mica",
+      "repo": "https://github.com/natehouk/mica",
+      "type": "effect",
+      "category": "eq",
+      "version": "1.0.0",
+      "summary": "24-band stereo equalizer, zero-latency or linear-phase.",
+      "factory_presets": 31,
+      "uri": "https://epsilonrecords.com/plugins/mica",
+      "clap_id": "com.epsilonrecords.mica",
+      "feature_set_of": "FabFilter Pro-Q (2009)"
+    },
+    {
+      "name": "Flint",
+      "repo": "https://github.com/natehouk/flint",
+      "type": "effect",
+      "category": "filter",
+      "version": "1.0.0",
+      "summary": "Small saturating filter with an envelope follower.",
+      "factory_presets": 24,
+      "uri": "https://epsilonrecords.com/plugins/flint",
+      "clap_id": "com.epsilonrecords.flint",
+      "feature_set_of": "FabFilter Micro (2010)"
     }
   ]
 }
