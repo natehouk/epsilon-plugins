@@ -93,7 +93,7 @@ xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsi
 
 ## Lineage and clean-room note
 
-The series works through FabFilter's early catalogue in release order, recreating each product's feature set as a clean-room design:
+The series works through FabFilter's catalogue in release order, skipping some products (Pro-G and Pro-DS so far), and recreates each one's feature set as a clean-room design:
 
 | Epsilon plugin | Feature set of | Original release |
 |---|---|---|
