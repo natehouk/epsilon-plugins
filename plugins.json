@@ -137,6 +137,36 @@
       "uri": "https://plugins.epsilonrecords.com/flint",
       "clap_id": "com.epsilonrecords.flint",
       "feature_set_of": "FabFilter Micro (2010)"
+    },
+    {
+      "name": "Granite",
+      "repo": "https://github.com/natehouk/granite",
+      "releases": "https://github.com/natehouk/granite/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/granite/main/screenshot.png",
+      "type": "effect",
+      "category": "dynamics",
+      "version": "1.0.1",
+      "summary": "Stereo look-ahead brickwall limiter with oversampling, dither and true-peak metering.",
+      "factory_presets": 27,
+      "uri": "https://plugins.epsilonrecords.com/granite",
+      "clap_id": "com.epsilonrecords.granite",
+      "feature_set_of": "FabFilter Pro-L (2010)"
+    },
+    {
+      "name": "Magma",
+      "repo": "https://github.com/natehouk/magma",
+      "releases": "https://github.com/natehouk/magma/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/magma/main/screenshot.png",
+      "type": "effect",
+      "category": "distortion",
+      "version": "1.0.0",
+      "summary": "Multiband distortion with 16 styles and drag-and-drop modulation.",
+      "factory_presets": 42,
+      "accepts_midi": true,
+      "sidechain": true,
+      "uri": "https://plugins.epsilonrecords.com/magma",
+      "clap_id": "com.epsilonrecords.magma",
+      "feature_set_of": "FabFilter Saturn (2012)"
     }
   ]
 }

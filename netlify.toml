@@ -49,3 +49,13 @@
   from = "/flint"
   to = "/#flint"
   status = 301
+
+[[redirects]]
+  from = "/granite"
+  to = "/#granite"
+  status = 301
+
+[[redirects]]
+  from = "/magma"
+  to = "/#magma"
+  status = 301
