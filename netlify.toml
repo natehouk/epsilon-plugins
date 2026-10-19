@@ -1,0 +1,9 @@
+# Netlify: serve the static site in site/ (no build step).
+[build]
+  publish = "site"
+  command = ""
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

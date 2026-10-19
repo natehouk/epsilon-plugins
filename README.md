@@ -102,6 +102,10 @@ The series works through FabFilter's early catalogue in release order, recreatin
 
 Each plugin was written from scratch, working only from FabFilter's public press releases, product descriptions, manuals and contemporary reviews. No FabFilter code, binaries, presets, artwork or trademarks were used. FabFilter is a trademark of its owner; Epsilon Audio is not affiliated with or endorsed by FabFilter.
 
+## Website
+
+The [`site/`](site) folder is a static website for the series (no build step). Netlify serves it via [`netlify.toml`](netlify.toml); to preview locally, open `site/index.html` or run `npx serve site`.
+
 ## Machine-readable index
 
 [`plugins.json`](plugins.json) lists every plugin with its repo, type, version, formats and plugin IDs, for websites or scripts that need the catalogue.

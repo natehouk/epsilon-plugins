@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Epsilon Audio Plugins">
+<meta property="og:description" content="Eight free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<meta property="og:image" content="img/obsidian.webp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Epsilon Audio Plugins</title>
+<meta name="description" content="Eight free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+img { max-width: 100%; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+/* Layout: a geological section. The hero is a cut through eight rock layers whose
+   boundaries are waveforms; below it, specimen cards, a lineage chart and field notes. */
+:root {
+  --bg: #e9ebe7;          /* weathered limestone, slight green bias */
+  --surface: #f6f7f3;
+  --ink: #1b1f1d;
+  --muted: #59625d;
+  --line: #c9cec8;
+  --accent: #1c6a57;      /* malachite */
+  --accent-ink: #f4f7f3;
+  --code-bg: #1b1f1d;
+  --code-fg: #dfe6e0;
+
+  --l1: #8e6a4a; --l2: #a77b4f; --l3: #4b4458; --l4: #98805c;
+  --l5: #5c5a56; --l6: #7d5953; --l7: #8f8860; --l8: #6e5a48;
+  --stratum-label: #f3efe6;
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --step--1: 0.8125rem; --step-0: 1rem; --step-1: 1.1875rem; --step-2: 1.5rem;
+  --step-3: 2.25rem; --step-4: clamp(2.75rem, 7vw, 5.25rem);
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121514; --surface: #1a1e1c; --ink: #e4e8e3; --muted: #9aa49e; --line: #2c3330;
+    --accent: #5cc3a3; --accent-ink: #0d1412; --code-bg: #0b0d0c; --code-fg: #d6ded8;
+    --l1: #6f523a; --l2: #85613f; --l3: #3a3446; --l4: #8a7759;
+    --l5: #3f3e3b; --l6: #5f433f; --l7: #857f60; --l8: #4d3f33;
+    --stratum-label: #efe9dd;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121514; --surface: #1a1e1c; --ink: #e4e8e3; --muted: #9aa49e; --line: #2c3330;
+  --accent: #5cc3a3; --accent-ink: #0d1412; --code-bg: #0b0d0c; --code-fg: #d6ded8;
+  --l1: #6f523a; --l2: #85613f; --l3: #3a3446; --l4: #8a7759;
+  --l5: #3f3e3b; --l6: #5f433f; --l7: #857f60; --l8: #4d3f33;
+  --stratum-label: #efe9dd;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1160px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label {
+  font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+header.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 12px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand b { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
+.brand span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; }
+nav.links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
+nav.links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+nav.links a:hover { color: var(--ink); }
+@media (max-width: 640px) { nav.links .opt { display: none; } .brand span { display: none; } }
+
+/* Hero */
+.hero { padding-block: 48px 0; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: end; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; } }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: var(--step-4); line-height: 0.92; letter-spacing: 0.005em;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 20px; font-size: var(--step-1); color: var(--muted); max-width: 34em; line-height: 1.5; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: var(--radius);
+  font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: transparent;
+  cursor: pointer; font-family: var(--font-body);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { filter: brightness(1.08); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.facts div { padding: 14px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.facts div:nth-child(odd) { padding-right: 16px; }
+.facts div:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+.facts strong { font-family: var(--font-display); font-weight: 800; font-size: 2.4rem; line-height: 1; }
+.facts small { color: var(--muted); font-size: 0.85rem; }
+
+.section-cut { margin-top: 40px; position: relative; }
+.section-cut canvas { display: block; width: 100%; height: clamp(240px, 34vw, 360px); }
+.section-cut .legend {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding-block: 10px 0; color: var(--muted);
+}
+
+/* Section scaffolding */
+section.block { padding-block: 72px; border-top: 1px solid var(--line); }
+.block-head { display: grid; gap: 12px; margin-bottom: 32px; max-width: 46rem; }
+.block-head h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: var(--step-3); line-height: 1; letter-spacing: 0.01em; }
+.block-head p { color: var(--muted); }
+
+/* Catalogue */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.chip {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  padding: 7px 12px; border-radius: 999px; cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip .n { opacity: 0.6; margin-left: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 20px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column; min-width: 0;
+}
+.card .shot { background: #0f1112; aspect-ratio: 16 / 10; max-width: 100%; overflow: hidden; border-bottom: 1px solid var(--line); }
+.card .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .5s ease; }
+.card:hover .shot img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .card .shot img { transition: none; } .card:hover .shot img { transform: none; } }
+.card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.spec { display: flex; align-items: center; gap: 10px; }
+.spec .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent); flex: none; }
+.card h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 2rem; line-height: 1; letter-spacing: 0.02em; display: flex; align-items: baseline; gap: 10px; }
+.card h3 .v { font-family: var(--font-mono); font-weight: 400; font-size: 0.8rem; color: var(--muted); letter-spacing: 0; }
+.card .kind { color: var(--muted); font-size: 0.9rem; margin-top: -4px; }
+.card .hl { font-size: 0.95rem; }
+.card dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 4px 0 0; font-size: 0.82rem; }
+.card dt { font-family: var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; padding-top: 2px; }
+.card dd { margin: 0; font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere; }
+.card .actions { margin-top: auto; padding-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+.card .actions .btn { padding: 8px 14px; font-size: 0.88rem; }
+
+/* Lineage */
+.lineage-wrap { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 980px) { .lineage-wrap { grid-template-columns: 1.4fr 1fr; align-items: start; } }
+.diagram { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.diagram svg { display: block; min-width: 620px; width: 100%; height: auto; }
+.diagram .node rect { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
+.diagram .node text { font-family: var(--font-display); font-weight: 800; font-size: 20px; letter-spacing: 0.04em; fill: var(--ink); text-transform: uppercase; }
+.diagram .node .sub { font-family: var(--font-mono); font-weight: 400; font-size: 10.5px; fill: var(--muted); letter-spacing: 0.06em; }
+.diagram .edge { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.diagram .edge-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--accent); letter-spacing: 0.04em; }
+.diagram .arrow { fill: var(--muted); }
+.diagram .group-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); letter-spacing: 0.1em; }
+.diagram .divider { stroke: var(--line); stroke-dasharray: 4 5; }
+.notes { display: grid; gap: 0; }
+.notes div { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 96px 1fr; gap: 14px; }
+.notes div:first-child { border-top: 1px solid var(--line); }
+.notes b { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 1.2rem; letter-spacing: 0.03em; }
+.notes p { color: var(--muted); font-size: 0.95rem; }
+
+/* Download */
+.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin-bottom: 24px; overflow-x: auto; }
+.tab {
+  background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  padding: 10px 16px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--muted); cursor: pointer; white-space: nowrap;
+}
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .you { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); margin-left: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+.platform { display: grid; gap: 28px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .platform { grid-template-columns: 1fr 1fr; } }
+.platform > * { min-width: 0; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; counter-increment: s; }
+.steps li::before {
+  content: counter(s); font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; line-height: 1.1;
+  color: var(--accent);
+}
+.steps li > div { min-width: 0; display: grid; gap: 6px; }
+.steps h3 { font-size: 1rem; font-weight: 600; }
+.steps p { color: var(--muted); font-size: 0.95rem; }
+.formats { display: flex; gap: 6px; flex-wrap: wrap; }
+.fmt { font-family: var(--font-mono); font-size: 0.75rem; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; background: var(--surface); }
+.paths { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.paths th, .paths td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.paths th { font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.paths code { font-family: var(--font-mono); font-size: 0.82rem; overflow-wrap: anywhere; }
+.table-scroll { overflow-x: auto; }
+.code {
+  position: relative; background: var(--code-bg); color: var(--code-fg); border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6;
+}
+.code pre { margin: 0; padding: 16px 16px; padding-right: 76px; overflow-x: auto; white-space: pre; }
+.code .copy {
+  position: absolute; top: 8px; right: 8px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  background: transparent; color: var(--code-fg); border: 1px solid color-mix(in srgb, var(--code-fg) 35%, transparent); border-radius: 4px; padding: 4px 8px; cursor: pointer;
+}
+.code .copy:hover { border-color: var(--code-fg); }
+.note { border-left: 2px solid var(--accent); padding: 4px 0 4px 14px; color: var(--muted); font-size: 0.92rem; }
+.note strong { color: var(--ink); }
+.release-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 8px; }
+.release-list a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 10px 12px;
+}
+.release-list a:hover { border-color: var(--accent); }
+.release-list b { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.1rem; }
+.release-list span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+
+/* Common + build */
+.two { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; } }
+.two > * { min-width: 0; }
+.common { list-style: none; padding: 0; margin: 0; display: grid; }
+.common li { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.common li:first-child { border-top: 1px solid var(--line); }
+.common b { font-weight: 600; }
+.common span { color: var(--muted); font-size: 0.95rem; }
+.build-head { margin-bottom: 14px; display: grid; gap: 6px; }
+.build-head h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: var(--step-2); letter-spacing: 0.02em; }
+.build-head p { color: var(--muted); font-size: 0.95rem; }
+
+/* Clean room */
+.cleanroom table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 460px; }
+.cleanroom th, .cleanroom td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+.cleanroom th { font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.cleanroom td:first-child { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.1rem; }
+.cleanroom td:last-child { font-variant-numeric: tabular-nums; color: var(--muted); }
+.cleanroom .disclaimer { margin-top: 20px; max-width: 46rem; color: var(--muted); font-size: 0.92rem; }
+
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; color: var(--muted); font-size: 0.88rem; }
+footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>Epsilon Audio</b><span>by Epsilon Records</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#plugins">Plugins</a>
+      <a href="#lineage" class="opt">Lineage</a>
+      <a href="#download">Download</a>
+      <a href="#build" class="opt">Build</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="label">Free · Open source · MIT</p>
+          <h1 style="margin-top:14px">Eight plugins<br>cut from <em>one rock.</em></h1>
+          <p class="lede">Synths, filters, a tape delay, a compressor and an EQ from Epsilon Records. Every one is free, MIT-licensed and built for macOS, Windows and Linux.</p>
+          <div class="cta">
+            <a class="btn primary" href="#plugins">Browse the plugins</a>
+            <a class="btn" href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+        <div class="facts">
+          <div><strong class="num">8</strong><small>plugins, 2 instruments and 6 effects</small></div>
+          <div><strong class="num" id="preset-total">285</strong><small>factory presets in total</small></div>
+          <div><strong>VST3 · AU</strong><small>plus CLAP everywhere, VST2 on Windows and Linux</small></div>
+          <div><strong class="num">3</strong><small>platforms: macOS universal, Windows x64, Linux x64</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <figure class="section-cut" style="margin:40px 0 0">
+        <canvas id="strata" aria-label="Cross-section of eight rock layers, one per plugin, from Monolith at the base to Flint at the top. Each layer boundary is drawn as a waveform."></canvas>
+        <figcaption class="legend label"><span>Section A–A′ · release order, oldest at the base</span><span>Boundaries drawn as each plugin's signal</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="plugins">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">The catalogue</p>
+        <h2>Pick a specimen</h2>
+        <p>Numbered in release order. Each plugin lives in its own repository, with tests, presets and a Releases page holding builds for all three platforms.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter plugins by type" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="lineage">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">How they fit together</p>
+        <h2>Shared bedrock</h2>
+        <p>Monolith's filter runs through most of the series. Later plugins borrow whole systems from earlier ones, so a sound you learn in one carries into the next.</p>
+      </div>
+      <div class="lineage-wrap">
+        <div class="diagram">
+          <svg viewBox="0 0 720 330" role="img" aria-labelledby="lin-t">
+            <title id="lin-t">Lineage: Monolith's filter feeds Caldera, Obsidian and Flint. Caldera's filters feed Strata and, simplified, Basalt. Obsidian's modulation feeds Strata. Gneiss and Mica stand on their own.</title>
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path class="arrow" d="M0,0 L10,5 L0,10 z"></path>
+              </marker>
+            </defs>
+            <!-- edges -->
+            <path class="edge" d="M170,150 C220,150 220,62 262,62" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="186" y="92">filter</text>
+            <path class="edge" d="M170,158 L262,158" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="196" y="150">filter</text>
+            <path class="edge" d="M170,166 C220,166 220,254 262,254" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="186" y="232">filter</text>
+
+            <path class="edge" d="M402,54 C440,54 440,34 478,34" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="404" y="34">simplified</text>
+            <path class="edge" d="M402,70 C440,70 440,116 478,116" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="412" y="92">filters</text>
+            <path class="edge" d="M402,158 C440,158 440,132 478,132" marker-end="url(#ah)"></path>
+            <text class="edge-label" x="406" y="168">modulation</text>
+
+            <!-- nodes -->
+            <g class="node"><rect x="30" y="130" width="140" height="56" rx="5"></rect><text x="46" y="158">Monolith</text><text class="sub" x="46" y="175">SYNTH · 2002 SET</text></g>
+            <g class="node"><rect x="262" y="34" width="140" height="56" rx="5"></rect><text x="278" y="62">Caldera</text><text class="sub" x="278" y="79">DUAL FILTER</text></g>
+            <g class="node"><rect x="262" y="130" width="140" height="56" rx="5"></rect><text x="278" y="158">Obsidian</text><text class="sub" x="278" y="175">POLYSYNTH</text></g>
+            <g class="node"><rect x="262" y="226" width="140" height="56" rx="5"></rect><text x="278" y="254">Flint</text><text class="sub" x="278" y="271">SATURATING FILTER</text></g>
+            <g class="node"><rect x="478" y="8" width="140" height="56" rx="5"></rect><text x="494" y="36">Basalt</text><text class="sub" x="494" y="53">LIVE DUAL FILTER</text></g>
+            <g class="node"><rect x="478" y="96" width="140" height="56" rx="5"></rect><text x="494" y="124">Strata</text><text class="sub" x="494" y="141">TAPE DELAY</text></g>
+
+            <line class="divider" x1="470" y1="186" x2="700" y2="186"></line>
+            <text class="group-label" x="478" y="206">NEW GROUND</text>
+            <g class="node"><rect x="478" y="216" width="140" height="48" rx="5"></rect><text x="494" y="240">Gneiss</text><text class="sub" x="494" y="255">COMPRESSOR</text></g>
+            <g class="node"><rect x="478" y="274" width="140" height="48" rx="5"></rect><text x="494" y="298">Mica</text><text class="sub" x="494" y="313">EQUALIZER</text></g>
+          </svg>
+        </div>
+        <div class="notes">
+          <div><b>Monolith</b><p>Its 12 dB filter is a style in Caldera, Obsidian, Strata and Basalt (where it's called <em>Fat</em>). Flint is built on it.</p></div>
+          <div><b>Strata</b><p>Caldera's filters in the delay's feedback loop, driven by Obsidian's modulation system.</p></div>
+          <div><b>Basalt</b><p>Caldera with the modulation removed and the controls enlarged for live use.</p></div>
+          <div><b>Gneiss</b><p>The first dynamics plugin: a stereo compressor with sidechain.</p></div>
+          <div><b>Mica</b><p>The first mixing EQ.</p></div>
+          <div><b>Flint</b><p>A small, CPU-light filter with an envelope follower.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="download">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Download &amp; install</p>
+        <h2>Get them running</h2>
+        <p>Every plugin's Releases page has one zip per platform. Pick yours.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Platform" id="tabs">
+        <button class="tab" role="tab" id="tab-mac" aria-controls="panel" data-os="mac">macOS</button>
+        <button class="tab" role="tab" id="tab-win" aria-controls="panel" data-os="win">Windows</button>
+        <button class="tab" role="tab" id="tab-linux" aria-controls="panel" data-os="linux">Linux</button>
+      </div>
+
+      <div class="platform" id="panel" role="tabpanel">
+        <ol class="steps" id="steps"></ol>
+        <div style="display:grid; gap:14px; align-content:start">
+          <p class="label">Latest releases</p>
+          <div class="release-list" id="releases"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="build">
+    <div class="wrap two">
+      <div>
+        <div class="block-head" style="margin-bottom:20px">
+          <p class="label">Common to every plugin</p>
+          <h2>Same tools, same habits</h2>
+        </div>
+        <ul class="common">
+          <li><b>Factory presets</b><span>Browsable from each plugin's header.</span></li>
+          <li><b>MIDI Learn and user presets</b><span>Saved as small text files that load the same on every OS. Monolith leaves these to the DAW.</span></li>
+          <li><b>Published DSP techniques</b><span>PolyBLEP oscillators, Zavalishin topology-preserving state-variable filters, one-pole envelopes.</span></li>
+          <li><b>Tests</b><span>In each repository's <code>tests/</code> folder.</span></li>
+          <li><b>MIDI on effects</b><span>Caldera and Strata take MIDI for key tracking, triggered envelopes, LFO retrigger and MIDI Learn. In Logic Pro, insert them as AU MIDI-controlled effects; elsewhere, route a MIDI track to the plugin.</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="build-head">
+          <p class="label">Build from source</p>
+          <h3>Compile with DPF</h3>
+          <p>All eight are built on <a href="https://github.com/DISTRHO/DPF" target="_blank" rel="noopener">DPF</a>. Clone a plugin's repo, add DPF, then run make. On macOS this also builds the AU.</p>
+        </div>
+        <div class="code"><pre id="build-code">git clone --recursive https://github.com/DISTRHO/DPF.git dpf
+make -C plugins/&lt;Name&gt;
+
+# Windows cross-build
+make -C plugins/&lt;Name&gt; WINDOWS=true \
+  CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++</pre><button class="copy" data-copy="build-code" type="button">Copy</button></div>
+        <p class="note" style="margin-top:20px">Need the catalogue in a script? <a href="https://github.com/natehouk/epsilon-plugins/blob/main/plugins.json" target="_blank" rel="noopener"><code>plugins.json</code></a> lists every plugin with its repo, type, version, formats and CLAP ID.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block cleanroom" id="cleanroom">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Lineage &amp; clean-room note</p>
+        <h2>Where the feature sets come from</h2>
+        <p>The series works through FabFilter's early catalogue in release order, recreating each product's feature set as a clean-room design.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Epsilon plugin</th><th>Feature set of</th><th>Original release</th></tr></thead>
+          <tbody id="lineage-rows"></tbody>
+        </table>
+      </div>
+      <p class="disclaimer">Each plugin was written from scratch, working only from FabFilter's public press releases, product descriptions, manuals and contemporary reviews. No FabFilter code, binaries, presets, artwork or trademarks were used. FabFilter is a trademark of its owner; Epsilon Audio is not affiliated with or endorsed by FabFilter.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Nate Houk / Epsilon Records · MIT License</span>
+    <span class="links">
+      <a href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">Index repo</a>
+      <a href="https://github.com/natehouk/epsilon-plugins/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+      <a href="https://github.com/DISTRHO/DPF" target="_blank" rel="noopener">DPF</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const IMG = {"monolith": "img/monolith.webp", "caldera": "img/caldera.webp", "obsidian": "img/obsidian.webp", "strata": "img/strata.webp", "basalt": "img/basalt.webp", "gneiss": "img/gneiss.webp", "mica": "img/mica.webp", "flint": "img/flint.webp"};
+  const PLUGINS = [
+    { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "1.3", presets: 42, color: "#e8a23a",
+      hl: "Morphing single oscillator plus sub and noise, a 12 dB SVF filter, mono or 10-voice poly.", feature: "FabFilter One", year: "2002" },
+    { id: "caldera", name: "Caldera", kind: "Dual filter · effect", cat: "filter", version: "1.0", presets: 41, color: "#d8862e", midi: true,
+      hl: "Two filters, seven styles from Clean to Raw, serial or parallel, 2 LFOs, an envelope follower and MIDI key tracking.", feature: "FabFilter Volcano", year: "May 2005" },
+    { id: "obsidian", name: "Obsidian", kind: "Polysynth · instrument", cat: "synth", version: "1.0", presets: 42, color: "#a890f0",
+      hl: "Two oscillators, two filters (serial, parallel or split), up to 24 voices with unison and a modulation matrix.", feature: "FabFilter Twin", year: "December 2005" },
+    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "1.0", presets: 43, color: "#c49450", midi: true,
+      hl: "Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo and Obsidian's modulation.", feature: "FabFilter Timeless", year: "October 2006" },
+    { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.1", presets: 31, color: "#e8764a",
+      hl: "Caldera stripped down for performance: big controls, a large drag display, Link Filters, undo/redo, hover tips and built-in help.", feature: "FabFilter Simplon", year: "October 2006" },
+    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "1.0", presets: 31, color: "#b65a52", sidechain: true,
+      hl: "Clean, Classic and Opto styles, mid/side, external sidechain with 48 dB/oct detector filters, A/B, undo/redo and zero latency.", feature: "FabFilter Pro-C", year: "August 2007" },
+    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "1.0", presets: 31, color: "#d6cf4e",
+      hl: "Up to 24 bands (bell, shelf, cuts up to 48 dB/oct), zero-latency or linear-phase, mid/side, spectrum analyser, A/B and undo/redo.", feature: "FabFilter Pro-Q", year: "November 2009" },
+    { id: "flint", name: "Flint", kind: "Saturating filter · effect", cat: "filter", version: "1.0", presets: 24, color: "#c8862e",
+      hl: "Monolith's 12 dB filter as a light low/high pass with input drive, self-oscillation and a ±6-octave envelope follower.", feature: "FabFilter Micro", year: "January 2010" }
+  ];
+  const CATS = [["all", "All"], ["synth", "Synths"], ["filter", "Filters"], ["delay", "Delay"], ["dynamics", "Dynamics"], ["eq", "EQ"]];
+  const repo = p => "https://github.com/natehouk/" + p.id;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  document.getElementById("preset-total").textContent = PLUGINS.reduce((a, p) => a + p.presets, 0);
+
+  // Catalogue
+  const grid = document.getElementById("grid");
+  grid.innerHTML = PLUGINS.map((p, i) => `
+    <article class="card" data-cat="${p.cat}" style="--c:${p.color}">
+      <div class="shot"><img src="${IMG[p.id]}" alt="${esc(p.name)} interface" loading="lazy" width="760" height="475"></div>
+      <div class="body">
+        <div class="spec"><span class="dot" aria-hidden="true"></span><span class="label num">No. ${String(i + 1).padStart(2, "0")} · ${p.cat === "eq" ? "EQ" : p.cat}</span></div>
+        <h3>${esc(p.name)} <span class="v">v${p.version}</span></h3>
+        <p class="kind">${esc(p.kind)}</p>
+        <p class="hl">${esc(p.hl)}</p>
+        <dl>
+          <dt>Presets</dt><dd>${p.presets} factory</dd>
+          <dt>Formats</dt><dd>VST3 · AU · CLAP · VST2</dd>
+          ${p.midi ? "<dt>MIDI</dt><dd>Key tracking, triggered envelopes, MIDI Learn</dd>" : ""}
+          ${p.sidechain ? "<dt>Sidechain</dt><dd>External, with detector filters</dd>" : ""}
+          <dt>CLAP ID</dt><dd><code>com.epsilonrecords.${p.id}</code></dd>
+        </dl>
+        <div class="actions">
+          <a class="btn primary" href="${repo(p)}/releases/latest" target="_blank" rel="noopener">Download</a>
+          <a class="btn" href="${repo(p)}" target="_blank" rel="noopener">Source</a>
+        </div>
+      </div>
+    </article>`).join("");
+
+  // Filters
+  const filters = document.getElementById("filters");
+  const count = c => c === "all" ? PLUGINS.length : PLUGINS.filter(p => p.cat === c).length;
+  filters.innerHTML = CATS.map(([c, l]) => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === "all"}">${l}<span class="n num">${count(c)}</span></button>`).join("");
+  filters.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const c = b.dataset.cat;
+    filters.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    grid.querySelectorAll(".card").forEach(card => { card.hidden = !(c === "all" || card.dataset.cat === c); });
+  });
+
+  // Clean-room table
+  document.getElementById("lineage-rows").innerHTML = PLUGINS.map(p => `<tr><td>${esc(p.name)}</td><td>${esc(p.feature)}</td><td>${esc(p.year)}</td></tr>`).join("");
+
+  // Releases
+  document.getElementById("releases").innerHTML = PLUGINS.map(p =>
+    `<a href="${repo(p)}/releases/latest" target="_blank" rel="noopener"><b>${esc(p.name)}</b><span>v${p.version} ↗</span></a>`).join("");
+
+  // Platform tabs
+  const NAMES = PLUGINS.map(p => p.name).join(",");
+  const OS = {
+    mac: {
+      zip: "macOS 10.13+ (Apple Silicon + Intel)", formats: ["VST3", "AU", "CLAP"],
+      rows: [["VST3", ".vst3", "~/Library/Audio/Plug-Ins/VST3"], ["AU", ".component", "~/Library/Audio/Plug-Ins/Components"], ["CLAP", ".clap", "~/Library/Audio/Plug-Ins/CLAP"]],
+      extra: { title: "Clear the quarantine flag", text: "Builds are ad-hoc signed, not notarized. One command clears the flag for every Epsilon plugin:", code: `xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{${NAMES}}*` }
+    },
+    win: {
+      zip: "Windows x64", formats: ["VST3", "CLAP", "VST2"],
+      rows: [["VST3", ".vst3 (folder)", "C:\\Program Files\\Common Files\\VST3\\"], ["CLAP", ".clap", "C:\\Program Files\\Common Files\\CLAP\\"]],
+      extra: { title: "Rescan in your DAW", text: "Open your DAW's plugin manager and rescan. VST2 builds go in your DAW's VST2 folder." }
+    },
+    linux: {
+      zip: "Linux x64", formats: ["VST3", "CLAP", "VST2"],
+      rows: [["VST3", ".vst3", "~/.vst3/"], ["CLAP", ".clap", "~/.clap/"]],
+      extra: { title: "Rescan in your DAW", text: "Open your DAW's plugin manager and rescan. VST2 builds go in your DAW's VST2 folder." }
+    }
+  };
+  const ua = navigator.userAgent || "";
+  const detected = /Mac|iPhone|iPad/.test(ua) ? "mac" : /Win/.test(ua) ? "win" : /Linux|X11/.test(ua) ? "linux" : "mac";
+  const tabs = document.getElementById("tabs");
+  const steps = document.getElementById("steps");
+  function show(os) {
+    const o = OS[os];
+    tabs.querySelectorAll(".tab").forEach(t => {
+      const on = t.dataset.os === os;
+      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+    });
+    document.getElementById("panel").setAttribute("aria-labelledby", "tab-" + os);
+    steps.innerHTML = `
+      <li><div><h3>Download the ${esc(o.zip)} zip</h3><p>From the plugin's Releases page. It contains:</p><div class="formats">${o.formats.map(f => `<span class="fmt">${f}</span>`).join("")}</div></div></li>
+      <li><div><h3>Copy each format to its folder</h3>
+        <div class="table-scroll"><table class="paths"><thead><tr><th>Format</th><th>File</th><th>Folder</th></tr></thead><tbody>
+        ${o.rows.map(r => `<tr><td>${r[0]}</td><td><code>${esc(r[1])}</code></td><td><code>${esc(r[2])}</code></td></tr>`).join("")}
+        </tbody></table></div></div></li>
+      <li><div><h3>${esc(o.extra.title)}</h3><p>${esc(o.extra.text)}</p>
+        ${o.extra.code ? `<div class="code"><pre id="os-code">${esc(o.extra.code)}</pre><button class="copy" data-copy="os-code" type="button">Copy</button></div>` : ""}
+      </div></li>`;
+  }
+  tabs.querySelector(`[data-os="${detected}"]`).insertAdjacentHTML("beforeend", '<span class="you">yours</span>');
+  tabs.addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) show(t.dataset.os); });
+  tabs.addEventListener("keydown", e => {
+    const list = [...tabs.querySelectorAll(".tab")]; const i = list.indexOf(document.activeElement);
+    if (i < 0 || !["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+    const n = list[(i + (e.key === "ArrowRight" ? 1 : list.length - 1)) % list.length]; n.focus(); show(n.dataset.os);
+  });
+  show(detected);
+
+  // Copy buttons
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".copy"); if (!b) return;
+    const el = document.getElementById(b.dataset.copy); const text = el.textContent;
+    const done = msg => { b.textContent = msg; setTimeout(() => (b.textContent = "Copy"), 1600); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Selected"); };
+    try { navigator.clipboard.writeText(text).then(() => done("Copied"), fallback); } catch (_) { fallback(); }
+  });
+
+  // Strata canvas: one layer per plugin, oldest at the base; boundaries are waveforms.
+  const cv = document.getElementById("strata"); const ctx = cv.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const frac = x => x - Math.floor(x);
+  // Boundary shapes, top of each layer. t = phase in cycles.
+  const WAVES = [
+    t => 2 * frac(t) - 1,                                          // Monolith: saw
+    t => Math.sin(2 * Math.PI * t) * 0.6 + Math.sin(6 * Math.PI * t) * 0.3, // Caldera: filtered
+    t => (Math.sin(2 * Math.PI * t) + Math.sin(2 * Math.PI * t * 1.5)) * 0.5, // Obsidian: two oscillators
+    t => { const p = frac(t / 2); return Math.exp(-p * 4) * Math.sin(2 * Math.PI * t * 4); }, // Strata: decaying echoes
+    t => Math.sign(Math.sin(2 * Math.PI * t)) * 0.7,                 // Basalt: hard edges
+    t => Math.tanh(Math.sin(2 * Math.PI * t) * 3) * 0.6,              // Gneiss: compressed
+    t => Math.sin(2 * Math.PI * t) * 0.35 + Math.sin(2 * Math.PI * t * 0.25) * 0.5, // Mica: broad bands
+    t => Math.tanh(Math.sin(2 * Math.PI * t) * 1.8) * 0.8            // Flint: saturated
+  ];
+  let start = performance.now(), raf = 0, visible = true;
+  function tokens() { const cs = getComputedStyle(document.documentElement); return { layers: [1,2,3,4,5,6,7,8].map(i => cs.getPropertyValue("--l" + i).trim()), label: cs.getPropertyValue("--stratum-label").trim(), bg: cs.getPropertyValue("--bg").trim() }; }
+  function draw(now) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = cv.clientWidth, h = cv.clientHeight;
+    if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const tk = tokens(); const n = PLUGINS.length;
+    const drift = reduce.matches ? 0 : (now - start) / 1000 * 0.04;
+    ctx.clearRect(0, 0, w, h);
+    const band = h / (n + 0.6);
+    const amp = Math.min(band * 0.32, 16);
+    const cycles = Math.max(3, w / 140);
+    // Draw from the top layer down so lower layers paint over the bottom edge of upper ones.
+    const boundary = (k, x) => {               // k: 0 = top surface of layer index (n-1)
+      const idx = n - 1 - k;                   // plugin index for this boundary
+      const base = band * (0.6 + k);
+      return base + WAVES[idx](x / w * cycles + drift * (idx % 2 ? 1 : -1) + idx * 0.37) * amp;
+    };
+    for (let k = 0; k < n; k++) {
+      const idx = n - 1 - k;
+      ctx.beginPath();
+      ctx.moveTo(0, boundary(k, 0));
+      for (let x = 0; x <= w; x += 2) ctx.lineTo(x, boundary(k, x));
+      ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
+      ctx.fillStyle = tk.layers[idx] || "#777"; ctx.fill();
+      // fine sediment lines
+      ctx.save(); ctx.clip();
+      ctx.globalAlpha = 0.12; ctx.strokeStyle = tk.label; ctx.lineWidth = 1;
+      for (let s = 1; s < 4; s++) {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 4) { const y = boundary(k, x) + band * s / 4 + Math.sin(x / 37 + s + idx) * 1.5; x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+    // labels
+    ctx.fillStyle = tk.label; ctx.textBaseline = "middle";
+    const big = w > 560;
+    for (let k = 0; k < n; k++) {
+      const idx = n - 1 - k, p = PLUGINS[idx];
+      const y = band * (0.6 + k) + band * 0.55 + (big ? 0 : 1);
+      ctx.globalAlpha = 0.95;
+      ctx.font = `800 ${big ? 18 : 14}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-display")}`;
+      ctx.fillText(p.name.toUpperCase(), 14, y);
+      if (big) {
+        ctx.globalAlpha = 0.7;
+        ctx.font = `400 11px ${getComputedStyle(document.documentElement).getPropertyValue("--font-mono")}`;
+        const t = `${String(idx + 1).padStart(2, "0")} · ${p.kind.split(" · ")[0].toLowerCase()} · v${p.version}`;
+        ctx.textAlign = "right"; ctx.fillText(t, w - 14, y); ctx.textAlign = "left";
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function loop(now) { draw(now); if (!reduce.matches && visible) raf = requestAnimationFrame(loop); }
+  function restart() { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); }
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) restart(); }).observe(cv);
+  addEventListener("resize", () => draw(performance.now()));
+  reduce.addEventListener?.("change", restart);
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => draw(performance.now()));
+  new MutationObserver(() => draw(performance.now())).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  draw(performance.now()); restart();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => draw(performance.now()));
+})();
+</script>
+</body>
+</html>
