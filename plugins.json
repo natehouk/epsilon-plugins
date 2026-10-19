@@ -212,6 +212,20 @@
       "uri": "https://plugins.epsilonrecords.com/schist",
       "clap_id": "com.epsilonrecords.schist",
       "feature_set_of": "FabFilter Pro-MB (2013)"
+    },
+    {
+      "name": "Geode",
+      "repo": "https://github.com/natehouk/geode",
+      "releases": "https://github.com/natehouk/geode/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/geode/main/screenshot.png",
+      "type": "effect",
+      "category": "reverb",
+      "version": "1.0.0",
+      "summary": "Algorithmic reverb with a stepless space control, a decay rate EQ and a post EQ.",
+      "factory_presets": 35,
+      "uri": "https://plugins.epsilonrecords.com/geode",
+      "clap_id": "com.epsilonrecords.geode",
+      "feature_set_of": "FabFilter Pro-R (2016)"
     }
   ]
 }

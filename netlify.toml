@@ -74,3 +74,8 @@
   from = "/schist"
   to = "/#schist"
   status = 301
+
+[[redirects]]
+  from = "/geode"
+  to = "/#geode"
+  status = 301
