@@ -61,6 +61,11 @@
   status = 301
 
 [[redirects]]
+  from = "/talc"
+  to = "/#talc"
+  status = 301
+
+[[redirects]]
   from = "/slate"
   to = "/#slate"
   status = 301

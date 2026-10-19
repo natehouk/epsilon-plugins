@@ -185,6 +185,20 @@
       "feature_set_of": "FabFilter Saturn (2012)"
     },
     {
+      "name": "Talc",
+      "repo": "https://github.com/natehouk/talc",
+      "releases": "https://github.com/natehouk/talc/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/talc/main/screenshot.png",
+      "type": "effect",
+      "category": "dynamics",
+      "version": "1.0.0",
+      "summary": "De-esser with single-vocal detection and linear-phase split-band processing.",
+      "factory_presets": 22,
+      "uri": "https://plugins.epsilonrecords.com/talc",
+      "clap_id": "com.epsilonrecords.talc",
+      "feature_set_of": "FabFilter Pro-DS (2012)"
+    },
+    {
       "name": "Schist",
       "repo": "https://github.com/natehouk/schist",
       "releases": "https://github.com/natehouk/schist/releases/latest",

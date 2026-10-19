@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Epsilon Audio Plugins">
-<meta property="og:description" content="Twelve free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<meta property="og:description" content="Thirteen free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
 <meta property="og:image" content="https://plugins.epsilonrecords.com/img/obsidian.webp">
 <meta property="og:url" content="https://plugins.epsilonrecords.com/">
 <link rel="canonical" href="https://plugins.epsilonrecords.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Epsilon Audio Plugins</title>
-<meta name="description" content="Twelve free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<meta name="description" content="Thirteen free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -19,7 +19,7 @@
 img { max-width: 100%; }
 body { margin: 0; }
 [hidden] { display: none !important; }
-/* Layout: a geological section. The hero is a cut through twelve rock layers whose
+/* Layout: a geological section. The hero is a cut through thirteen rock layers whose
    boundaries are waveforms; below it, specimen cards, a lineage chart and field notes. */
 :root {
   --bg: #e9ebe7;          /* weathered limestone, slight green bias */
@@ -34,7 +34,7 @@ body { margin: 0; }
 
   --l1: #8e6a4a; --l2: #a77b4f; --l3: #4b4458; --l4: #98805c;
   --l5: #5c5a56; --l6: #7d5953; --l7: #8f8860; --l8: #6e5a48;
-  --l9: #6b6e72; --l10: #4e5560; --l11: #8a4a3a; --l12: #7a6a5a;
+  --l9: #6b6e72; --l10: #4e5560; --l11: #8a4a3a; --l12: #a9b0a0; --l13: #7a6a5a;
   --stratum-label: #f3efe6;
 
   --font-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
@@ -51,7 +51,7 @@ body { margin: 0; }
     --accent: #5cc3a3; --accent-ink: #0d1412; --code-bg: #0b0d0c; --code-fg: #d6ded8;
     --l1: #6f523a; --l2: #85613f; --l3: #3a3446; --l4: #8a7759;
     --l5: #3f3e3b; --l6: #5f433f; --l7: #857f60; --l8: #4d3f33;
-    --l9: #4b4e52; --l10: #353b44; --l11: #6a3529; --l12: #574a3e;
+    --l9: #4b4e52; --l10: #353b44; --l11: #6a3529; --l12: #6e7466; --l13: #574a3e;
     --stratum-label: #efe9dd;
     color-scheme: dark;
   }
@@ -61,7 +61,7 @@ body { margin: 0; }
   --accent: #5cc3a3; --accent-ink: #0d1412; --code-bg: #0b0d0c; --code-fg: #d6ded8;
   --l1: #6f523a; --l2: #85613f; --l3: #3a3446; --l4: #8a7759;
   --l5: #3f3e3b; --l6: #5f433f; --l7: #857f60; --l8: #4d3f33;
-  --l9: #4b4e52; --l10: #353b44; --l11: #6a3529; --l12: #574a3e;
+  --l9: #4b4e52; --l10: #353b44; --l11: #6a3529; --l12: #6e7466; --l13: #574a3e;
   --stratum-label: #efe9dd;
   color-scheme: dark;
 }
@@ -133,7 +133,7 @@ nav.links a:hover { color: var(--ink); }
 .facts small { color: var(--muted); font-size: 0.85rem; }
 
 .section-cut { margin-top: 40px; position: relative; }
-.section-cut canvas { display: block; width: 100%; height: clamp(300px, 42vw, 460px); }
+.section-cut canvas { display: block; width: 100%; height: clamp(320px, 44vw, 490px); }
 .section-cut .legend {
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   padding-block: 10px 0; color: var(--muted);
@@ -292,16 +292,16 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
       <div class="hero-grid">
         <div>
           <p class="label">Free · Open source · MIT</p>
-          <h1 style="margin-top:14px">Twelve plugins<br>cut from <em>one rock.</em></h1>
-          <p class="lede">Synths, filters, a tape delay, compressors, an EQ, a limiter, a gate and a multiband distortion from Epsilon Records. Every one is free, MIT-licensed and built for macOS, Windows and Linux.</p>
+          <h1 style="margin-top:14px">Thirteen plugins<br>cut from <em>one rock.</em></h1>
+          <p class="lede">Synths, filters, a tape delay, compressors, an EQ, a limiter, a gate, a de-esser and a multiband distortion from Epsilon Records. Every one is free, MIT-licensed and built for macOS, Windows and Linux.</p>
           <div class="cta">
             <a class="btn primary" href="#plugins">Browse the plugins</a>
             <a class="btn" href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">View on GitHub</a>
           </div>
         </div>
         <div class="facts">
-          <div><strong class="num">12</strong><small>plugins, 2 instruments and 10 effects</small></div>
-          <div><strong class="num" id="preset-total">425</strong><small>factory presets in total</small></div>
+          <div><strong class="num">13</strong><small>plugins, 2 instruments and 11 effects</small></div>
+          <div><strong class="num" id="preset-total">447</strong><small>factory presets in total</small></div>
           <div><strong>VST3 · AU</strong><small>plus CLAP everywhere, VST2 on Windows and Linux</small></div>
           <div><strong class="num">3</strong><small>platforms: macOS universal, Windows x64, Linux x64</small></div>
         </div>
@@ -309,7 +309,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     </div>
     <div class="wrap">
       <figure class="section-cut" style="margin:40px 0 0">
-        <canvas id="strata" aria-label="Cross-section of twelve rock layers, one per plugin, from Monolith at the base to Schist at the top. Each layer boundary is drawn as a waveform."></canvas>
+        <canvas id="strata" aria-label="Cross-section of thirteen rock layers, one per plugin, from Monolith at the base to Schist at the top. Each layer boundary is drawn as a waveform."></canvas>
         <figcaption class="legend label"><span>Section A–A′ · release order, oldest at the base</span><span>Boundaries drawn as each plugin's signal</span></figcaption>
       </figure>
     </div>
@@ -336,8 +336,8 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
       </div>
       <div class="lineage-wrap">
         <div class="diagram">
-          <svg viewBox="0 0 720 388" role="img" aria-labelledby="lin-t">
-            <title id="lin-t">Lineage: Monolith's filter feeds Caldera, Obsidian and Flint. Caldera's filters feed Strata and, simplified, Basalt. Obsidian's modulation feeds Strata. Gneiss, Mica, Granite, Slate, Magma and Schist stand on their own.</title>
+          <svg viewBox="0 0 720 446" role="img" aria-labelledby="lin-t">
+            <title id="lin-t">Lineage: Monolith's filter feeds Caldera, Obsidian and Flint. Caldera's filters feed Strata and, simplified, Basalt. Obsidian's modulation feeds Strata. Gneiss, Mica, Granite, Slate, Magma, Talc and Schist stand on their own.</title>
             <defs>
               <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path class="arrow" d="M0,0 L10,5 L0,10 z"></path>
@@ -369,11 +369,12 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
             <line class="divider" x1="470" y1="186" x2="700" y2="186"></line>
             <text class="group-label" x="478" y="206">NEW GROUND</text>
             <g class="node"><rect x="478" y="216" width="106" height="48" rx="5"></rect><text x="490" y="240">Gneiss</text><text class="sub" x="490" y="255">COMPRESSOR</text></g>
-            <g class="node"><rect x="478" y="274" width="106" height="48" rx="5"></rect><text x="490" y="298">Mica</text><text class="sub" x="490" y="313">EQUALIZER</text></g>
-            <g class="node"><rect x="478" y="332" width="106" height="48" rx="5"></rect><text x="490" y="356">Granite</text><text class="sub" x="490" y="371">LIMITER</text></g>
-            <g class="node"><rect x="594" y="216" width="106" height="48" rx="5"></rect><text x="606" y="240">Slate</text><text class="sub" x="606" y="255">GATE</text></g>
-            <g class="node"><rect x="594" y="274" width="106" height="48" rx="5"></rect><text x="606" y="298">Magma</text><text class="sub" x="606" y="313">DISTORTION</text></g>
-            <g class="node"><rect x="594" y="332" width="106" height="48" rx="5"></rect><text x="606" y="356">Schist</text><text class="sub" x="606" y="371">MB COMPRESSOR</text></g>
+            <g class="node"><rect x="594" y="216" width="106" height="48" rx="5"></rect><text x="606" y="240">Mica</text><text class="sub" x="606" y="255">EQUALIZER</text></g>
+            <g class="node"><rect x="478" y="274" width="106" height="48" rx="5"></rect><text x="490" y="298">Granite</text><text class="sub" x="490" y="313">LIMITER</text></g>
+            <g class="node"><rect x="594" y="274" width="106" height="48" rx="5"></rect><text x="606" y="298">Slate</text><text class="sub" x="606" y="313">GATE</text></g>
+            <g class="node"><rect x="478" y="332" width="106" height="48" rx="5"></rect><text x="490" y="356">Magma</text><text class="sub" x="490" y="371">DISTORTION</text></g>
+            <g class="node"><rect x="594" y="332" width="106" height="48" rx="5"></rect><text x="606" y="356">Talc</text><text class="sub" x="606" y="371">DE-ESSER</text></g>
+            <g class="node"><rect x="478" y="390" width="106" height="48" rx="5"></rect><text x="490" y="414">Schist</text><text class="sub" x="490" y="429">MB COMPRESSOR</text></g>
           </svg>
         </div>
         <div class="notes">
@@ -386,6 +387,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
           <div><b>Granite</b><p>A look-ahead brickwall limiter with oversampling, dither and true-peak metering.</p></div>
           <div><b>Slate</b><p>A gate and expander with five styles, sidechain filters and MIDI triggering.</p></div>
           <div><b>Magma</b><p>Multiband distortion with 16 styles and a drag-and-drop modulation system.</p></div>
+          <div><b>Talc</b><p>A de-esser with single-vocal detection, linear-phase split-band processing and a sibilance display.</p></div>
           <div><b>Schist</b><p>A multiband compressor and expander with freely placed bands and three phase modes.</p></div>
         </div>
       </div>
@@ -435,7 +437,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         <div class="build-head">
           <p class="label">Build from source</p>
           <h3>Compile with DPF</h3>
-          <p>All twelve are built on <a href="https://github.com/DISTRHO/DPF" target="_blank" rel="noopener">DPF</a>. Clone a plugin's repo, add DPF, then run make. On macOS this also builds the AU.</p>
+          <p>All thirteen are built on <a href="https://github.com/DISTRHO/DPF" target="_blank" rel="noopener">DPF</a>. Clone a plugin's repo, add DPF, then run make. On macOS this also builds the AU.</p>
         </div>
         <div class="code"><pre id="build-code">git clone --recursive https://github.com/DISTRHO/DPF.git dpf
 make -C plugins/&lt;Name&gt;
@@ -453,7 +455,7 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
       <div class="block-head">
         <p class="label">Lineage &amp; clean-room note</p>
         <h2>Where the feature sets come from</h2>
-        <p>The series works through FabFilter's catalogue in release order, skipping some products (Pro-DS so far), and recreates each one's feature set as a clean-room design.</p>
+        <p>The series works through FabFilter's catalogue in release order, recreating each product's feature set as a clean-room design. It now covers all thirteen products up to Pro-MB (2013).</p>
       </div>
       <div class="table-scroll">
         <table>
@@ -479,7 +481,7 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
 
 <script>
 (() => {
-  const IMG = {"monolith": "img/monolith.webp", "caldera": "img/caldera.webp", "obsidian": "img/obsidian.webp", "strata": "img/strata.webp", "basalt": "img/basalt.webp", "gneiss": "img/gneiss.webp", "mica": "img/mica.webp", "flint": "img/flint.webp", "granite": "img/granite.webp", "slate": "img/slate.webp", "magma": "img/magma.webp", "schist": "img/schist.webp"};
+  const IMG = {"monolith": "img/monolith.webp", "caldera": "img/caldera.webp", "obsidian": "img/obsidian.webp", "strata": "img/strata.webp", "basalt": "img/basalt.webp", "gneiss": "img/gneiss.webp", "mica": "img/mica.webp", "flint": "img/flint.webp", "granite": "img/granite.webp", "slate": "img/slate.webp", "magma": "img/magma.webp", "talc": "img/talc.webp", "schist": "img/schist.webp"};
   const PLUGINS = [
     { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "1.3", presets: 42, color: "#e8a23a",
       hl: "Morphing single oscillator plus sub and noise, a 12 dB SVF filter, mono or 10-voice poly.", feature: "FabFilter One", year: "2002" },
@@ -503,6 +505,8 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
       hl: "Gate and expander with five styles, up to 100:1 and 80 dB range, lookahead, mid/side, sidechain filters and MIDI triggering.", feature: "FabFilter Pro-G", year: "May 2011" },
     { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "1.0", presets: 42, color: "#e2553a", midi: true, sidechain: true,
       hl: "Up to six bands with 16 tube, tape, amp, saturation and experimental styles, plus 50 drag-and-drop modulation slots with XLFOs, envelopes and XY pads.", feature: "FabFilter Saturn", year: "March 2012" },
+    { id: "talc", name: "Talc", kind: "De-esser · effect", cat: "dynamics", version: "1.0", presets: 22, color: "#c9d1c0",
+      hl: "Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters over a live spectrum and up to 15 ms look-ahead.", feature: "FabFilter Pro-DS", year: "October 2012" },
     { id: "schist", name: "Schist", kind: "Multiband dynamics · effect", cat: "dynamics", version: "1.0", presets: 39, color: "#9c8a6e", sidechain: true,
       hl: "Up to six freely placed bands that compress or expand, up or down, with dynamic, linear or minimum phase and per-band sidechain.", feature: "FabFilter Pro-MB", year: "October 2013" }
   ];
@@ -633,10 +637,11 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
     t => Math.max(-0.55, Math.min(0.55, Math.sin(2 * Math.PI * t) * 1.4)), // Granite: brickwall ceiling
     t => { const s = Math.sin(2 * Math.PI * t); return Math.abs(s) > 0.5 ? s * 0.8 : s * 0.15; }, // Slate: gated
     t => Math.tanh((Math.sin(2 * Math.PI * t) + Math.sin(2 * Math.PI * t * 3.1) * 0.6) * 2.4) * 0.75, // Magma: multiband drive
+    t => Math.sin(2 * Math.PI * t) * 0.5 + Math.sin(2 * Math.PI * t * 7) * 0.12, // Talc: tamed high ripple
     t => Math.tanh(Math.sin(2 * Math.PI * t * 0.5) * 1.5) * 0.45 + Math.tanh(Math.sin(2 * Math.PI * t * 2.3) * 2) * 0.25 // Schist: bands compressed separately
   ];
   let start = performance.now(), raf = 0, visible = true;
-  function tokens() { const cs = getComputedStyle(document.documentElement); return { layers: [1,2,3,4,5,6,7,8,9,10,11,12].map(i => cs.getPropertyValue("--l" + i).trim()), label: cs.getPropertyValue("--stratum-label").trim(), bg: cs.getPropertyValue("--bg").trim() }; }
+  function tokens() { const cs = getComputedStyle(document.documentElement); return { layers: [1,2,3,4,5,6,7,8,9,10,11,12,13].map(i => cs.getPropertyValue("--l" + i).trim()), label: cs.getPropertyValue("--stratum-label").trim(), bg: cs.getPropertyValue("--bg").trim() }; }
   function draw(now) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const w = cv.clientWidth, h = cv.clientHeight;
