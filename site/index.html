@@ -150,6 +150,7 @@ section.block { padding-block: 72px; border-top: 1px solid var(--line); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chip .n { opacity: 0.6; margin-left: 4px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 20px; }
+.card { scroll-margin-top: 80px; }
 .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; display: flex; flex-direction: column; min-width: 0;
@@ -493,7 +494,7 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
   // Catalogue
   const grid = document.getElementById("grid");
   grid.innerHTML = PLUGINS.map((p, i) => `
-    <article class="card" data-cat="${p.cat}" style="--c:${p.color}">
+    <article class="card" id="${p.id}" data-cat="${p.cat}" style="--c:${p.color}">
       <div class="shot"><img src="${IMG[p.id]}" alt="${esc(p.name)} interface" loading="lazy" width="760" height="475"></div>
       <div class="body">
         <div class="spec"><span class="dot" aria-hidden="true"></span><span class="label num">No. ${String(i + 1).padStart(2, "0")} · ${p.cat === "eq" ? "EQ" : p.cat}</span></div>
@@ -513,6 +514,10 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
         </div>
       </div>
     </article>`).join("");
+
+  // Land on a plugin card when arriving via /<name> (redirected to /#<name>).
+  const target = location.hash && document.getElementById(location.hash.slice(1));
+  if (target && target.classList.contains("card")) requestAnimationFrame(() => target.scrollIntoView());
 
   // Filters
   const filters = document.getElementById("filters");

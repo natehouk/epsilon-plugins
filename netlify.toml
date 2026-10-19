@@ -7,3 +7,45 @@
   for = "/img/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Each plugin's uri in plugins.json (plugins.epsilonrecords.com/<name>) lands on its card.
+
+[[redirects]]
+  from = "/monolith"
+  to = "/#monolith"
+  status = 301
+
+[[redirects]]
+  from = "/caldera"
+  to = "/#caldera"
+  status = 301
+
+[[redirects]]
+  from = "/obsidian"
+  to = "/#obsidian"
+  status = 301
+
+[[redirects]]
+  from = "/strata"
+  to = "/#strata"
+  status = 301
+
+[[redirects]]
+  from = "/basalt"
+  to = "/#basalt"
+  status = 301
+
+[[redirects]]
+  from = "/gneiss"
+  to = "/#gneiss"
+  status = 301
+
+[[redirects]]
+  from = "/mica"
+  to = "/#mica"
+  status = 301
+
+[[redirects]]
+  from = "/flint"
+  to = "/#flint"
+  status = 301
