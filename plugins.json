@@ -153,6 +153,22 @@
       "feature_set_of": "FabFilter Pro-L (2010)"
     },
     {
+      "name": "Slate",
+      "repo": "https://github.com/natehouk/slate",
+      "releases": "https://github.com/natehouk/slate/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/slate/main/screenshot.png",
+      "type": "effect",
+      "category": "dynamics",
+      "version": "1.0.0",
+      "summary": "Gate and expander with five styles, sidechain filters and MIDI triggering.",
+      "factory_presets": 32,
+      "accepts_midi": true,
+      "sidechain": true,
+      "uri": "https://plugins.epsilonrecords.com/slate",
+      "clap_id": "com.epsilonrecords.slate",
+      "feature_set_of": "FabFilter Pro-G (2011)"
+    },
+    {
       "name": "Magma",
       "repo": "https://github.com/natehouk/magma",
       "releases": "https://github.com/natehouk/magma/releases/latest",
@@ -167,6 +183,21 @@
       "uri": "https://plugins.epsilonrecords.com/magma",
       "clap_id": "com.epsilonrecords.magma",
       "feature_set_of": "FabFilter Saturn (2012)"
+    },
+    {
+      "name": "Schist",
+      "repo": "https://github.com/natehouk/schist",
+      "releases": "https://github.com/natehouk/schist/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/schist/main/screenshot.png",
+      "type": "effect",
+      "category": "dynamics",
+      "version": "1.0.0",
+      "summary": "Multiband compressor and expander with freely placed bands.",
+      "factory_presets": 39,
+      "sidechain": true,
+      "uri": "https://plugins.epsilonrecords.com/schist",
+      "clap_id": "com.epsilonrecords.schist",
+      "feature_set_of": "FabFilter Pro-MB (2013)"
     }
   ]
 }

@@ -59,3 +59,13 @@
   from = "/magma"
   to = "/#magma"
   status = 301
+
+[[redirects]]
+  from = "/slate"
+  to = "/#slate"
+  status = 301
+
+[[redirects]]
+  from = "/schist"
+  to = "/#schist"
+  status = 301

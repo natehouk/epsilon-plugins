@@ -17,7 +17,9 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png" width="160"> | [**Mica**](https://github.com/natehouk/mica) | Equalizer (effect) | 1.0.1 | Up to 24 bands (bell, shelf, cut up to 48 dB/oct), zero-latency or linear-phase, mid/side and per-band channel, spectrum analyser, A/B and undo/redo. 31 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/flint/main/screenshot.png" width="160"> | [**Flint**](https://github.com/natehouk/flint) | Saturating filter (effect) | 1.0.1 | Monolith's 12 dB filter as a lightweight low/high pass with input drive, self-oscillation and an envelope follower (±6 octaves). 24 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/granite/main/screenshot.png" width="160"> | [**Granite**](https://github.com/natehouk/granite) | Limiter (effect) | 1.0.1 | Exact brickwall limiting, four styles, up to 10 ms look-ahead, 4× linear-phase oversampling, dither with noise shaping, true-peak and K-System meters. 27 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/slate/main/screenshot.png" width="160"> | [**Slate**](https://github.com/natehouk/slate) | Gate (effect) | 1.0 | Gate and expander with five styles (including upward), up to 100:1 and 80 dB range, lookahead, mid/side, external sidechain with 48 dB/oct filters, MIDI triggering. 32 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/magma/main/screenshot.png" width="160"> | [**Magma**](https://github.com/natehouk/magma) | Multiband distortion (effect) | 1.0 | Up to six bands, 16 distortion styles (tube, tape, amp, saturation, experimental), 50 drag-and-drop modulation slots with XLFOs, envelopes, envelope followers and XY pads. 42 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/schist/main/screenshot.png" width="160"> | [**Schist**](https://github.com/natehouk/schist) | Multiband compressor (effect) | 1.0 | Up to six freely placed bands that compress or expand, downward or upward; dynamic, linear or minimum phase; per-band sidechain and custom detection range. 39 factory presets. |
 
 ## How they fit together
 
@@ -36,7 +38,9 @@ Monolith ──filter──► Caldera ──filters──► Strata (filters in
 - **Mica** is the first mixing EQ.
 - **Flint** is a small, CPU-light filter with an envelope follower.
 - **Granite** is a look-ahead brickwall limiter for mastering.
+- **Slate** is a gate and expander that can also be played from MIDI.
 - **Magma** is a multiband distortion with its own drag-and-drop modulation system.
+- **Schist** is a multiband compressor and expander with freely placed bands.
 
 ## Download
 
@@ -59,7 +63,9 @@ Each plugin's **Releases** page has three zips:
 | Mica | [natehouk/mica/releases](https://github.com/natehouk/mica/releases/latest) |
 | Flint | [natehouk/flint/releases](https://github.com/natehouk/flint/releases/latest) |
 | Granite | [natehouk/granite/releases](https://github.com/natehouk/granite/releases/latest) |
+| Slate | [natehouk/slate/releases](https://github.com/natehouk/slate/releases/latest) |
 | Magma | [natehouk/magma/releases](https://github.com/natehouk/magma/releases/latest) |
+| Schist | [natehouk/schist/releases](https://github.com/natehouk/schist/releases/latest) |
 
 ### Install
 
@@ -72,15 +78,15 @@ Each plugin's **Releases** page has three zips:
 **macOS:** builds are ad-hoc signed, not notarized. After copying, clear the quarantine flag for all Epsilon plugins at once:
 
 ```
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint,Granite,Magma}*
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint,Granite,Slate,Magma,Schist}*
 ```
 
-**MIDI on effects:** Caldera, Strata and Magma accept MIDI (key tracking, MIDI-triggered envelopes, LFO retrigger, MIDI modulation sources). In Logic Pro, insert them as **AU MIDI-controlled effects**; in other DAWs, route a MIDI track to the plugin.
+**MIDI on effects:** Caldera, Strata, Magma and Slate accept MIDI (key tracking, MIDI-triggered envelopes, LFO retrigger, MIDI modulation sources, gate triggering). In Logic Pro, insert them as **AU MIDI-controlled effects**; in other DAWs, route a MIDI track to the plugin.
 
 ## Common to every plugin
 
 - **Factory presets** browsable from the plugin header.
-- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss, Mica, Flint, Granite, Magma; Monolith leaves these to the DAW).
+- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss, Mica, Flint, Granite, Slate, Magma, Schist; Monolith leaves these to the DAW).
 - **Built from published DSP techniques**: PolyBLEP oscillators, Zavalishin topology-preserving state-variable filters, one-pole envelopes.
 - **Tests** in each repo's `tests/` folder.
 - **Build from source** with DPF:
@@ -106,7 +112,9 @@ The series works through FabFilter's catalogue in release order, skipping some p
 | Mica | FabFilter Pro-Q | November 2009 |
 | Flint | FabFilter Micro | January 2010 |
 | Granite | FabFilter Pro-L | October 2010 |
+| Slate | FabFilter Pro-G | May 2011 |
 | Magma | FabFilter Saturn | March 2012 |
+| Schist | FabFilter Pro-MB | October 2013 |
 
 Each plugin was written from scratch, working only from FabFilter's public press releases, product descriptions, manuals and contemporary reviews. No FabFilter code, binaries, presets, artwork or trademarks were used. FabFilter is a trademark of its owner; Epsilon Audio is not affiliated with or endorsed by FabFilter.
 
