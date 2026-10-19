@@ -108,7 +108,7 @@ The [`site/`](site) folder is a static website for the series (no build step). N
 
 ## Machine-readable index
 
-[`plugins.json`](plugins.json) lists every plugin with its repo, type, version, formats and plugin IDs, for websites or scripts that need the catalogue.
+[`plugins.json`](plugins.json) lists every plugin with its repo, latest-release link, screenshot, type, version, formats and plugin IDs, plus the website URL, for websites or scripts that need the catalogue.
 
 ## License
 

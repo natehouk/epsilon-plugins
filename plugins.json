@@ -20,10 +20,14 @@
       "VST2"
     ]
   },
+  "website": "https://plugins.epsilonrecords.com",
+  "repo": "https://github.com/natehouk/epsilon-plugins",
   "plugins": [
     {
       "name": "Monolith",
       "repo": "https://github.com/natehouk/monolith",
+      "releases": "https://github.com/natehouk/monolith/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/monolith/main/screenshot.png",
       "type": "instrument",
       "category": "synth",
       "version": "1.3.0",
@@ -36,6 +40,8 @@
     {
       "name": "Caldera",
       "repo": "https://github.com/natehouk/caldera",
+      "releases": "https://github.com/natehouk/caldera/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/caldera/main/screenshot.png",
       "type": "effect",
       "category": "filter",
       "version": "1.0.0",
@@ -49,6 +55,8 @@
     {
       "name": "Obsidian",
       "repo": "https://github.com/natehouk/obsidian",
+      "releases": "https://github.com/natehouk/obsidian/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/obsidian/main/screenshot.png",
       "type": "instrument",
       "category": "synth",
       "version": "1.0.0",
@@ -61,6 +69,8 @@
     {
       "name": "Strata",
       "repo": "https://github.com/natehouk/strata",
+      "releases": "https://github.com/natehouk/strata/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png",
       "type": "effect",
       "category": "delay",
       "version": "1.0.0",
@@ -74,6 +84,8 @@
     {
       "name": "Basalt",
       "repo": "https://github.com/natehouk/basalt",
+      "releases": "https://github.com/natehouk/basalt/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png",
       "type": "effect",
       "category": "filter",
       "version": "1.1.0",
@@ -86,6 +98,8 @@
     {
       "name": "Gneiss",
       "repo": "https://github.com/natehouk/gneiss",
+      "releases": "https://github.com/natehouk/gneiss/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/gneiss/main/screenshot.png",
       "type": "effect",
       "category": "dynamics",
       "version": "1.0.0",
@@ -99,6 +113,8 @@
     {
       "name": "Mica",
       "repo": "https://github.com/natehouk/mica",
+      "releases": "https://github.com/natehouk/mica/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png",
       "type": "effect",
       "category": "eq",
       "version": "1.0.0",
@@ -111,6 +127,8 @@
     {
       "name": "Flint",
       "repo": "https://github.com/natehouk/flint",
+      "releases": "https://github.com/natehouk/flint/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/flint/main/screenshot.png",
       "type": "effect",
       "category": "filter",
       "version": "1.0.0",
