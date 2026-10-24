@@ -22,6 +22,7 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/talc/main/screenshot.png" width="160"> | [**Talc**](https://github.com/natehouk/talc) | De-esser (effect) | 1.0 | Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters set over a live spectrum, up to 15 ms look-ahead, sibilance display. 22 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/schist/main/screenshot.png" width="160"> | [**Schist**](https://github.com/natehouk/schist) | Multiband compressor (effect) | 1.0 | Up to six freely placed bands that compress or expand, downward or upward; dynamic, linear or minimum phase; per-band sidechain and custom detection range. 39 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/geode/main/screenshot.png" width="160"> | [**Geode**](https://github.com/natehouk/geode) | Reverb (effect) | 1.0 | Stepless space control across fourteen room models, six-band decay rate EQ, six-band post EQ, tempo-synced predelay, zero latency. 35 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png" width="160"> | [**Malachite**](https://github.com/natehouk/malachite) | Acid bass synth (instrument) | 1.0 | Saw or square oscillator, squelchy resonant filter, accent with build-up, slide, and a 16-step sequencer with 64 patterns that follows the host tempo. 22 factory sound presets. |
 
 ## How they fit together
 
@@ -45,6 +46,7 @@ Monolith ──filter──► Caldera ──filters──► Strata (filters in
 - **Talc** is a de-esser with single-vocal detection and linear-phase split-band processing.
 - **Schist** is a multiband compressor and expander with freely placed bands.
 - **Geode** is the first reverb, an algorithmic design with a decay rate EQ.
+- **Malachite** is an acid bass synth with its own step sequencer, the first plugin based on classic hardware rather than a FabFilter product.
 
 ## Download
 
@@ -72,6 +74,7 @@ Each plugin's **Releases** page has three zips:
 | Talc | [natehouk/talc/releases](https://github.com/natehouk/talc/releases/latest) |
 | Schist | [natehouk/schist/releases](https://github.com/natehouk/schist/releases/latest) |
 | Geode | [natehouk/geode/releases](https://github.com/natehouk/geode/releases/latest) |
+| Malachite | [natehouk/malachite/releases](https://github.com/natehouk/malachite/releases/latest) |
 
 ### Install
 
@@ -84,7 +87,7 @@ Each plugin's **Releases** page has three zips:
 **macOS:** builds are ad-hoc signed, not notarized. After copying, clear the quarantine flag for all Epsilon plugins at once:
 
 ```
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint,Granite,Slate,Magma,Talc,Schist,Geode}*
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint,Granite,Slate,Magma,Talc,Schist,Geode,Malachite}*
 ```
 
 **MIDI on effects:** Caldera, Strata, Magma and Slate accept MIDI (key tracking, MIDI-triggered envelopes, LFO retrigger, MIDI modulation sources, gate triggering). In Logic Pro, insert them as **AU MIDI-controlled effects**; in other DAWs, route a MIDI track to the plugin.
@@ -92,7 +95,7 @@ xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsi
 ## Common to every plugin
 
 - **Factory presets** browsable from the plugin header.
-- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss, Mica, Flint, Granite, Slate, Magma, Talc, Schist, Geode; Monolith leaves these to the DAW).
+- **MIDI Learn and user presets** saved as small text files that load the same on every OS (Caldera, Obsidian, Strata, Basalt, Gneiss, Mica, Flint, Granite, Slate, Magma, Talc, Schist, Geode, Malachite; Monolith leaves these to the DAW).
 - **Built from published DSP techniques**: PolyBLEP oscillators, Zavalishin topology-preserving state-variable filters, one-pole envelopes.
 - **Tests** in each repo's `tests/` folder.
 - **Build from source** with DPF:
@@ -124,7 +127,13 @@ The series works through FabFilter's catalogue in release order, recreating each
 | Schist | FabFilter Pro-MB | October 2013 |
 | Geode | FabFilter Pro-R | November 2016 |
 
-Each plugin was written from scratch, working only from FabFilter's public press releases, product descriptions, manuals and contemporary reviews. No FabFilter code, binaries, presets, artwork or trademarks were used. FabFilter is a trademark of its owner; Epsilon Audio is not affiliated with or endorsed by FabFilter.
+Malachite starts a second line: classic hardware instruments, recreated the same way.
+
+| Epsilon plugin | Feature set of | Original release |
+|---|---|---|
+| Malachite | Roland TB-303 | 1981 |
+
+Each plugin was written from scratch, working only from public press releases, product descriptions, manuals and contemporary reviews. No FabFilter or Roland code, binaries, firmware, presets, artwork or trademarks were used, and every interface is an original design. FabFilter and Roland are trademarks of their owners; Epsilon Audio is not affiliated with or endorsed by either.
 
 ## Website
 

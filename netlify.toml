@@ -79,3 +79,8 @@
   from = "/geode"
   to = "/#geode"
   status = 301
+
+[[redirects]]
+  from = "/malachite"
+  to = "/#malachite"
+  status = 301

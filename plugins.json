@@ -226,6 +226,20 @@
       "uri": "https://plugins.epsilonrecords.com/geode",
       "clap_id": "com.epsilonrecords.geode",
       "feature_set_of": "FabFilter Pro-R (2016)"
+    },
+    {
+      "name": "Malachite",
+      "repo": "https://github.com/natehouk/malachite",
+      "releases": "https://github.com/natehouk/malachite/releases/latest",
+      "screenshot": "https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png",
+      "type": "instrument",
+      "category": "synth",
+      "version": "1.0.0",
+      "summary": "Acid bass synthesizer with accent, slide and a 16-step pattern sequencer with 64 patterns.",
+      "factory_presets": 22,
+      "uri": "https://plugins.epsilonrecords.com/malachite",
+      "clap_id": "com.epsilonrecords.malachite",
+      "feature_set_of": "Roland TB-303 (1981)"
     }
   ]
 }
