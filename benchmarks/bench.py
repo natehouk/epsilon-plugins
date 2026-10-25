@@ -78,6 +78,7 @@ def bench_Obsidian(p):
 def bench_Malachite(p):
     setp(p, sequencer="Off (MIDI)")
     r = {"cpu_1_voice_pct": synth_cpu(p, [36])}
+    r["latency_samples"] = int(p.reported_latency_samples)
     setp(p, waveform="Saw", cutoff=100, resonance=0, env_mod=0)
     r["aliasing_A6"] = synth_alias(p)
     r["settings"] = show(p, "waveform", "sequencer", "cutoff", "resonance")
@@ -260,7 +261,10 @@ def main():
             out["results"] = SUITES[name](pb.load_plugin(path))
         except Exception:
             out["error"] = traceback.format_exc(limit=3)
-        with open(os.path.join(HERE, "results", f"{name}.json"), "w") as f:
+        # release builds (v* tags) go in results/; anything else (e.g. a merged but unreleased main) in results/unreleased/
+        sub = "results" if out["version"].startswith("v") else os.path.join("results", "unreleased")
+        os.makedirs(os.path.join(HERE, sub), exist_ok=True)
+        with open(os.path.join(HERE, sub, f"{name}.json"), "w") as f:
             json.dump(out, f, indent=1)
         print(name, json.dumps(out.get("results", out.get("error")))[:600], flush=True)
 

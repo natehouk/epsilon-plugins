@@ -13,7 +13,7 @@ cd benchmarks && python3 bench.py /tmp/epsilon-build [Plugin ...]
 python3 report.py                                  # rewrites the Benchmarks section of the top-level README
 ```
 
-`bench.py` writes one JSON file per plugin to `results/`, including the release tag and commit it measured, the host, and every setting a test changed.
+`bench.py` writes one JSON file per plugin to `results/`, including the release tag and commit it measured, the host, and every setting a test changed. A build that isn't a release (for example a plugin's `main` after a merged fix, with `main` instead of a tag in `versions.txt`) goes to `results/unreleased/` instead. `report.py` lists those under the table as merged changes awaiting a release. Delete the file once that change ships in a tagged release and the release has been re-measured.
 
 ## Method
 

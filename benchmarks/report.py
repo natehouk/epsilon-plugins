@@ -99,6 +99,19 @@ def main():
         r = d["results"]
         cpu = r.get("cpu_default_pct", r.get("cpu_1_voice_pct"))
         rows.append(f"| {name} | {d['version']} | {f(cpu, 1)}% | {latency_of(r)} | {key(name, r)} |")
+    # merged but not yet released: measured from the plugin repo's main branch, listed under the table
+    notes = []
+    for name in order:
+        path = os.path.join(HERE, "results", "unreleased", f"{name}.json")
+        if not os.path.exists(path):
+            continue
+        d = json.load(open(path))
+        if "error" in d:
+            continue
+        r = d["results"]
+        cpu = r.get("cpu_default_pct", r.get("cpu_1_voice_pct"))
+        notes.append(f"- **{name}** (`main` at [`{d['commit']}`](https://github.com/natehouk/{name.lower()}/commit/{d['commit']}), "
+                     f"not yet in a release): {key(name, r)}; CPU {f(cpu, 1)}%, latency {latency_of(r)}.")
     section = "\n".join([
         START,
         "## Benchmarks",
@@ -112,6 +125,7 @@ def main():
         "|---|---|---|---|---|",
         *rows,
         "",
+        *((["Merged changes awaiting a release, measured the same way:", "", *notes, ""]) if notes else []),
         END,
     ])
     text = open(README).read()

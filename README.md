@@ -127,7 +127,11 @@ Measured from each plugin's Linux x64 VST3 at its release tag, rendered offline 
 | Talc | v1.0 | 0.7% | 0 | default (8 dB range): 500 Hz tone +0.0 dB, 7 kHz tone −8.0 dB |
 | Schist | v1.0 | 0.2% | 0 | flat: bit-exact; 6 bands 5.7% CPU; linear phase 4096 smp (85.3 ms) |
 | Geode | v1.0 | 2.7% | 0 | RT60 at Space 0% 0.43 s, 50% 1.40 s, 100% 8.20 s |
-| Malachite | v1.0 | 1.6% | — | aliasing at A6 −39.6 dB (−39.6 dB below 10 kHz) |
+| Malachite | v1.0 | 1.2% | 0 | aliasing at A6 −39.6 dB (−39.6 dB below 10 kHz) |
+
+Merged changes awaiting a release, measured the same way:
+
+- **Malachite** (`main` at [`0f491fa`](https://github.com/natehouk/malachite/commit/0f491fa), not yet in a release): aliasing at A6 −53.1 dB (−53.1 dB below 10 kHz); CPU 1.5%, latency 16 smp (0.3 ms).
 
 <!-- benchmarks:end -->
 
