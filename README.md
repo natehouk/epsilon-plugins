@@ -154,7 +154,7 @@ The series works through FabFilter's catalogue in release order, recreating each
 | Schist | FabFilter Pro-MB | October 2013 |
 | Geode | FabFilter Pro-R | November 2016 |
 
-For Gneiss, Mica, Granite, Magma and Geode, version 2.0 brings the plugin up to the feature set of the current FabFilter product (Pro-C 3, Pro-Q 4, Pro-L 2, Saturn 2 and Pro-R 2), still as a clean-room design. The other 2.0 releases add A/B, undo/redo, hover tips and help to the earlier plugins, a Ducking style to Slate and an Inf:1 ratio to Schist. Those five are tested to render 1.x sessions bit-identically.
+For Gneiss, Mica, Granite, Magma and Geode, version 2.0 brings the plugin up to the feature set of the current FabFilter product (Pro-C 3, Pro-Q 4, Pro-L 2, Saturn 2 and Pro-R 2), still as a clean-room design, and is tested to render 1.x sessions bit-identically. The other 2.0 releases add A/B, undo/redo, hover tips and help to the earlier plugins, a Ducking style to Slate and an Inf:1 ratio to Schist.
 
 Malachite starts a second line: classic hardware instruments, recreated the same way.
 
