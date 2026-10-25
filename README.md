@@ -22,7 +22,20 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/talc/main/screenshot.png" width="160"> | [**Talc**](https://github.com/natehouk/talc) | De-esser (effect) | 1.0 | Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters set over a live spectrum, up to 15 ms look-ahead, sibilance display. 22 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/schist/main/screenshot.png" width="160"> | [**Schist**](https://github.com/natehouk/schist) | Multiband compressor (effect) | 1.0 | Up to six freely placed bands that compress or expand, downward or upward; dynamic, linear or minimum phase; per-band sidechain and custom detection range. 39 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/geode/main/screenshot.png" width="160"> | [**Geode**](https://github.com/natehouk/geode) | Reverb (effect) | 1.0 | Stepless space control across fourteen room models, six-band decay rate EQ, six-band post EQ, tempo-synced predelay, zero latency. 35 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png" width="160"> | [**Malachite**](https://github.com/natehouk/malachite) | Acid bass synth (instrument) | 1.0 | Saw or square oscillator, squelchy resonant filter, accent with build-up, slide, and a 16-step sequencer with 64 patterns that follows the host tempo. 22 factory sound presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png" width="160"> | [**Malachite**](https://github.com/natehouk/malachite) | Acid bass synth (instrument) | 1.0.1 | Saw or square oscillator, squelchy resonant filter, accent with build-up, slide, and a 16-step sequencer with 64 patterns that follows the host tempo. 22 factory sound presets. |
+
+### Merged on `main`, awaiting a release
+
+These updates are merged in each plugin's repo but not yet tagged, so the downloads and benchmarks below are still the versions in the table.
+
+- **Monolith 2.0**: A/B, undo/redo, MIDI Learn, user presets, hover tips, help window and manual.
+- **Caldera 2.0**, **Obsidian 2.0**, **Strata 2.0**: A/B, undo/redo, hover tips, help window and manual.
+- **Gneiss 2.0**: the feature set of FabFilter Pro-C 3, still a clean-room design.
+- **Mica 2.0**: the feature set of FabFilter Pro-Q 4, still a clean-room design.
+- **Granite 2.0**: the feature set of FabFilter Pro-L 2, still a clean-room design.
+- **Slate 2.0**: a Ducking style.
+- **Schist 2.0**: an Inf:1 ratio for limiting and gating.
+- **Geode 2.0**: the feature set of FabFilter Pro-R 2, still a clean-room design.
 
 ## How they fit together
 
@@ -127,11 +140,7 @@ Measured from each plugin's Linux x64 VST3 at its release tag, rendered offline 
 | Talc | v1.0 | 0.7% | 0 | default (8 dB range): 500 Hz tone +0.0 dB, 7 kHz tone −8.0 dB |
 | Schist | v1.0 | 0.2% | 0 | flat: bit-exact; 6 bands 5.7% CPU; linear phase 4096 smp (85.3 ms) |
 | Geode | v1.0 | 2.7% | 0 | RT60 at Space 0% 0.43 s, 50% 1.40 s, 100% 8.20 s |
-| Malachite | v1.0 | 1.2% | 0 | aliasing at A6 −39.6 dB (−39.6 dB below 10 kHz) |
-
-Merged changes awaiting a release, measured the same way:
-
-- **Malachite** (`main` at [`0f491fa`](https://github.com/natehouk/malachite/commit/0f491fa), not yet in a release): aliasing at A6 −53.1 dB (−53.1 dB below 10 kHz); CPU 1.5%, latency 16 smp (0.3 ms).
+| Malachite | v1.0.1 | 1.5% | 16 smp (0.3 ms) | aliasing at A6 −53.1 dB (−53.1 dB below 10 kHz) |
 
 <!-- benchmarks:end -->
 

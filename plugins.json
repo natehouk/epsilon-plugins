@@ -234,7 +234,7 @@
       "screenshot": "https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png",
       "type": "instrument",
       "category": "synth",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "summary": "Acid bass synthesizer with accent, slide and a 16-step pattern sequencer with 64 patterns.",
       "factory_presets": 22,
       "uri": "https://plugins.epsilonrecords.com/malachite",
