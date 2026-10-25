@@ -301,7 +301,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         </div>
         <div class="facts">
           <div><strong class="num">15</strong><small>plugins, 3 instruments and 12 effects</small></div>
-          <div><strong class="num" id="preset-total">504</strong><small>factory presets in total</small></div>
+          <div><strong class="num" id="preset-total">568</strong><small>factory presets in total</small></div>
           <div><strong>VST3 · AU</strong><small>plus CLAP everywhere, VST2 on Windows and Linux</small></div>
           <div><strong class="num">3</strong><small>platforms: macOS universal, Windows x64, Linux x64</small></div>
         </div>
@@ -499,24 +499,24 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
       hl: "Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo and Obsidian's modulation.", feature: "FabFilter Timeless", year: "October 2006" },
     { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.1.1", presets: 31, color: "#e8764a",
       hl: "Caldera stripped down for performance: big controls, a large drag display, Link Filters, undo/redo, hover tips and built-in help.", feature: "FabFilter Simplon", year: "October 2006" },
-    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "1.0.1", presets: 31, color: "#b65a52", sidechain: true,
-      hl: "Clean, Classic and Opto styles, mid/side, external sidechain with 48 dB/oct detector filters, A/B, undo/redo and zero latency.", feature: "FabFilter Pro-C", year: "August 2007" },
-    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "1.0.1", presets: 31, color: "#d6cf4e",
-      hl: "Up to 24 bands (bell, shelf, cuts up to 48 dB/oct), zero-latency or linear-phase, mid/side, spectrum analyser, A/B and undo/redo.", feature: "FabFilter Pro-Q", year: "November 2009" },
+    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "2.0", presets: 46, color: "#b65a52", sidechain: true,
+      hl: "14 styles plus upward compression, ratio to Inf:1, optional lookahead, up to 32× oversampling, a 6-band sidechain EQ, MIDI triggering and loudness metering.", feature: "FabFilter Pro-C", year: "August 2007" },
+    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "2.0", presets: 39, color: "#d6cf4e",
+      hl: "Up to 24 bands in ten shapes, slopes to 96 dB/oct, zero-latency, natural or linear phase, dynamic and spectral EQ, EQ Match and a spectrum analyser.", feature: "FabFilter Pro-Q", year: "November 2009" },
     { id: "flint", name: "Flint", kind: "Saturating filter · effect", cat: "filter", version: "1.0.1", presets: 24, color: "#c8862e",
       hl: "Monolith's 12 dB filter as a light low/high pass with input drive, self-oscillation and a ±6-octave envelope follower.", feature: "FabFilter Micro", year: "January 2010" },
-    { id: "granite", name: "Granite", kind: "Limiter · effect", cat: "dynamics", version: "1.0.1", presets: 27, color: "#9aa3ab",
-      hl: "Exact brickwall limiting with four styles, up to 10 ms look-ahead, 4× linear-phase oversampling, dither, and true-peak and K-System meters.", feature: "FabFilter Pro-L", year: "October 2010" },
+    { id: "granite", name: "Granite", kind: "Limiter · effect", cat: "dynamics", version: "2.0", presets: 40, color: "#9aa3ab",
+      hl: "Eight styles, true-peak limiting, up to 32× oversampling, look-ahead, external sidechain, dither and EBU R128 loudness metering.", feature: "FabFilter Pro-L", year: "October 2010" },
     { id: "slate", name: "Slate", kind: "Gate · effect", cat: "dynamics", version: "1.0", presets: 32, color: "#7f8ea0", midi: true, sidechain: true,
       hl: "Gate and expander with five styles, up to 100:1 and 80 dB range, lookahead, mid/side, sidechain filters and MIDI triggering.", feature: "FabFilter Pro-G", year: "May 2011" },
-    { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "1.0", presets: 42, color: "#e2553a", midi: true, sidechain: true,
-      hl: "Up to six bands with 16 tube, tape, amp, saturation and experimental styles, plus 50 drag-and-drop modulation slots with XLFOs, envelopes and XY pads.", feature: "FabFilter Saturn", year: "March 2012" },
+    { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "2.0", presets: 59, color: "#e2553a", midi: true, sidechain: true,
+      hl: "Up to six bands with 28 tube, tape, amp, saturation and FX styles, linear-phase crossovers and 50 drag-and-drop modulation slots with XLFOs, envelopes and XY pads.", feature: "FabFilter Saturn", year: "March 2012" },
     { id: "talc", name: "Talc", kind: "De-esser · effect", cat: "dynamics", version: "1.0", presets: 22, color: "#c9d1c0",
       hl: "Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters over a live spectrum and up to 15 ms look-ahead.", feature: "FabFilter Pro-DS", year: "October 2012" },
     { id: "schist", name: "Schist", kind: "Multiband dynamics · effect", cat: "dynamics", version: "1.0", presets: 39, color: "#9c8a6e", sidechain: true,
       hl: "Up to six freely placed bands that compress or expand, up or down, with dynamic, linear or minimum phase and per-band sidechain.", feature: "FabFilter Pro-MB", year: "October 2013" },
-    { id: "geode", name: "Geode", kind: "Reverb · effect", cat: "reverb", version: "1.0", presets: 35, color: "#a58fd0",
-      hl: "A stepless space control across fourteen room models, a six-band decay rate EQ, a six-band post EQ, tempo-synced predelay and zero latency.", feature: "FabFilter Pro-R", year: "November 2016" },
+    { id: "geode", name: "Geode", kind: "Reverb · effect", cat: "reverb", version: "2.0", presets: 46, color: "#a58fd0",
+      hl: "Modern, Vintage and Plate algorithms, a stepless space control, decay rate and post EQs, ducking, freeze and impulse response import, at zero latency.", feature: "FabFilter Pro-R", year: "November 2016" },
     { id: "malachite", name: "Malachite", kind: "Acid synth · instrument", cat: "synth", version: "1.0.1", presets: 22, color: "#3cd08c",
       hl: "A squelchy resonant filter with accent and slide, driven by a 16-step sequencer with 64 patterns that follows the host tempo.", feature: "Roland TB-303", year: "1981" }
   ];

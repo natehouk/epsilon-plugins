@@ -112,6 +112,23 @@ def main():
         cpu = r.get("cpu_default_pct", r.get("cpu_1_voice_pct"))
         notes.append(f"- **{name}** (`main` at [`{d['commit']}`](https://github.com/natehouk/{name.lower()}/commit/{d['commit']}), "
                      f"not yet in a release): {key(name, r)}; CPU {f(cpu, 1)}%, latency {latency_of(r)}.")
+    # releases newer than the measured tag (plugins.json is the released version): say so under the table
+    released = {p["name"]: p["version"] for p in json.load(open(os.path.join(HERE, "..", "plugins.json")))["plugins"]}
+    def norm(v):
+        parts = v.lstrip("v").split(".")
+        while len(parts) < 3:
+            parts.append("0")
+        return tuple(int(x) for x in parts[:3])
+    stale = []
+    for name in order:
+        d = json.load(open(os.path.join(HERE, "results", f"{name}.json")))
+        if d["version"].startswith("v") and norm(d["version"]) < norm(released[name]):
+            stale.append(f"{name} {released[name].removesuffix('.0') if released[name].count('.') == 2 and released[name].endswith('.0') else released[name]}")
+    if stale:
+        notes_stale = ["Not yet re-measured since their latest release (the rows above are the previous release): "
+                       + ", ".join(stale) + ".", ""]
+    else:
+        notes_stale = []
     section = "\n".join([
         START,
         "## Benchmarks",
@@ -126,6 +143,7 @@ def main():
         *rows,
         "",
         *((["Merged changes awaiting a release, measured the same way:", "", *notes, ""]) if notes else []),
+        *notes_stale,
         END,
     ])
     text = open(README).read()

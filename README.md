@@ -13,15 +13,15 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | <img src="https://raw.githubusercontent.com/natehouk/obsidian/main/screenshot.png" width="160"> | [**Obsidian**](https://github.com/natehouk/obsidian) | Polysynth (instrument) | 1.0.1 | Two oscillators, two filters (serial / parallel / split), up to 24 voices with unison, modulation matrix. 42 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png" width="160"> | [**Strata**](https://github.com/natehouk/strata) | Tape delay (effect) | 1.0.1 | Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo, Obsidian's modulation. 43 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png" width="160"> | [**Basalt**](https://github.com/natehouk/basalt) | Dual filter, live (effect) | 1.1.1 | Caldera stripped down for performance: big controls, large drag display, Link Filters, undo/redo, hover tips and a built-in help window. 31 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/gneiss/main/screenshot.png" width="160"> | [**Gneiss**](https://github.com/natehouk/gneiss) | Compressor (effect) | 1.0.1 | Clean, Classic and Opto styles, mid/side, external sidechain with 48 dB/oct detector filters, A/B and undo/redo, zero latency. 31 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png" width="160"> | [**Mica**](https://github.com/natehouk/mica) | Equalizer (effect) | 1.0.1 | Up to 24 bands (bell, shelf, cut up to 48 dB/oct), zero-latency or linear-phase, mid/side and per-band channel, spectrum analyser, A/B and undo/redo. 31 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/gneiss/main/screenshot.png" width="160"> | [**Gneiss**](https://github.com/natehouk/gneiss) | Compressor (effect) | 2.0 | 14 styles from Clean to Vari-Mu plus upward compression, ratio to Inf:1, optional lookahead, up to 32× oversampling, mid/side modes, 6-band sidechain EQ, MIDI triggering and EBU R128 loudness metering. 46 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png" width="160"> | [**Mica**](https://github.com/natehouk/mica) | Equalizer (effect) | 2.0 | Up to 24 bands in ten shapes with slopes to 96 dB/oct or brickwall, zero-latency, natural- or linear-phase, dynamic and spectral EQ, EQ Match, mid/side and per-band channel, spectrum analyser. 39 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/flint/main/screenshot.png" width="160"> | [**Flint**](https://github.com/natehouk/flint) | Saturating filter (effect) | 1.0.1 | Monolith's 12 dB filter as a lightweight low/high pass with input drive, self-oscillation and an envelope follower (±6 octaves). 24 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/granite/main/screenshot.png" width="160"> | [**Granite**](https://github.com/natehouk/granite) | Limiter (effect) | 1.0.1 | Exact brickwall limiting, four styles, up to 10 ms look-ahead, 4× linear-phase oversampling, dither with noise shaping, true-peak and K-System meters. 27 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/granite/main/screenshot.png" width="160"> | [**Granite**](https://github.com/natehouk/granite) | Limiter (effect) | 2.0 | Brickwall limiting with eight styles, true-peak limiting, up to 32× oversampling, look-ahead, external sidechain, dither with noise shaping and EBU R128 loudness metering. 40 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/slate/main/screenshot.png" width="160"> | [**Slate**](https://github.com/natehouk/slate) | Gate (effect) | 1.0 | Gate and expander with five styles (including upward), up to 100:1 and 80 dB range, lookahead, mid/side, external sidechain with 48 dB/oct filters, MIDI triggering. 32 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/magma/main/screenshot.png" width="160"> | [**Magma**](https://github.com/natehouk/magma) | Multiband distortion (effect) | 1.0 | Up to six bands, 16 distortion styles (tube, tape, amp, saturation, experimental), 50 drag-and-drop modulation slots with XLFOs, envelopes, envelope followers and XY pads. 42 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/magma/main/screenshot.png" width="160"> | [**Magma**](https://github.com/natehouk/magma) | Multiband distortion (effect) | 2.0 | Up to six bands with 28 tube, tape, amp, saturation and FX styles, linear-phase crossovers, up to 32× oversampling, 50 drag-and-drop modulation slots with XLFOs, envelopes, envelope followers and XY pads. 59 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/talc/main/screenshot.png" width="160"> | [**Talc**](https://github.com/natehouk/talc) | De-esser (effect) | 1.0 | Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters set over a live spectrum, up to 15 ms look-ahead, sibilance display. 22 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/schist/main/screenshot.png" width="160"> | [**Schist**](https://github.com/natehouk/schist) | Multiband compressor (effect) | 1.0 | Up to six freely placed bands that compress or expand, downward or upward; dynamic, linear or minimum phase; per-band sidechain and custom detection range. 39 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/geode/main/screenshot.png" width="160"> | [**Geode**](https://github.com/natehouk/geode) | Reverb (effect) | 1.0 | Stepless space control across fourteen room models, six-band decay rate EQ, six-band post EQ, tempo-synced predelay, zero latency. 35 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/geode/main/screenshot.png" width="160"> | [**Geode**](https://github.com/natehouk/geode) | Reverb (effect) | 2.0 | Modern, Vintage and Plate algorithms, a stepless space control across fourteen room models, decay rate EQ and post EQ, thickness, ducking, auto gate, freeze and impulse-response import, zero latency. 46 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/malachite/main/screenshot.png" width="160"> | [**Malachite**](https://github.com/natehouk/malachite) | Acid bass synth (instrument) | 1.0.1 | Saw or square oscillator, squelchy resonant filter, accent with build-up, slide, and a 16-step sequencer with 64 patterns that follows the host tempo. 22 factory sound presets. |
 
 ### Merged on `main`, awaiting a release
@@ -30,12 +30,8 @@ These updates are merged in each plugin's repo but not yet tagged, so the downlo
 
 - **Monolith 2.0**: A/B, undo/redo, MIDI Learn, user presets, hover tips, help window and manual.
 - **Caldera 2.0**, **Obsidian 2.0**, **Strata 2.0**: A/B, undo/redo, hover tips, help window and manual.
-- **Gneiss 2.0**: the feature set of FabFilter Pro-C 3, still a clean-room design.
-- **Mica 2.0**: the feature set of FabFilter Pro-Q 4, still a clean-room design.
-- **Granite 2.0**: the feature set of FabFilter Pro-L 2, still a clean-room design.
 - **Slate 2.0**: a Ducking style.
 - **Schist 2.0**: an Inf:1 ratio for limiting and gating.
-- **Geode 2.0**: the feature set of FabFilter Pro-R 2, still a clean-room design.
 
 ## How they fit together
 
@@ -142,6 +138,8 @@ Measured from each plugin's Linux x64 VST3 at its release tag, rendered offline 
 | Geode | v1.0 | 2.7% | 0 | RT60 at Space 0% 0.43 s, 50% 1.40 s, 100% 8.20 s |
 | Malachite | v1.0.1 | 1.5% | 16 smp (0.3 ms) | aliasing at A6 −53.1 dB (−53.1 dB below 10 kHz) |
 
+Not yet re-measured since their latest release (the rows above are the previous release): Gneiss 2.0, Mica 2.0, Granite 2.0, Magma 2.0, Geode 2.0.
+
 <!-- benchmarks:end -->
 
 ## Lineage and clean-room note
@@ -164,6 +162,8 @@ The series works through FabFilter's catalogue in release order, recreating each
 | Talc | FabFilter Pro-DS | October 2012 |
 | Schist | FabFilter Pro-MB | October 2013 |
 | Geode | FabFilter Pro-R | November 2016 |
+
+Version 2.0 brings a plugin up to the feature set of the current FabFilter product, still as a clean-room design: Gneiss (Pro-C 3), Mica (Pro-Q 4), Granite (Pro-L 2), Magma (Saturn 2) and Geode (Pro-R 2) are released so far. 2.0 opens 1.x sessions unchanged.
 
 Malachite starts a second line: classic hardware instruments, recreated the same way.
 
