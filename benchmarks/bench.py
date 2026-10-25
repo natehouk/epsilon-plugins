@@ -49,7 +49,9 @@ def filter_metrics(p, cutoff):
 def synth_alias(p, note=93):
     """A6 (1760 Hz) held, filter open: non-harmonic energy relative to the harmonic series."""
     y = play(p, [note], 2.0)
-    return round(inharmonic_db(y, 440 * 2 ** ((note - 69) / 12)), 1), round(float(db(np.abs(y).max())), 1)
+    f0 = 440 * 2 ** ((note - 69) / 12)
+    return dict(total_db=round(inharmonic_db(y, f0), 1), below_10khz_db=round(inharmonic_db(y, f0, 10000), 1),
+                peak_dbfs=round(float(db(np.abs(y).max())), 1))
 
 
 def bench_Monolith(p):
@@ -57,7 +59,7 @@ def bench_Monolith(p):
     setp(p, voice_mode="Poly")
     r["cpu_10_voices_pct"] = synth_cpu(p, list(range(48, 68, 2)))
     setp(p, voice_mode="Mono", cutoff_hz=20000, resonance=0, filter_env_amt=0, drive=0, key_track=0)
-    r["saw_A6_inharmonic_db"], r["saw_A6_peak_dbfs"] = synth_alias(p)
+    r["aliasing_A6"] = synth_alias(p)
     r["settings"] = show(p, "osc_shape", "cutoff_hz", "resonance", "drive")
     return r
 
@@ -68,7 +70,7 @@ def bench_Obsidian(p):
     for s in range(1, 9):
         if f"slot_{s}_bypass" in p.parameters:
             setp(p, **{f"slot_{s}_bypass": True})
-    r["saw_A6_inharmonic_db"], r["saw_A6_peak_dbfs"] = synth_alias(p)
+    r["aliasing_A6"] = synth_alias(p)
     r["settings"] = show(p, "osc_1_wave", "voices", "filter_1_on")
     return r
 
@@ -77,7 +79,7 @@ def bench_Malachite(p):
     setp(p, sequencer="Off (MIDI)")
     r = {"cpu_1_voice_pct": synth_cpu(p, [36])}
     setp(p, waveform="Saw", cutoff=100, resonance=0, env_mod=0)
-    r["saw_A6_inharmonic_db"], r["saw_A6_peak_dbfs"] = synth_alias(p)
+    r["aliasing_A6"] = synth_alias(p)
     r["settings"] = show(p, "waveform", "sequencer", "cutoff", "resonance")
     return r
 
@@ -122,7 +124,7 @@ def bench_Gneiss(p):
 
 
 def bench_Granite(p):
-    r = {"cpu_default_pct": effect_cpu(p), "latency_samples": latency(p, amp=0.01)}
+    r = {"cpu_default_pct": effect_cpu(p), "latency_samples": latency(p)}
     rng = np.random.default_rng(3)
     x = pink(6, -20)
     for i in rng.integers(0, x.shape[1] - 2000, 120):  # drum-like transients
@@ -135,7 +137,7 @@ def bench_Granite(p):
         y = run(p, x)[:, SR // 2:]
         r[f"oversampling_{osr.strip().replace(' ', '')}"] = dict(
             sample_peak_dbfs=round(float(db(np.abs(y).max())), 2), true_peak_dbfs=round(true_peak_db(y), 2),
-            latency_samples=latency(p, amp=0.01))
+            latency_samples=latency(p))
     r["ceiling"] = ceiling
     r["settings"] = show(p, "style", "gain_db", "lookahead_ms", "attack_ms", "release_ms")
     return r
@@ -163,10 +165,10 @@ def bench_Schist(p):
     for b in range(1, 7):
         setp(p, **{f"band_{b}_enabled": True})
     r["cpu_6_bands_pct"] = effect_cpu(p)
+    r["settings"] = show(p, "processing_mode", "band_1_threshold_db", "band_1_ratio")
     for mode in p.parameters["processing_mode"].valid_values:
         setp(p, processing_mode=mode)
         r[f"latency_{mode.strip().replace(' ', '_').lower()}_samples"] = latency(p)
-    r["settings"] = show(p, "processing_mode", "band_1_threshold_db", "band_1_ratio")
     return r
 
 
@@ -213,9 +215,12 @@ def bench_Strata(p):
     for mode in p.parameters["mode"].valid_values:
         setp(p, mode=mode)
         y = run(p, impulse(1.5, at=at, amp=0.25))
-        r[f"echo_time_ms_{mode.strip().lower()}"] = {
-            "left_set_250": round((int(np.argmax(np.abs(y[0]))) - at) / SR * 1000, 2),
-            "right_set_375": round((int(np.argmax(np.abs(y[1]))) - at) / SR * 1000, 2)}
+        res = {}
+        for c, side in ((0, "left"), (1, "right")):
+            shown = float(p.parameters[f"{side}_time_ms"].string_value)
+            got = (int(np.argmax(np.abs(y[c]))) - at) / SR * 1000
+            res[side] = dict(displayed_ms=round(shown, 3), measured_ms=round(got, 3), error_ms=round(got - shown, 3))
+        r[f"echo_{mode.strip().lower()}"] = res
     return r
 
 

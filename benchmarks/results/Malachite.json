@@ -1,0 +1,23 @@
+{
+ "plugin": "Malachite",
+ "version": "v1.0",
+ "commit": "e2353b4",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_1_voice_pct": 1.61,
+  "aliasing_A6": {
+   "total_db": -39.6,
+   "below_10khz_db": -39.6,
+   "peak_dbfs": -2.8
+  },
+  "settings": {
+   "waveform": "Saw",
+   "sequencer": "Off (MIDI)",
+   "cutoff": "100.000000",
+   "resonance": "0.000000"
+  }
+ }
+}

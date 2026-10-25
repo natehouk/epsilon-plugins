@@ -1,0 +1,26 @@
+{
+ "plugin": "Flint",
+ "version": "v1.0.1",
+ "commit": "3d30153",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.43,
+  "latency_samples": 0,
+  "lowpass_1khz": {
+   "set_cutoff_hz": 1000,
+   "gain_at_cutoff_db": -6.01,
+   "measured_3db_hz": 654.7,
+   "passband_db": -0.09,
+   "slope_db_per_oct": -12.9
+  },
+  "thd_n_200hz_-12dbfs_db": -42.2,
+  "settings": {
+   "response": "Low Pass",
+   "frequency_hz": "1000.000000",
+   "peak": "0.000000"
+  }
+ }
+}

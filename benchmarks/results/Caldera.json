@@ -1,0 +1,26 @@
+{
+ "plugin": "Caldera",
+ "version": "v1.0.1",
+ "commit": "21f2dd6",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.92,
+  "latency_samples": 0,
+  "lowpass_1khz": {
+   "set_cutoff_hz": 1000,
+   "gain_at_cutoff_db": -4.68,
+   "measured_3db_hz": 1005.7,
+   "passband_db": -1.78,
+   "slope_db_per_oct": -26.7
+  },
+  "thd_n_200hz_-12dbfs_db": -36.9,
+  "settings": {
+   "filter_1_type": "Low Pass",
+   "filter_1_freq_hz": "1000.000000",
+   "filter_1_peak": "0.000000"
+  }
+ }
+}

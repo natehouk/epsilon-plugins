@@ -1,0 +1,26 @@
+{
+ "plugin": "Basalt",
+ "version": "v1.1.1",
+ "commit": "0bde09b",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 1.74,
+  "latency_samples": 0,
+  "lowpass_1khz": {
+   "set_cutoff_hz": 1000,
+   "gain_at_cutoff_db": -2.99,
+   "measured_3db_hz": 1000.5,
+   "passband_db": -0.0,
+   "slope_db_per_oct": -26.7
+  },
+  "thd_n_200hz_-12dbfs_db": -35.5,
+  "settings": {
+   "filter_1_type": "Low Pass",
+   "filter_1_freq_hz": "1000.000000",
+   "filter_1_resonance": "0.000000"
+  }
+ }
+}

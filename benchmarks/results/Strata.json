@@ -1,0 +1,36 @@
+{
+ "plugin": "Strata",
+ "version": "v1.0.1",
+ "commit": "b2d7b78",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.8,
+  "echo_tape": {
+   "left": {
+    "displayed_ms": 250.0,
+    "measured_ms": 250.0,
+    "error_ms": 0.0
+   },
+   "right": {
+    "displayed_ms": 376.906,
+    "measured_ms": 376.896,
+    "error_ms": -0.01
+   }
+  },
+  "echo_stretch": {
+   "left": {
+    "displayed_ms": 250.0,
+    "measured_ms": 250.0,
+    "error_ms": 0.0
+   },
+   "right": {
+    "displayed_ms": 376.906,
+    "measured_ms": 376.896,
+    "error_ms": -0.01
+   }
+  }
+ }
+}

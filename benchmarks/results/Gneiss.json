@@ -1,0 +1,36 @@
+{
+ "plugin": "Gneiss",
+ "version": "v1.0.1",
+ "commit": "149d93c",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.42,
+  "latency_samples": 0,
+  "static_curve": {
+   "-60": -60.0,
+   "-54": -54.0,
+   "-48": -48.0,
+   "-42": -42.0,
+   "-36": -36.0,
+   "-30": -32.02,
+   "-24": -30.38,
+   "-18": -28.82,
+   "-12": -27.29,
+   "-6": -25.77,
+   "0": -24.26
+  },
+  "measured_ratio": 3.95,
+  "gain_error_below_threshold_db": 0.0,
+  "settings": {
+   "style": "Clean",
+   "threshold_db": "-30.000000",
+   "ratio": "4.002000",
+   "knee_db": "0.000000",
+   "attack_ms": "1.009960",
+   "release_ms": "50.000004"
+  }
+ }
+}

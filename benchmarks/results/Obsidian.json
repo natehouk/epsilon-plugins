@@ -1,0 +1,23 @@
+{
+ "plugin": "Obsidian",
+ "version": "v1.0.1",
+ "commit": "4717abe",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_1_voice_pct": 1.16,
+  "cpu_8_voices_pct": 5.82,
+  "aliasing_A6": {
+   "total_db": -28.9,
+   "below_10khz_db": -52.3,
+   "peak_dbfs": -17.9
+  },
+  "settings": {
+   "osc_1_wave": "Saw",
+   "voices": "8",
+   "filter_1_on": "0"
+  }
+ }
+}

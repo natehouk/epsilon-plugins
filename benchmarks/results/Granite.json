@@ -1,0 +1,36 @@
+{
+ "plugin": "Granite",
+ "version": "v1.0.1",
+ "commit": "1fcb7bc",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.82,
+  "latency_samples": 96,
+  "oversampling_Off": {
+   "sample_peak_dbfs": -0.1,
+   "true_peak_dbfs": 1.0,
+   "latency_samples": 96
+  },
+  "oversampling_2x": {
+   "sample_peak_dbfs": -0.1,
+   "true_peak_dbfs": 0.11,
+   "latency_samples": 128
+  },
+  "oversampling_4x": {
+   "sample_peak_dbfs": -0.1,
+   "true_peak_dbfs": -0.02,
+   "latency_samples": 144
+  },
+  "ceiling": "-0.100000",
+  "settings": {
+   "style": "Clear",
+   "gain_db": "12.000000",
+   "lookahead_ms": "2.000000",
+   "attack_ms": "2.000000",
+   "release_ms": "80.000000"
+  }
+ }
+}

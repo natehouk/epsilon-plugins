@@ -106,6 +106,31 @@ xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsi
   make -C plugins/<Name> WINDOWS=true CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++
   ```
 
+<!-- benchmarks:start -->
+## Benchmarks
+
+Measured from each plugin's Linux x64 VST3 at its release tag, rendered offline at 48 kHz in 512-sample blocks. CPU is the share of one core, including host overhead, on a 2-vCPU cloud Linux machine; instruments are measured holding one note. Latency is what the plugin reports to the host. Method, scripts and the full per-plugin results are in [`benchmarks/`](benchmarks).
+
+| Plugin | Version | CPU | Latency | Key measurements |
+|---|---|---|---|---|
+| Monolith | v1.3 | 1.2% | — | 10 voices 5.6% CPU; aliasing at A6 −31.2 dB (−38.2 dB below 10 kHz) |
+| Caldera | v1.0.1 | 0.9% | 0 | 1 kHz low-pass, minimum resonance: −3 dB at 1006 Hz (passband −1.8 dB), 26.7 dB/oct roll-off; THD+N −36.9 dB (200 Hz, −12 dBFS) |
+| Obsidian | v1.0.1 | 1.2% | — | 8 voices 5.8% CPU; aliasing at A6 −28.9 dB (−52.3 dB below 10 kHz) |
+| Strata | v1.0.1 | 0.8% | — | echoes land within 0.010 ms of the displayed delay time (Tape and Stretch) |
+| Basalt | v1.1.1 | 1.7% | 0 | 1 kHz low-pass, minimum resonance: −3 dB at 1000 Hz, 26.7 dB/oct roll-off; THD+N −35.5 dB (200 Hz, −12 dBFS) |
+| Gneiss | v1.0.1 | 0.4% | 0 | 4:1 above −30 dB measures 3.95:1; 0.00 dB gain change below threshold |
+| Mica | v1.0.1 | 0.1% | 0 | flat: bit-exact; +6 dB bell at 1 kHz measures +5.99 dB at 1000 Hz; 48 dB/oct cut measures 48.1 dB/oct; 24 bands 2.0% CPU; linear phase 6144 smp (128.0 ms) |
+| Flint | v1.0.1 | 0.4% | 0 | 1 kHz low-pass, minimum resonance: −3 dB at 655 Hz, 12.9 dB/oct roll-off; THD+N −42.2 dB (200 Hz, −12 dBFS) |
+| Granite | v1.0.1 | 0.8% | 96 smp (2.0 ms) | +12 dB into a −0.1 dB ceiling: sample peak −0.10 dBFS; true peak by oversampling: Off +1.00, 2x +0.11, 4x −0.02 dBTP |
+| Slate | v1.0 | 0.6% | 0 | −40 dB threshold, 40 dB range: +0.0 dB at −20 dBFS, −40.0 dB at −60 dBFS |
+| Magma | v1.0 | 0.8% | 32 smp (0.7 ms) | default (Warm Tube, drive 0.3), 2.5 kHz at −6 dBFS: THD+N −11.9 dB, non-harmonic −63.6 dB |
+| Talc | v1.0 | 0.7% | 0 | default (8 dB range): 500 Hz tone +0.0 dB, 7 kHz tone −8.0 dB |
+| Schist | v1.0 | 0.2% | 0 | flat: bit-exact; 6 bands 5.7% CPU; linear phase 4096 smp (85.3 ms) |
+| Geode | v1.0 | 2.7% | 0 | RT60 at Space 0% 0.43 s, 50% 1.40 s, 100% 8.20 s |
+| Malachite | v1.0 | 1.6% | — | aliasing at A6 −39.6 dB (−39.6 dB below 10 kHz) |
+
+<!-- benchmarks:end -->
+
 ## Lineage and clean-room note
 
 The series works through FabFilter's catalogue in release order, recreating each product's feature set as a clean-room design. It now covers all fourteen products up to Pro-R:

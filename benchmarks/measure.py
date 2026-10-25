@@ -93,20 +93,21 @@ def cpu_percent(render, seconds, repeats=3):
 
 # ---------- measurements ----------
 
-def latency(plugin, amp=0.1):
-    """Delay of the output peak for an impulse, in samples (for settings that pass the impulse through)."""
-    at = 4800
-    y = np.abs(run(plugin, impulse(1.5, at=at, amp=amp))[0])
-    return int(np.argmax(y > 0.01 * y.max()) - at)  # onset, not peak: a filter's peak includes its group delay
+def latency(plugin):
+    """Latency the plugin declares to the host, in samples (read after processing, so mode changes apply).
+
+    pedalboard compensates for this when rendering, so output is already time-aligned with the input.
+    """
+    run(plugin, impulse(0.2))
+    return int(plugin.reported_latency_samples)
 
 
 def null_depth(plugin, seconds=4):
-    """How far the output differs from the input (latency-compensated), in dB below the input."""
+    """How far the (host-compensated) output differs from the input, in dB below the input."""
     x = pink(seconds, -18)
-    lat = max(latency(plugin), 0)
     y = run(plugin, x)
-    n = x.shape[1] - lat - SR // 10
-    err = rms(y[:, lat:lat + n] - x[:, :n])
+    n = x.shape[1] - SR // 10
+    err = rms(y[:, :n] - x[:, :n])
     return float("-inf") if err == 0 else float(db(err / rms(x[:, :n])))
 
 
@@ -145,10 +146,24 @@ def thd_n_db(y, f0):
     return float(10 * np.log10((s["harm"] + s["other"]) / s["fund"]))
 
 
-def inharmonic_db(y, f0):
-    """Non-harmonic energy relative to the harmonic series (aliasing / noise), in dB."""
+def inharmonic_db(y, f0, below_hz=None):
+    """Non-harmonic energy (aliasing + noise) relative to the harmonic series, in dB.
+
+    With `below_hz`, only non-harmonic energy under that frequency is counted (the audible-band figure).
+    """
+    p, df = spectrum(y)
     s = harmonic_split(y, f0)
-    return float(10 * np.log10(s["other"] / (s["fund"] + s["harm"])))
+    if below_hz is None:
+        other = s["other"]
+    else:
+        mask = np.zeros(len(p), bool)
+        for k in range(1, int((SR / 2) / s["f0"]) + 1):
+            c = int(round(k * s["f0"] / df))
+            mask[max(c - 4, 0):c + 5] = True
+        mask[:5] = True
+        lim = int(below_hz / df)
+        other = p[:lim][~mask[:lim]].sum()
+    return float(10 * np.log10(max(other, 1e-30) / (s["fund"] + s["harm"])))
 
 
 def response(plugin, amp=0.01, seconds=2.0):

@@ -1,0 +1,22 @@
+{
+ "plugin": "Magma",
+ "version": "v1.0",
+ "commit": "7d442b1",
+ "host": "pedalboard 0.9.26",
+ "sample_rate": 48000,
+ "block": 512,
+ "machine": "x86_64",
+ "results": {
+  "cpu_default_pct": 0.84,
+  "latency_samples": 32,
+  "default_2_5khz_-6dbfs": {
+   "thd_n_db": -11.9,
+   "inharmonic_db": -63.6
+  },
+  "settings": {
+   "band_1_style": "Warm Tube",
+   "band_1_drive": "0.300000",
+   "band_1_mix": "1.000000"
+  }
+ }
+}
