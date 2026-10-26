@@ -301,7 +301,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         </div>
         <div class="facts">
           <div><strong class="num">15</strong><small>plugins, 3 instruments and 12 effects</small></div>
-          <div><strong class="num" id="preset-total">610</strong><small>factory presets in total</small></div>
+          <div><strong class="num" id="preset-total">628</strong><small>factory presets in total</small></div>
           <div><strong>VST3 · AU</strong><small>plus CLAP everywhere, VST2 on Windows and Linux</small></div>
           <div><strong class="num">3</strong><small>platforms: macOS universal, Windows x64, Linux x64</small></div>
         </div>
@@ -432,7 +432,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
           <h2>Same tools, same habits</h2>
         </div>
         <ul class="common">
-          <li><b>Factory presets</b><span>Browsable from each plugin's header.</span></li>
+          <li><b>Factory presets</b><span>In a browser in each plugin's header that searches as you type, with a star to keep favourites.</span></li>
           <li><b>MIDI Learn and user presets</b><span>Saved as small text files that load the same on every OS.</span></li>
           <li><b>Published DSP techniques</b><span>PolyBLEP oscillators, Zavalishin topology-preserving state-variable filters, one-pole envelopes.</span></li>
           <li><b>Tests</b><span>In each repository's <code>tests/</code> folder.</span></li>
@@ -489,35 +489,35 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
 (() => {
   const IMG = {"monolith": "img/monolith.webp", "caldera": "img/caldera.webp", "obsidian": "img/obsidian.webp", "strata": "img/strata.webp", "basalt": "img/basalt.webp", "gneiss": "img/gneiss.webp", "mica": "img/mica.webp", "flint": "img/flint.webp", "granite": "img/granite.webp", "slate": "img/slate.webp", "magma": "img/magma.webp", "talc": "img/talc.webp", "schist": "img/schist.webp", "geode": "img/geode.webp", "malachite": "img/malachite.webp"};
   const PLUGINS = [
-    { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "2.0", presets: 42, color: "#e8a23a",
+    { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "2.1", presets: 42, color: "#e8a23a",
       hl: "Morphing single oscillator plus sub and noise, a 12 dB SVF filter, mono or 10-voice poly, with A/B, undo/redo and MIDI Learn.", feature: "FabFilter One", year: "2002" },
-    { id: "caldera", name: "Caldera", kind: "Multi-filter · effect", cat: "filter", version: "3.0", presets: 57, color: "#d8862e", midi: true, sidechain: true,
+    { id: "caldera", name: "Caldera", kind: "Multi-filter · effect", cat: "filter", version: "3.1", presets: 57, color: "#d8862e", midi: true, sidechain: true,
       hl: "Up to four filters with eleven styles, bell, shelf and notch shapes, per-filter drive and delay, 4× oversampling and 50 drag-and-drop modulation slots.", feature: "FabFilter Volcano", year: "May 2005" },
-    { id: "obsidian", name: "Obsidian", kind: "Polysynth · instrument", cat: "synth", version: "2.0", presets: 42, color: "#a890f0",
-      hl: "Two oscillators, two filters (serial, parallel or split), up to 24 voices with unison, a modulation matrix, A/B and undo/redo.", feature: "FabFilter Twin", year: "December 2005" },
-    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "3.0", presets: 60, color: "#c49450", midi: true, sidechain: true,
+    { id: "obsidian", name: "Obsidian", kind: "Polysynth · instrument", cat: "synth", version: "3.1", presets: 60, color: "#a890f0",
+      hl: "Four oscillators, four filters, built-in effects, an arpeggiator, up to 64 voices and 100 drag-and-drop modulation slots.", feature: "FabFilter Twin", year: "December 2005" },
+    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "3.1", presets: 60, color: "#c49450", midi: true, sidechain: true,
       hl: "Stereo delay with tape or stretch mode, 15 extra taps per line, six loop filters, lo-fi, diffuse, ducking and pitch-shift effects, freeze and 50 modulation slots.", feature: "FabFilter Timeless", year: "October 2006" },
-    { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.1.1", presets: 31, color: "#e8764a",
+    { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.2", presets: 31, color: "#e8764a",
       hl: "Caldera stripped down for performance: big controls, a large drag display, Link Filters, undo/redo, hover tips and built-in help.", feature: "FabFilter Simplon", year: "October 2006" },
-    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "2.0", presets: 46, color: "#b65a52", sidechain: true,
+    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "2.1", presets: 46, color: "#b65a52", sidechain: true,
       hl: "14 styles plus upward compression, ratio to Inf:1, optional lookahead, up to 32× oversampling, a 6-band sidechain EQ, MIDI triggering and loudness metering.", feature: "FabFilter Pro-C", year: "August 2007" },
-    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "2.0", presets: 39, color: "#d6cf4e",
+    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "2.1", presets: 39, color: "#d6cf4e",
       hl: "Up to 24 bands in ten shapes, slopes to 96 dB/oct, zero-latency, natural or linear phase, dynamic and spectral EQ, EQ Match and a spectrum analyser.", feature: "FabFilter Pro-Q", year: "November 2009" },
-    { id: "flint", name: "Flint", kind: "Saturating filter · effect", cat: "filter", version: "1.0.1", presets: 24, color: "#c8862e",
+    { id: "flint", name: "Flint", kind: "Saturating filter · effect", cat: "filter", version: "1.1", presets: 24, color: "#c8862e",
       hl: "Monolith's 12 dB filter as a light low/high pass with input drive, self-oscillation and a ±6-octave envelope follower.", feature: "FabFilter Micro", year: "January 2010" },
-    { id: "granite", name: "Granite", kind: "Limiter · effect", cat: "dynamics", version: "2.0", presets: 40, color: "#9aa3ab",
+    { id: "granite", name: "Granite", kind: "Limiter · effect", cat: "dynamics", version: "2.1", presets: 40, color: "#9aa3ab",
       hl: "Eight styles, true-peak limiting, up to 32× oversampling, look-ahead, external sidechain, dither and EBU R128 loudness metering.", feature: "FabFilter Pro-L", year: "October 2010" },
-    { id: "slate", name: "Slate", kind: "Gate · effect", cat: "dynamics", version: "2.0", presets: 39, color: "#7f8ea0", midi: true, sidechain: true,
+    { id: "slate", name: "Slate", kind: "Gate · effect", cat: "dynamics", version: "2.1", presets: 39, color: "#7f8ea0", midi: true, sidechain: true,
       hl: "Gate, expander and ducker with six styles, up to 100:1 and 80 dB range, lookahead, mid/side, sidechain filters and MIDI triggering.", feature: "FabFilter Pro-G", year: "May 2011" },
-    { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "2.0.1", presets: 59, color: "#e2553a", midi: true, sidechain: true,
+    { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "2.1", presets: 59, color: "#e2553a", midi: true, sidechain: true,
       hl: "Up to six bands with 28 tube, tape, amp, saturation and FX styles, linear-phase crossovers and 50 drag-and-drop modulation slots with XLFOs, envelopes and XY pads.", feature: "FabFilter Saturn", year: "March 2012" },
-    { id: "talc", name: "Talc", kind: "De-esser · effect", cat: "dynamics", version: "1.0", presets: 22, color: "#c9d1c0",
+    { id: "talc", name: "Talc", kind: "De-esser · effect", cat: "dynamics", version: "1.1", presets: 22, color: "#c9d1c0",
       hl: "Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters over a live spectrum and up to 15 ms look-ahead.", feature: "FabFilter Pro-DS", year: "October 2012" },
-    { id: "schist", name: "Schist", kind: "Multiband dynamics · effect", cat: "dynamics", version: "2.0", presets: 41, color: "#9c8a6e", sidechain: true,
+    { id: "schist", name: "Schist", kind: "Multiband dynamics · effect", cat: "dynamics", version: "2.1", presets: 41, color: "#9c8a6e", sidechain: true,
       hl: "Up to six freely placed bands that compress or expand, up or down, to Inf:1 for limiting and gating, with dynamic, linear or minimum phase.", feature: "FabFilter Pro-MB", year: "October 2013" },
     { id: "geode", name: "Geode", kind: "Reverb · effect", cat: "reverb", version: "2.0", presets: 46, color: "#a58fd0",
       hl: "Modern, Vintage and Plate algorithms, a stepless space control, decay rate and post EQs, ducking, freeze and impulse response import, at zero latency.", feature: "FabFilter Pro-R", year: "November 2016" },
-    { id: "malachite", name: "Malachite", kind: "Acid synth · instrument", cat: "synth", version: "1.0.2", presets: 22, color: "#3cd08c",
+    { id: "malachite", name: "Malachite", kind: "Acid synth · instrument", cat: "synth", version: "1.1", presets: 22, color: "#3cd08c",
       hl: "A squelchy resonant filter with accent and slide, driven by a 16-step sequencer with 64 patterns that follows the host tempo.", feature: "Roland TB-303", year: "1981" }
   ];
   const CATS = [["all", "All"], ["synth", "Synths"], ["filter", "Filters"], ["delay", "Delay"], ["dynamics", "Dynamics"], ["eq", "EQ"], ["distortion", "Distortion"], ["reverb", "Reverb"]];
