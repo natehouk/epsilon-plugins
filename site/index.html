@@ -301,7 +301,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         </div>
         <div class="facts">
           <div><strong class="num">15</strong><small>plugins, 3 instruments and 12 effects</small></div>
-          <div><strong class="num" id="preset-total">577</strong><small>factory presets in total</small></div>
+          <div><strong class="num" id="preset-total">610</strong><small>factory presets in total</small></div>
           <div><strong>VST3 · AU</strong><small>plus CLAP everywhere, VST2 on Windows and Linux</small></div>
           <div><strong class="num">3</strong><small>platforms: macOS universal, Windows x64, Linux x64</small></div>
         </div>
@@ -491,12 +491,12 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
   const PLUGINS = [
     { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "2.0", presets: 42, color: "#e8a23a",
       hl: "Morphing single oscillator plus sub and noise, a 12 dB SVF filter, mono or 10-voice poly, with A/B, undo/redo and MIDI Learn.", feature: "FabFilter One", year: "2002" },
-    { id: "caldera", name: "Caldera", kind: "Dual filter · effect", cat: "filter", version: "2.0", presets: 41, color: "#d8862e", midi: true,
-      hl: "Two filters, seven styles from Clean to Raw, serial or parallel, 2 LFOs, an envelope follower, MIDI key tracking, A/B and undo/redo.", feature: "FabFilter Volcano", year: "May 2005" },
+    { id: "caldera", name: "Caldera", kind: "Multi-filter · effect", cat: "filter", version: "3.0", presets: 57, color: "#d8862e", midi: true, sidechain: true,
+      hl: "Up to four filters with eleven styles, bell, shelf and notch shapes, per-filter drive and delay, 4× oversampling and 50 drag-and-drop modulation slots.", feature: "FabFilter Volcano", year: "May 2005" },
     { id: "obsidian", name: "Obsidian", kind: "Polysynth · instrument", cat: "synth", version: "2.0", presets: 42, color: "#a890f0",
       hl: "Two oscillators, two filters (serial, parallel or split), up to 24 voices with unison, a modulation matrix, A/B and undo/redo.", feature: "FabFilter Twin", year: "December 2005" },
-    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "2.0", presets: 43, color: "#c49450", midi: true,
-      hl: "Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo, Obsidian's modulation, A/B and undo/redo.", feature: "FabFilter Timeless", year: "October 2006" },
+    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "3.0", presets: 60, color: "#c49450", midi: true, sidechain: true,
+      hl: "Stereo delay with tape or stretch mode, 15 extra taps per line, six loop filters, lo-fi, diffuse, ducking and pitch-shift effects, freeze and 50 modulation slots.", feature: "FabFilter Timeless", year: "October 2006" },
     { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.1.1", presets: 31, color: "#e8764a",
       hl: "Caldera stripped down for performance: big controls, a large drag display, Link Filters, undo/redo, hover tips and built-in help.", feature: "FabFilter Simplon", year: "October 2006" },
     { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "2.0", presets: 46, color: "#b65a52", sidechain: true,

@@ -9,9 +9,9 @@ Every plugin is MIT-licensed, built on [DPF](https://github.com/DISTRHO/DPF), an
 | | Plugin | Type | Version | Highlights |
 |---|---|---|---|---|
 | <img src="https://raw.githubusercontent.com/natehouk/monolith/main/screenshot.png" width="160"> | [**Monolith**](https://github.com/natehouk/monolith) | Synth (instrument) | 2.0 | Morphing single oscillator + sub + noise, 12 dB SVF filter, mono or 10-voice poly; A/B, undo/redo, MIDI Learn, user presets, hover tips and a help window. 42 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/caldera/main/screenshot.png" width="160"> | [**Caldera**](https://github.com/natehouk/caldera) | Dual filter (effect) | 2.0 | Two filters, seven styles from Clean to Raw, serial/parallel, 2 LFOs, envelope follower, MIDI key tracking; A/B, undo/redo, hover tips and a help window. 41 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/caldera/main/screenshot.png" width="160"> | [**Caldera**](https://github.com/natehouk/caldera) | Multi-filter (effect) | 3.0 | Up to four filters in serial, parallel or paired routings, 11 styles from Clean to Raw, bell, shelf, notch and all-pass shapes, per-filter drive, delay and pan, mid/side, 4× oversampling, 50 drag-and-drop modulation slots with XLFOs, envelopes, envelope followers and XY pads. 57 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/obsidian/main/screenshot.png" width="160"> | [**Obsidian**](https://github.com/natehouk/obsidian) | Polysynth (instrument) | 2.0 | Two oscillators, two filters (serial / parallel / split), up to 24 voices with unison, modulation matrix; A/B, undo/redo, hover tips and a help window. 42 factory presets. |
-| <img src="https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png" width="160"> | [**Strata**](https://github.com/natehouk/strata) | Tape delay (effect) | 2.0 | Stereo delay with tape or stretch mode, Caldera's filters in the feedback loop, tap tempo, Obsidian's modulation; A/B, undo/redo, hover tips and a help window. 43 factory presets. |
+| <img src="https://raw.githubusercontent.com/natehouk/strata/main/screenshot.png" width="160"> | [**Strata**](https://github.com/natehouk/strata) | Tape delay (effect) | 3.0 | Stereo delay with tape or stretch mode, 15 extra taps per line, six filters in the feedback loop, lo-fi, diffuse, ducking and pitch-shift effects, freeze, mid/side, tap tempo, 50 drag-and-drop modulation slots. 60 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/basalt/main/screenshot.png" width="160"> | [**Basalt**](https://github.com/natehouk/basalt) | Dual filter, live (effect) | 1.1.1 | Caldera stripped down for performance: big controls, large drag display, Link Filters, undo/redo, hover tips and a built-in help window. 31 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/gneiss/main/screenshot.png" width="160"> | [**Gneiss**](https://github.com/natehouk/gneiss) | Compressor (effect) | 2.0 | 14 styles from Clean to Vari-Mu plus upward compression, ratio to Inf:1, optional lookahead, up to 32× oversampling, mid/side modes, 6-band sidechain EQ, MIDI triggering and EBU R128 loudness metering. 46 factory presets. |
 | <img src="https://raw.githubusercontent.com/natehouk/mica/main/screenshot.png" width="160"> | [**Mica**](https://github.com/natehouk/mica) | Equalizer (effect) | 2.0 | Up to 24 bands in ten shapes with slopes to 96 dB/oct or brickwall, zero-latency, natural- or linear-phase, dynamic and spectral EQ, EQ Match, mid/side and per-band channel, spectrum analyser. 39 factory presets. |
@@ -129,7 +129,7 @@ Measured from each plugin's Linux x64 VST3 at its release tag, rendered offline 
 | Geode | v1.0 | 2.7% | 0 | RT60 at Space 0% 0.43 s, 50% 1.40 s, 100% 8.20 s |
 | Malachite | v1.0.1 | 1.5% | 16 smp (0.3 ms) | aliasing at A6 −53.1 dB (−53.1 dB below 10 kHz) |
 
-Not yet re-measured since their latest release (the rows above are the previous release): Monolith 2.0, Caldera 2.0, Obsidian 2.0, Strata 2.0, Gneiss 2.0, Mica 2.0, Granite 2.0, Slate 2.0, Magma 2.0, Schist 2.0, Geode 2.0, Malachite 1.0.2.
+Not yet re-measured since their latest release (the rows above are the previous release): Monolith 2.0, Caldera 3.0, Obsidian 2.0, Strata 3.0, Gneiss 2.0, Mica 2.0, Granite 2.0, Slate 2.0, Magma 2.0, Schist 2.0, Geode 2.0, Malachite 1.0.2.
 
 <!-- benchmarks:end -->
 
@@ -154,7 +154,7 @@ The series works through FabFilter's catalogue in release order, recreating each
 | Schist | FabFilter Pro-MB | October 2013 |
 | Geode | FabFilter Pro-R | November 2016 |
 
-For Gneiss, Mica, Granite, Magma and Geode, version 2.0 brings the plugin up to the feature set of the current FabFilter product (Pro-C 3, Pro-Q 4, Pro-L 2, Saturn 2 and Pro-R 2), still as a clean-room design, and is tested to render 1.x sessions bit-identically. The other 2.0 releases add A/B, undo/redo, hover tips and help to the earlier plugins, a Ducking style to Slate and an Inf:1 ratio to Schist.
+For Gneiss, Mica, Granite, Magma and Geode, version 2.0 brings the plugin up to the feature set of the current FabFilter product (Pro-C 3, Pro-Q 4, Pro-L 2, Saturn 2 and Pro-R 2), and Caldera and Strata reach it in 3.0 (Volcano 3 and Timeless 3), all still as clean-room designs. Each of these is tested to render sessions from the previous major version bit-identically. The other 2.0 releases add A/B, undo/redo, hover tips and help to the earlier plugins, a Ducking style to Slate and an Inf:1 ratio to Schist.
 
 Malachite starts a second line: classic hardware instruments, recreated the same way.
 
