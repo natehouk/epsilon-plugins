@@ -1,0 +1,128 @@
+name: installers
+
+# Builds the Epsilon Audio Suite installers from each plugin's latest release:
+#   macOS: one .pkg with a choice per plugin and format     Windows: one Inno Setup .exe
+#   Linux: one .tar.gz with an install script
+# Every push that touches the installers or plugins.json builds them as workflow artifacts.
+# Run the workflow by hand with "publish" ticked to attach them to a GitHub release named suite-<version>.
+
+on:
+  push:
+    branches: [main]
+    paths: ['installers/**', 'plugins.json', '.github/workflows/installers.yml']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Suite version (empty = today, e.g. 2026.10.26)'
+        required: false
+      publish:
+        description: 'Publish a GitHub release with the installers'
+        type: boolean
+        default: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  version:
+    runs-on: ubuntu-24.04
+    outputs:
+      v: ${{ steps.v.outputs.v }}
+    steps:
+      - id: v
+        run: |
+          v="${{ inputs.version }}"
+          [ -n "$v" ] || v="$(date -u +%Y.%m.%d)"
+          echo "v=$v" >> "$GITHUB_OUTPUT"
+
+  linux:
+    needs: version
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 installers/fetch.py linux-x64
+      - run: python3 installers/build-linux.py ${{ needs.version.outputs.v }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: suite-linux
+          path: installers/build/out/*.tar.gz
+
+  macos:
+    needs: version
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 installers/fetch.py macos-universal
+      - name: Signing identity (when the secrets are set)
+        env:
+          INSTALLER_P12: ${{ secrets.MACOS_INSTALLER_P12 || secrets.MACOS_CERT_P12 }}
+          CERT_PASSWORD: ${{ secrets.MACOS_INSTALLER_PASSWORD || secrets.MACOS_CERT_PASSWORD }}
+          NOTARY_KEY: ${{ secrets.NOTARY_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${INSTALLER_P12}" ]; then echo "::warning::No signing secrets: the package will be unsigned"; exit 0; fi
+          KC="$RUNNER_TEMP/sign.keychain-db"; KP="$(uuidgen)"
+          echo "$INSTALLER_P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KP" "$KC"; security set-keychain-settings -lut 21600 "$KC"; security unlock-keychain -p "$KP" "$KC"
+          security import "$RUNNER_TEMP/cert.p12" -k "$KC" -P "$CERT_PASSWORD" -T /usr/bin/productsign -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KP" "$KC" >/dev/null
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          rm -f "$RUNNER_TEMP/cert.p12"
+          ID="$(security find-identity -v "$KC" | grep -o '"Developer ID Installer[^"]*"' | head -1 | tr -d '"' || true)"
+          if [ -z "$ID" ]; then echo "::warning::No 'Developer ID Installer' identity in the certificate: the package will be unsigned"; exit 0; fi
+          echo "MACOS_INSTALLER_IDENTITY=$ID" >> "$GITHUB_ENV"
+          if [ -n "${NOTARY_KEY}" ]; then
+            echo "$NOTARY_KEY" | base64 --decode > "$RUNNER_TEMP/notary.p8"
+            echo "NOTARY_KEY_PATH=$RUNNER_TEMP/notary.p8" >> "$GITHUB_ENV"
+          fi
+      - run: python3 installers/build-macos.py ${{ needs.version.outputs.v }}
+        env:
+          NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
+          NOTARY_ISSUER: ${{ secrets.NOTARY_ISSUER }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: suite-macos
+          path: installers/build/out/*.pkg
+
+  windows:
+    needs: version
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: python installers/fetch.py windows-x64
+      - name: Inno Setup
+        shell: pwsh
+        run: if (-not (Test-Path "C:\Program Files (x86)\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
+      - run: python installers/build-windows.py ${{ needs.version.outputs.v }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: suite-windows
+          path: installers/build/out/*.exe
+
+  publish:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish
+    needs: [version, linux, macos, windows]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: suite-*
+          path: dist
+          merge-multiple: true
+      - name: Checksums
+        run: cd dist && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: suite-${{ needs.version.outputs.v }}
+          target_commitish: ${{ github.sha }}
+          name: Epsilon Audio Suite ${{ needs.version.outputs.v }}
+          body: |
+            One installer for all fifteen Epsilon Audio plugins, built from each plugin's latest release.
+            - macOS: open the .pkg and choose plugins and formats (VST3, AU, CLAP; VST2 optional).
+            - Windows: run the .exe (VST3 and CLAP by default; VST2 under Full or Custom).
+            - Linux: unpack the .tar.gz and run ./install.sh.
+            Install guides: https://plugins.epsilonrecords.com/install
+          files: |
+            dist/*
