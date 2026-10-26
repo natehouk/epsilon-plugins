@@ -574,8 +574,10 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
     ["distort", "Distort", "Saturation and multiband distortion, from warm tape to broken."],
     ["mix", "Mix", "EQ, compression, gating, multiband dynamics and de-essing."],
     ["finish", "Finish", "Space, echo and loudness: a reverb, a tape delay and a limiter."]];
-  // Newsletter: set to the Buttondown username to show the signup section.
-  const BUTTONDOWN_USER = "";
+  // Newsletter (Buttondown username "epsilon"). The account is in Buttondown's review, which blocks new
+  // subscribers, so the section stays hidden until BUTTONDOWN_LIVE is set to true after approval.
+  const BUTTONDOWN_USER = "epsilon";
+  const BUTTONDOWN_LIVE = false;
   const repo = p => "https://github.com/natehouk/" + p.id;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -712,8 +714,8 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
       document.getElementById("zips").open = true;
     });
 
-  // Newsletter (Buttondown): shown once BUTTONDOWN_USER is set.
-  if (BUTTONDOWN_USER) {
+  // Newsletter (Buttondown): shown once the account is approved and BUTTONDOWN_LIVE is true.
+  if (BUTTONDOWN_USER && BUTTONDOWN_LIVE) {
     const f = document.getElementById("signup-form");
     f.action = "https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(BUTTONDOWN_USER);
     f.addEventListener("submit", () => plausible("Newsletter signup"));
