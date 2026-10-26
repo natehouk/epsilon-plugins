@@ -100,8 +100,11 @@ jobs:
           [ ! -e /Library/Audio/Plug-Ins/VST/Obsidian.vst ] || { echo "::error::VST2 should be off by default"; exit 1; }
           ls "/Library/Documentation/Epsilon Audio" | head -3
           xattr -lr /Library/Audio/Plug-Ins/VST3/Obsidian.vst3 | grep -q quarantine && { echo "::error::installed plugin is quarantined"; exit 1; } || true
-          auval -a 2>/dev/null | grep -i epsilon | tee "$RUNNER_TEMP/auval.txt"
+          killall -9 AudioComponentRegistrar 2>/dev/null || true
+          sleep 2
+          auval -a 2>/dev/null | grep -i epsilon > "$RUNNER_TEMP/auval.txt" || true
           echo "::notice::auval lists $(wc -l < "$RUNNER_TEMP/auval.txt" | tr -d ' ') Epsilon Audio units"
+          head -3 "$RUNNER_TEMP/auval.txt"
       - uses: actions/upload-artifact@v4
         with:
           name: suite-macos
