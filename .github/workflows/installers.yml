@@ -42,6 +42,12 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 installers/fetch.py linux-x64
       - run: python3 installers/build-linux.py ${{ needs.version.outputs.v }}
+      - name: Test install
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/t" && tar xzf installers/build/out/*.tar.gz -C "$RUNNER_TEMP/t"
+          HOME="$RUNNER_TEMP/home" sh "$RUNNER_TEMP"/t/*/install.sh
+          n=$(ls -d "$RUNNER_TEMP"/home/.vst3/*.vst3 | wc -l); echo "::notice::installed $n VST3 bundles"; [ "$n" -eq 15 ]
       - uses: actions/upload-artifact@v4
         with:
           name: suite-linux
@@ -79,6 +85,23 @@ jobs:
         env:
           NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
           NOTARY_ISSUER: ${{ secrets.NOTARY_ISSUER }}
+      - name: Test install on the runner
+        run: |
+          set -euo pipefail
+          pkg=$(ls installers/build/out/*.pkg)
+          pkgutil --expand "$pkg" "$RUNNER_TEMP/expanded"
+          n=$(ls -d "$RUNNER_TEMP/expanded"/*.pkg | wc -l | tr -d ' ')
+          echo "::notice::$(basename "$pkg"): $n component packages, $(du -h "$pkg" | cut -f1)"
+          sudo installer -pkg "$pkg" -target /
+          for f in VST3:vst3 Components:component CLAP:clap; do
+            c=$(ls -d /Library/Audio/Plug-Ins/${f%%:*}/*.${f##*:} 2>/dev/null | grep -c -E "$(python3 -c "import json;print('|'.join(p['name'] for p in json.load(open('plugins.json'))['plugins']))")" || true)
+            echo "::notice::default install: $c ${f%%:*} bundles"; [ "$c" -eq 15 ] || { echo "::error::expected 15 ${f%%:*} bundles"; exit 1; }
+          done
+          [ ! -e /Library/Audio/Plug-Ins/VST/Obsidian.vst ] || { echo "::error::VST2 should be off by default"; exit 1; }
+          ls "/Library/Documentation/Epsilon Audio" | head -3
+          xattr -lr /Library/Audio/Plug-Ins/VST3/Obsidian.vst3 | grep -q quarantine && { echo "::error::installed plugin is quarantined"; exit 1; } || true
+          auval -a 2>/dev/null | grep -i epsilon | tee "$RUNNER_TEMP/auval.txt"
+          echo "::notice::auval lists $(wc -l < "$RUNNER_TEMP/auval.txt" | tr -d ' ') Epsilon Audio units"
       - uses: actions/upload-artifact@v4
         with:
           name: suite-macos
@@ -94,6 +117,23 @@ jobs:
         shell: pwsh
         run: if (-not (Test-Path "C:\Program Files (x86)\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
       - run: python installers/build-windows.py ${{ needs.version.outputs.v }}
+      - name: Test install on the runner
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem installers/build/out/*.exe | Select-Object -First 1
+          Write-Host "::notice::$($exe.Name): $([math]::Round($exe.Length / 1MB)) MB"
+          $p = Start-Process -FilePath $exe.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/TYPE=recommended','/LOG=install.log' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { Get-Content install.log -Tail 30; throw "installer exit $($p.ExitCode)" }
+          $vst3 = (Get-ChildItem "C:\Program Files\Common Files\VST3" -Directory -Filter *.vst3).Count
+          $clap = (Get-ChildItem "C:\Program Files\Common Files\CLAP" -Filter *.clap).Count
+          Write-Host "::notice::default install: $vst3 VST3, $clap CLAP"
+          if ($vst3 -lt 15 -or $clap -lt 15) { throw "expected 15 VST3 and 15 CLAP" }
+          if (Test-Path "C:\Program Files\Steinberg\VSTPlugins\Obsidian.dll") { throw "VST2 should be off by default" }
+          $un = Get-ChildItem "C:\Program Files\Epsilon Audio\unins*.exe" | Select-Object -First 1
+          Start-Process -FilePath $un.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES' -Wait
+          Start-Sleep -Seconds 3
+          if (Test-Path "C:\Program Files\Common Files\VST3\Obsidian.vst3") { throw "uninstall left Obsidian.vst3" }
+          Write-Host "::notice::uninstall removed the plugins"
       - uses: actions/upload-artifact@v4
         with:
           name: suite-windows
