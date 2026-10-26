@@ -1,13 +1,13 @@
 {
  "plugin": "Flint",
- "version": "v1.0.1",
- "commit": "3d30153",
+ "version": "v1.1",
+ "commit": "52ad9e3",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.43,
+  "cpu_default_pct": 0.54,
   "latency_samples": 0,
   "lowpass_1khz": {
    "set_cutoff_hz": 1000,

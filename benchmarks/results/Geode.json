@@ -1,13 +1,13 @@
 {
  "plugin": "Geode",
- "version": "v1.0",
- "commit": "07a19a6",
+ "version": "v2.0",
+ "commit": "795c2f3",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 2.71,
+  "cpu_default_pct": 3.46,
   "dry_latency_samples": 0,
   "rt60_space_0.000000_s": 0.43,
   "rt60_space_0.500000_s": 1.4,

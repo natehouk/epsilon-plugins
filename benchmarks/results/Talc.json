@@ -1,13 +1,13 @@
 {
  "plugin": "Talc",
- "version": "v1.0",
- "commit": "f95c0e8",
+ "version": "v1.1",
+ "commit": "1b6c368",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.69,
+  "cpu_default_pct": 0.94,
   "latency_samples": 0,
   "gain_500hz_-12dbfs_db": 0.0,
   "gain_7khz_-12dbfs_db": -8.0,

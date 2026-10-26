@@ -1,13 +1,13 @@
 {
  "plugin": "Basalt",
- "version": "v1.1.1",
- "commit": "0bde09b",
+ "version": "v1.2",
+ "commit": "949ee2c",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 1.74,
+  "cpu_default_pct": 2.37,
   "latency_samples": 0,
   "lowpass_1khz": {
    "set_cutoff_hz": 1000,

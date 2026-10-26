@@ -1,14 +1,14 @@
 {
  "plugin": "Monolith",
- "version": "v1.3",
- "commit": "ac0bac5",
+ "version": "v2.1",
+ "commit": "97dcd96",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_1_voice_pct": 1.2,
-  "cpu_10_voices_pct": 5.62,
+  "cpu_1_voice_pct": 1.67,
+  "cpu_10_voices_pct": 6.5,
   "aliasing_A6": {
    "total_db": -31.2,
    "below_10khz_db": -38.2,

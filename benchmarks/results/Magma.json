@@ -1,13 +1,13 @@
 {
  "plugin": "Magma",
- "version": "v1.0",
- "commit": "7d442b1",
+ "version": "v2.1",
+ "commit": "b456677",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.84,
+  "cpu_default_pct": 1.5,
   "latency_samples": 32,
   "default_2_5khz_-6dbfs": {
    "thd_n_db": -11.9,

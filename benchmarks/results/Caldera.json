@@ -1,13 +1,13 @@
 {
  "plugin": "Caldera",
- "version": "v1.0.1",
- "commit": "21f2dd6",
+ "version": "v3.1",
+ "commit": "a76e3a8",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.92,
+  "cpu_default_pct": 1.93,
   "latency_samples": 0,
   "lowpass_1khz": {
    "set_cutoff_hz": 1000,

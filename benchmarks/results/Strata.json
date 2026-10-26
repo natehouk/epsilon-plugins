@@ -1,13 +1,13 @@
 {
  "plugin": "Strata",
- "version": "v1.0.1",
- "commit": "b2d7b78",
+ "version": "v3.1",
+ "commit": "dee353b",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.8,
+  "cpu_default_pct": 1.55,
   "echo_tape": {
    "left": {
     "displayed_ms": 250.0,

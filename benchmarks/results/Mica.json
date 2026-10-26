@@ -1,13 +1,13 @@
 {
  "plugin": "Mica",
- "version": "v1.0.1",
- "commit": "8f6b69d",
+ "version": "v2.1",
+ "commit": "7347085",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.14,
+  "cpu_default_pct": 0.72,
   "latency_samples": 0,
   "null_default_db": -Infinity,
   "bell_1khz_+6db": {
@@ -18,8 +18,9 @@
    "at_100hz_db": -0.0,
    "slope_db_per_oct": 48.1
   },
-  "cpu_24_bands_pct": 2.02,
+  "cpu_24_bands_pct": 3.62,
   "latency_zero_latency_samples": 0,
-  "latency_linear_phase_samples": 6144
+  "latency_linear_phase_samples": 6144,
+  "latency_natural_phase_samples": 192
  }
 }

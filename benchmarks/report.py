@@ -50,7 +50,8 @@ def key(name, r):
         b, c = r["bell_1khz_+6db"], r["low_cut_100hz_48db"]
         return (f"flat: {f(r['null_default_db'])}; +6 dB bell at 1 kHz measures {f(b['peak_db'], 2, True)} dB at "
                 f"{f(b['peak_hz'], 0)} Hz; 48 dB/oct cut measures {f(c['slope_db_per_oct'], 1)} dB/oct; "
-                f"24 bands {f(r['cpu_24_bands_pct'], 1)}% CPU; linear phase {ms(r['latency_linear_phase_samples'])}")
+                f"24 bands {f(r['cpu_24_bands_pct'], 1)}% CPU; linear phase {ms(r['latency_linear_phase_samples'])}"
+                + (f", natural phase {ms(r['latency_natural_phase_samples'])}" if 'latency_natural_phase_samples' in r else ""))
     if name == "Granite":
         o = {k.split("_", 1)[1]: v for k, v in r.items() if k.startswith("oversampling_")}
         tp = ", ".join(f"{k} {f(v['true_peak_dbfs'], 2, True)}" for k, v in o.items())

@@ -1,16 +1,16 @@
 {
  "plugin": "Schist",
- "version": "v1.0",
- "commit": "c81c7a8",
+ "version": "v2.1",
+ "commit": "97f95a2",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.17,
+  "cpu_default_pct": 0.28,
   "latency_samples": 0,
   "null_default_db": -Infinity,
-  "cpu_6_bands_pct": 5.67,
+  "cpu_6_bands_pct": 6.84,
   "settings": {
    "processing_mode": "Dynamic Phase",
    "band_1_threshold_db": "-24.000000",

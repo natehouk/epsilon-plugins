@@ -1,13 +1,13 @@
 {
  "plugin": "Slate",
- "version": "v1.0",
- "commit": "1f38708",
+ "version": "v2.1",
+ "commit": "89209be",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_default_pct": 0.56,
+  "cpu_default_pct": 0.7,
   "latency_samples": 0,
   "gain_open_-20dbfs_db": -0.0,
   "gain_closed_-60dbfs_db": -40.0,

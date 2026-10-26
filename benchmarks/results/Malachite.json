@@ -1,13 +1,13 @@
 {
  "plugin": "Malachite",
- "version": "v1.0.1",
- "commit": "0f491fa",
+ "version": "v1.1",
+ "commit": "22e4af1",
  "host": "pedalboard 0.9.26",
  "sample_rate": 48000,
  "block": 512,
  "machine": "x86_64",
  "results": {
-  "cpu_1_voice_pct": 1.49,
+  "cpu_1_voice_pct": 2.36,
   "latency_samples": 16,
   "aliasing_A6": {
    "total_db": -53.1,
