@@ -82,7 +82,7 @@ Name: "{{group}}\\Install guides"; Filename: "https://plugins.epsilonrecords.com
 Name: "{{group}}\\Uninstall Epsilon Audio Suite"; Filename: "{{uninstallexe}}"
 
 [Messages]
-FinishedLabel=The plugins are installed. Rescan plugins in your DAW to find them under Epsilon Audio or Epsilon Records.
+FinishedLabel=The plugins are installed. Rescan plugins in your DAW to find them under Epsilon Audio.
 """
 iss_path = os.path.join(build, "suite.iss")
 open(iss_path, "w", encoding="utf-8").write(iss)

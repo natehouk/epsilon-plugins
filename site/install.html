@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Install guides · Epsilon Audio</title>
+<meta name="description" content="Install the free Epsilon Audio plugins on macOS, Windows or Linux, and find them in Ableton Live, Logic Pro, FL Studio, Reaper and Bitwig Studio. Troubleshooting for plugins that don't show up.">
+<link rel="canonical" href="https://plugins.epsilonrecords.com/install">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="pages.css">
+<script defer data-domain="plugins.epsilonrecords.com" src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><b>Epsilon Audio</b></a>
+    <nav class="links" aria-label="Pages">
+      <a href="/#plugins" class="opt">Plugins</a>
+      <a href="/#download">Download</a>
+      <a href="install" aria-current="page">Install guides</a>
+      <a href="made" class="opt">How they're made</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="label">Install guides</p>
+    <h1>Install, then find them in your DAW</h1>
+    <p class="lede">Three steps: run the collection installer for your system, rescan plugins in your DAW, then look for <b>Epsilon Audio</b> in its plugin list. Every plugin also comes as VST3 and CLAP, and as an Audio Unit on macOS.</p>
+    <ul class="toc">
+      <li><a href="#macos">macOS</a></li><li><a href="#windows">Windows</a></li><li><a href="#linux">Linux</a></li>
+      <li><a href="#live">Ableton Live</a></li><li><a href="#logic">Logic Pro</a></li><li><a href="#fl">FL Studio</a></li>
+      <li><a href="#reaper">Reaper</a></li><li><a href="#bitwig">Bitwig Studio</a></li><li><a href="#trouble">Troubleshooting</a></li>
+    </ul>
+
+    <h2 id="macos">macOS</h2>
+    <ol class="steps">
+      <li>Download the macOS installer (<code>.pkg</code>) from the <a href="/#download">download section</a>. It runs on macOS 10.13 and later, on Apple Silicon and Intel.</li>
+      <li>Open it. If macOS says it can't check the installer for malicious software, click <b>Done</b>, open <b>System Settings › Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b>, then confirm. This is needed only until the installer is notarized by Apple.</li>
+      <li>On <b>Installation Type</b>, click <b>Customize</b> to choose plugins and formats. VST3, Audio Unit and CLAP are selected; VST2 is there for older hosts.</li>
+      <li>Install. Plugins go to <code>/Library/Audio/Plug-Ins/</code> (VST3, Components, CLAP, VST) and the manuals to <code>/Library/Documentation/Epsilon Audio</code>.</li>
+    </ol>
+    <p class="note">Plugins installed this way need no Terminal commands. If you copied plugins from the individual zips instead, see <a href="#damaged">"is damaged and can't be opened"</a> below.</p>
+
+    <h2 id="windows">Windows</h2>
+    <ol class="steps">
+      <li>Download the Windows installer (<code>.exe</code>) from the <a href="/#download">download section</a>. It needs 64-bit Windows 10 or 11.</li>
+      <li>Run it. If <b>Windows protected your PC</b> appears, click <b>More info</b>, then <b>Run anyway</b>. SmartScreen shows this for installers without a code-signing certificate.</li>
+      <li>Pick <b>VST3 and CLAP</b> (recommended), <b>Everything</b> (adds VST2), or <b>Custom</b> to choose plugins one by one.</li>
+      <li>Install. VST3 goes to <code>C:\Program Files\Common Files\VST3</code>, CLAP to <code>C:\Program Files\Common Files\CLAP</code>, VST2 to <code>C:\Program Files\Steinberg\VSTPlugins</code>.</li>
+    </ol>
+    <p>To remove them, use <b>Settings › Apps › Installed apps › Epsilon Audio Suite › Uninstall</b>.</p>
+
+    <h2 id="linux">Linux</h2>
+    <ol class="steps">
+      <li>Download the Linux archive (<code>.tar.gz</code>, x86_64) and unpack it.</li>
+      <li>Run <code>./install.sh</code> to install every plugin for your user (<code>~/.vst3</code>, <code>~/.clap</code>, <code>~/.vst</code>), or name the ones you want: <code>./install.sh Obsidian Mica</code>.</li>
+      <li>For all users, run <code>sudo ./install.sh --system</code> (installs to <code>/usr/local/lib/vst3</code>, <code>clap</code> and <code>vst</code>). <code>./install.sh --uninstall</code> removes them.</li>
+    </ol>
+
+    <h2 id="live">Ableton Live</h2>
+    <ol class="steps">
+      <li>Open <b>Settings › Plug-Ins</b> (<b>Preferences</b> in older versions).</li>
+      <li>Turn on <b>Use VST3 Plug-In System Folders</b>. On macOS you can use the Audio Units instead: turn on <b>Use Audio Units</b>.</li>
+      <li>Click <b>Rescan</b>. The plugins appear in the browser under <b>Plug-Ins</b>, in the <b>Epsilon Audio</b> folder.</li>
+    </ol>
+
+    <h2 id="logic">Logic Pro</h2>
+    <ol class="steps">
+      <li>Logic uses the Audio Unit versions and checks new ones when it starts, so quit and reopen Logic after installing.</li>
+      <li>Synths (Monolith, Obsidian, Malachite) are in an instrument slot under <b>AU Instruments › Epsilon Audio</b>; effects are in an audio effect slot under <b>Audio Units › Epsilon Audio</b>.</li>
+      <li>Caldera, Strata, Magma and Slate can follow MIDI: load them on an instrument track as <b>AU MIDI-controlled Effects</b> to play them from the keyboard.</li>
+      <li>If a plugin is missing, open <b>Logic Pro › Settings › Plug-in Manager</b>, select it and click <b>Reset &amp; Rescan Selection</b>.</li>
+    </ol>
+
+    <h2 id="fl">FL Studio</h2>
+    <ol class="steps">
+      <li>Open <b>Options › Manage plugins</b> and click <b>Find installed plugins</b>. The standard VST3 folder is searched by default.</li>
+      <li>Tick the star next to the Epsilon Audio plugins you want so they show in the plugin picker and browser.</li>
+      <li>Add a synth from the Channel rack (<b>+</b>), or an effect from a Mixer insert slot.</li>
+    </ol>
+
+    <h2 id="reaper">Reaper</h2>
+    <ol class="steps">
+      <li>Open <b>Options › Preferences › Plug-ins › VST</b>. The default paths include the system VST3 folder; click <b>Re-scan</b>.</li>
+      <li>For CLAP, use <b>Plug-ins › CLAP</b> in the same window and re-scan there.</li>
+      <li>Add the plugins from the FX browser; type <b>Epsilon</b> in its search box to list them all.</li>
+    </ol>
+
+    <h2 id="bitwig">Bitwig Studio</h2>
+    <ol class="steps">
+      <li>Open <b>Settings › Locations</b> and check that <b>Plug-in Locations</b> uses the system folders (on by default).</li>
+      <li>Bitwig scans on start and when folders change; use <b>Rescan</b> if a new plugin is missing.</li>
+      <li>Use the CLAP versions where you can: Bitwig supports CLAP natively. Search the browser for <b>Epsilon</b>.</li>
+    </ol>
+
+    <h2 id="trouble">Troubleshooting</h2>
+    <details><summary>A plugin doesn't appear in my DAW</summary>
+      <p>Check that the format your DAW uses is installed (Logic needs the Audio Unit; Ableton Live needs VST3 or AU; Bitwig and Reaper can use CLAP), that the DAW scans the standard folders listed above, and rescan. 32-bit hosts can't load the plugins; they are 64-bit only.</p></details>
+    <details id="damaged"><summary>macOS: "is damaged and can't be opened" or "can't be verified"</summary>
+      <p>macOS quarantines plugins copied from a downloaded zip until the builds are notarized. Use the collection installer, which avoids this, or clear the flag for every Epsilon Audio plugin in Terminal:</p>
+      <pre>xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{Monolith,Caldera,Obsidian,Strata,Basalt,Gneiss,Mica,Flint,Granite,Slate,Magma,Talc,Schist,Geode,Malachite}*</pre></details>
+    <details><summary>Logic Pro: "failed validation" or the plugin is greyed out</summary>
+      <p>Open <b>Logic Pro › Settings › Plug-in Manager</b>, select the plugin and click <b>Reset &amp; Rescan Selection</b>. If it still fails, reinstall it with the collection installer and restart Logic.</p></details>
+    <details><summary>Windows: SmartScreen blocks the installer</summary>
+      <p>Click <b>More info</b>, then <b>Run anyway</b>. It appears because the installer isn't signed with a paid code-signing certificate yet. You can check the download against the published SHA-256 checksums (below).</p></details>
+    <details><summary>Linux: the plugin loads but its window stays blank</summary>
+      <p>The interfaces draw with OpenGL. Install your distribution's Mesa or GPU driver packages (for example <code>libgl1</code> and <code>libx11-6</code> on Debian and Ubuntu) and restart the DAW.</p></details>
+    <details><summary>Effects that follow MIDI don't respond</summary>
+      <p>Caldera, Strata, Magma and Slate react to MIDI for key tracking, triggered envelopes and gating. Route a MIDI track to the plugin (in Logic, load it as an AU MIDI-controlled Effect), and check that its <b>MIDI</b> button is on.</p></details>
+    <details><summary>Checking a download</summary>
+      <p>Every release lists <code>SHA256SUMS.txt</code>. In a terminal, in the folder with your download:</p>
+      <pre>shasum -a 256 -c SHA256SUMS.txt --ignore-missing     # macOS
+sha256sum -c SHA256SUMS.txt --ignore-missing         # Linux
+Get-FileHash .\Epsilon-Audio-Suite-*.exe              # Windows PowerShell; compare with the file</pre></details>
+    <details><summary>Still stuck</summary>
+      <p><a href="https://github.com/natehouk/epsilon-plugins/issues/new">Open an issue</a> with your system, DAW and its version, and which plugin and format you installed.</p></details>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Nate Houk / Epsilon Records · MIT License</span>
+    <span class="links"><a href="/">Plugins</a><a href="made">How they're made</a><a href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">Source</a></span>
+  </div>
+</footer>
+</body>
+</html>

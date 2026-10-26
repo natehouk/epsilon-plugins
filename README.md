@@ -50,7 +50,11 @@ Monolith ──filter──► Caldera ──filters──► Strata (filters in
 
 ## Download
 
-Each plugin's **Releases** page has three zips:
+**The collection installer** puts any or all fifteen plugins in the right folders: a `.pkg` for macOS, an `.exe` for Windows and a `.tar.gz` with `install.sh` for Linux, each with a choice of plugins and formats. Get it from this repository's [Releases](../../releases) (tagged `suite-<date>`), and see the [install guides](https://plugins.epsilonrecords.com/install) for finding the plugins in Ableton Live, Logic Pro, FL Studio, Reaper and Bitwig.
+
+The installers are built by the [`installers`](.github/workflows/installers.yml) workflow from each plugin's latest release ([`installers/`](installers)): every push builds them as workflow artifacts, and running the workflow by hand with **publish** ticked releases them. Release zips are checked against each plugin's `SHA256SUMS.txt`. The macOS package is signed and notarized when the `MACOS_INSTALLER_P12` (a Developer ID Installer certificate) and `NOTARY_*` secrets are set; until then it is unsigned, and the Windows installer is unsigned until a code-signing certificate is added.
+
+Each plugin's **Releases** page also has three zips, plus `SHA256SUMS.txt`:
 
 | Platform | Contains |
 |---|---|
@@ -164,11 +168,11 @@ Each plugin was written from scratch, working only from public press releases, p
 
 ## Website
 
-The [`site/`](site) folder is a static website for the series (no build step). Netlify serves it via [`netlify.toml`](netlify.toml); to preview locally, open `site/index.html` or run `npx serve site`.
+The [`site/`](site) folder is a static website for the series (no build step): the home page, [`install.html`](site/install.html) (install guides and troubleshooting, served at `/install`) and [`made.html`](site/made.html) (how the plugins are made, served at `/made`). It uses [Plausible](https://plausible.io) for cookie-free analytics, including download and task-filter events, and a [Buttondown](https://buttondown.com) newsletter form that appears once `BUTTONDOWN_USER` is set in `site/index.html`. Netlify serves it via [`netlify.toml`](netlify.toml); to preview locally, open `site/index.html` or run `npx serve site`.
 
 ## Machine-readable index
 
-[`plugins.json`](plugins.json) lists every plugin with its repo, latest-release link, screenshot, type, version, formats and plugin IDs, plus the website URL, for websites or scripts that need the catalogue.
+[`plugins.json`](plugins.json) lists every plugin with its repo, latest-release link, screenshot, subtitle, task (create, shape, distort, mix or finish), type, version, formats and plugin IDs, plus the website URL, for websites or scripts that need the catalogue.
 
 ## License
 

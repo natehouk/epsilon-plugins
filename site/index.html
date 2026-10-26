@@ -4,14 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Epsilon Audio Plugins">
-<meta property="og:description" content="Fifteen free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<meta property="og:title" content="Epsilon Audio: free plugins for producers who make their own sound">
+<meta property="og:description" content="Fifteen free, open-source instruments and effects from Epsilon Records: synths, filters, delay, reverb, distortion, EQ and dynamics. VST3, AU and CLAP for macOS, Windows and Linux.">
 <meta property="og:image" content="https://plugins.epsilonrecords.com/img/obsidian.webp">
 <meta property="og:url" content="https://plugins.epsilonrecords.com/">
 <link rel="canonical" href="https://plugins.epsilonrecords.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>Epsilon Audio Plugins</title>
-<meta name="description" content="Fifteen free, open-source audio plugins from Epsilon Records. VST3, AU, CLAP and VST2 for macOS, Windows and Linux.">
+<title>Epsilon Audio: free audio plugins for producers</title>
+<meta name="description" content="Fifteen free, open-source instruments and effects from Epsilon Records: synths, filters, delay, reverb, distortion, EQ and dynamics. VST3, AU and CLAP for macOS, Windows and Linux.">
+<!-- Plausible: privacy-friendly page analytics (no cookies), plus outbound-link, file-download and custom events -->
+<script defer data-domain="plugins.epsilonrecords.com" src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"></script>
+<script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -106,6 +109,8 @@ nav.links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
 nav.links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
 nav.links a:hover { color: var(--ink); }
 @media (max-width: 640px) { nav.links .opt { display: none; } .brand span { display: none; } }
+@media (max-width: 640px) { .brand b { font-size: 1.2rem; white-space: nowrap; } nav.links { gap: 14px; flex-wrap: nowrap; } nav.links a { white-space: nowrap; font-size: 0.85rem; } }
+
 
 /* Hero */
 .hero { padding-block: 48px 0; }
@@ -204,8 +209,8 @@ section.block { padding-block: 72px; border-top: 1px solid var(--line); }
 }
 .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
 .tab .you { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); margin-left: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
-.platform { display: grid; gap: 28px; grid-template-columns: 1fr; }
-@media (min-width: 860px) { .platform { grid-template-columns: 1fr 1fr; } }
+.platform { display: grid; gap: 28px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 860px) { .platform { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .platform > * { min-width: 0; }
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; counter-reset: s; }
 .steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; counter-increment: s; }
@@ -269,6 +274,30 @@ footer { border-top: 1px solid var(--line); padding-block: 32px 48px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; color: var(--muted); font-size: 0.88rem; }
 footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
 
+/* Task filter: what you want to do, then the plugins for it */
+.task-blurb { color: var(--muted); font-size: 0.95rem; margin: -12px 0 24px; min-height: 1.6em; }
+.card .sub { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-top: -4px; }
+.card audio { width: 100%; height: 36px; }
+
+/* Suite download */
+.suite { display: grid; gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+.suite h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: var(--step-2); letter-spacing: 0.02em; }
+.suite p { color: var(--muted); }
+.suite .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.suite .meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+details.zips { margin-top: 8px; }
+details.zips summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+details.zips[open] summary { margin-bottom: 20px; }
+
+/* Newsletter */
+.signup { display: grid; gap: 12px; max-width: 34rem; }
+.signup form { display: flex; gap: 10px; flex-wrap: wrap; }
+.signup input[type=email] {
+  flex: 1 1 220px; min-width: 0; padding: 11px 14px; border-radius: var(--radius); border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); font: inherit;
+}
+.signup small { color: var(--muted); }
+
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 
@@ -278,10 +307,10 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
   <div class="wrap">
     <a class="brand" href="#top"><b>Epsilon Audio</b><span>by Epsilon Records</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#plugins">Plugins</a>
-      <a href="#lineage" class="opt">Lineage</a>
+      <a href="#plugins" class="opt">Plugins</a>
       <a href="#download">Download</a>
-      <a href="#build" class="opt">Build</a>
+      <a href="install">Install guides</a>
+      <a href="made" class="opt">How they're made</a>
     </nav>
   </div>
 </header>
@@ -291,13 +320,14 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="label">Free · Open source · MIT</p>
-          <h1 style="margin-top:14px">Fifteen plugins<br>cut from <em>one rock.</em></h1>
-          <p class="lede">Synths, filters, a tape delay, a reverb, compressors, an EQ, a limiter, a gate, a de-esser and a multiband distortion from Epsilon Records. Every one is free, MIT-licensed and built for macOS, Windows and Linux.</p>
+          <p class="label">Free · Open source · From Epsilon Records, Amsterdam</p>
+          <h1 style="margin-top:14px; font-size:clamp(2.5rem, 5.4vw, 4.4rem)">Free plugins for producers who make their <em>own sound.</em></h1>
+          <p class="lede">Fifteen instruments and effects for sound design, mixing and electronic music: synths, filters, a tape delay, a reverb, distortion, an EQ and dynamics. Three operating systems, one installer, and the source for every line.</p>
           <div class="cta">
-            <a class="btn primary" href="#plugins">Browse the plugins</a>
-            <a class="btn" href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn primary" href="#plugins">Explore the plugins</a>
+            <a class="btn" href="#download" data-event="Suite CTA">Download the collection</a>
           </div>
+          <p style="margin-top:16px; font-size:0.92rem; color:var(--muted)">Developer? <a href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">Read the source</a>: MIT-licensed, built on DPF.</p>
         </div>
         <div class="facts">
           <div><strong class="num">15</strong><small>plugins, 3 instruments and 12 effects</small></div>
@@ -320,10 +350,65 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
       <div class="block-head">
         <p class="label">The catalogue</p>
         <h2>Pick a specimen</h2>
-        <p>Numbered in release order. Each plugin lives in its own repository, with tests, presets and a Releases page holding builds for all three platforms.</p>
+        <p>Start from what you want to do. Every plugin is free, comes with factory presets and a manual, and installs from one collection installer.</p>
       </div>
-      <div class="filters" role="group" aria-label="Filter plugins by type" id="filters"></div>
+      <div class="filters" role="group" aria-label="Filter plugins by task" id="filters"></div>
+      <p class="task-blurb" id="task-blurb" aria-live="polite"></p>
       <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="download">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Download &amp; install</p>
+        <h2>Get them running</h2>
+        <p>One installer puts any or all fifteen plugins in the right folders. Then rescan in your DAW; the <a href="install">install guides</a> show where to look in Ableton Live, Logic Pro, FL Studio, Reaper and Bitwig.</p>
+      </div>
+
+      <div class="suite" id="suite">
+        <div>
+          <p class="label">The collection</p>
+          <h3 style="margin-top:6px">One installer, all fifteen plugins</h3>
+        </div>
+        <p id="suite-text">Choose the plugins and formats you want; VST3, AU and CLAP are selected for you.</p>
+        <div class="row" id="suite-buttons"></div>
+        <p class="meta" id="suite-meta"></p>
+      </div>
+
+      <details class="zips" id="zips">
+      <summary>Install from the individual zips instead</summary>
+      <div class="tabs" role="tablist" aria-label="Platform" id="tabs">
+        <button class="tab" role="tab" id="tab-mac" aria-controls="panel" data-os="mac">macOS</button>
+        <button class="tab" role="tab" id="tab-win" aria-controls="panel" data-os="win">Windows</button>
+        <button class="tab" role="tab" id="tab-linux" aria-controls="panel" data-os="linux">Linux</button>
+      </div>
+
+      <div class="platform" id="panel" role="tabpanel">
+        <ol class="steps" id="steps"></ol>
+        <div style="display:grid; gap:14px; align-content:start">
+          <p class="label">Latest releases</p>
+          <div class="release-list" id="releases"></div>
+        </div>
+      </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block" id="news" hidden>
+    <div class="wrap">
+      <div class="signup">
+        <p class="label">Newsletter</p>
+        <h2 style="font-family:var(--font-display); font-weight:800; text-transform:uppercase; font-size:var(--step-3); line-height:1">New plugins, presets and sounds</h2>
+        <p style="color:var(--muted)">An occasional email when something new is out: plugin releases, preset packs and track breakdowns from Epsilon Records artists. No tracking pixels; unsubscribe in one click.</p>
+        <form id="signup-form" method="post" target="_blank">
+          <label class="sr" for="signup-email">Email address</label>
+          <input type="email" name="email" id="signup-email" placeholder="you@example.com" required autocomplete="email">
+          <input type="hidden" name="tag" value="website">
+          <button class="btn primary" type="submit">Subscribe</button>
+        </form>
+        <small>Sent with <a href="https://buttondown.com" target="_blank" rel="noopener">Buttondown</a>.</small>
+      </div>
     </div>
   </section>
 
@@ -359,7 +444,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
             <text class="edge-label" x="406" y="168">modulation</text>
 
             <!-- nodes -->
-            <g class="node"><rect x="30" y="130" width="140" height="56" rx="5"></rect><text x="46" y="158">Monolith</text><text class="sub" x="46" y="175">SYNTH · 2002 SET</text></g>
+            <g class="node"><rect x="30" y="130" width="140" height="56" rx="5"></rect><text x="46" y="158">Monolith</text><text class="sub" x="46" y="175">SUBTRACTIVE SYNTH</text></g>
             <g class="node"><rect x="262" y="34" width="140" height="56" rx="5"></rect><text x="278" y="62">Caldera</text><text class="sub" x="278" y="79">DUAL FILTER</text></g>
             <g class="node"><rect x="262" y="130" width="140" height="56" rx="5"></rect><text x="278" y="158">Obsidian</text><text class="sub" x="278" y="175">POLYSYNTH</text></g>
             <g class="node"><rect x="262" y="226" width="140" height="56" rx="5"></rect><text x="278" y="254">Flint</text><text class="sub" x="278" y="271">SATURATING FILTER</text></g>
@@ -400,30 +485,6 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     </div>
   </section>
 
-  <section class="block" id="download">
-    <div class="wrap">
-      <div class="block-head">
-        <p class="label">Download &amp; install</p>
-        <h2>Get them running</h2>
-        <p>Every plugin's Releases page has one zip per platform. Pick yours.</p>
-      </div>
-
-      <div class="tabs" role="tablist" aria-label="Platform" id="tabs">
-        <button class="tab" role="tab" id="tab-mac" aria-controls="panel" data-os="mac">macOS</button>
-        <button class="tab" role="tab" id="tab-win" aria-controls="panel" data-os="win">Windows</button>
-        <button class="tab" role="tab" id="tab-linux" aria-controls="panel" data-os="linux">Linux</button>
-      </div>
-
-      <div class="platform" id="panel" role="tabpanel">
-        <ol class="steps" id="steps"></ol>
-        <div style="display:grid; gap:14px; align-content:start">
-          <p class="label">Latest releases</p>
-          <div class="release-list" id="releases"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="block" id="build">
     <div class="wrap two">
       <div>
@@ -456,29 +517,15 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
     </div>
   </section>
 
-  <section class="block cleanroom" id="cleanroom">
-    <div class="wrap">
-      <div class="block-head">
-        <p class="label">Lineage &amp; clean-room note</p>
-        <h2>Where the feature sets come from</h2>
-        <p>The series works through FabFilter's catalogue in release order, recreating each product's feature set as a clean-room design. It now covers all fourteen products up to Pro-R. Malachite starts a second line: classic hardware instruments, beginning with the Roland TB-303.</p>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Epsilon plugin</th><th>Feature set of</th><th>Original release</th></tr></thead>
-          <tbody id="lineage-rows"></tbody>
-        </table>
-      </div>
-      <p class="disclaimer">Each plugin was written from scratch, working only from public press releases, product descriptions, manuals and contemporary reviews. No FabFilter or Roland code, binaries, firmware, presets, artwork or trademarks were used, and every interface is an original design. FabFilter and Roland are trademarks of their owners; Epsilon Audio is not affiliated with or endorsed by either.</p>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Nate Houk / Epsilon Records · MIT License</span>
     <span class="links">
-      <a href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">Index repo</a>
+      <a href="install">Install guides</a>
+      <a href="made">How they're made</a>
+      <a href="https://github.com/natehouk/epsilon-plugins" target="_blank" rel="noopener">Source</a>
       <a href="https://github.com/natehouk/epsilon-plugins/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
       <a href="https://github.com/DISTRHO/DPF" target="_blank" rel="noopener">DPF</a>
     </span>
@@ -489,38 +536,45 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
 (() => {
   const IMG = {"monolith": "img/monolith.webp", "caldera": "img/caldera.webp", "obsidian": "img/obsidian.webp", "strata": "img/strata.webp", "basalt": "img/basalt.webp", "gneiss": "img/gneiss.webp", "mica": "img/mica.webp", "flint": "img/flint.webp", "granite": "img/granite.webp", "slate": "img/slate.webp", "magma": "img/magma.webp", "talc": "img/talc.webp", "schist": "img/schist.webp", "geode": "img/geode.webp", "malachite": "img/malachite.webp"};
   const PLUGINS = [
-    { id: "monolith", name: "Monolith", kind: "Synth · instrument", cat: "synth", version: "2.1", presets: 42, color: "#e8a23a",
+    { id: "monolith", name: "Monolith", sub: "Subtractive synth", task: "create", kind: "Synth · instrument", cat: "synth", version: "2.1", presets: 42, color: "#e8a23a",
       hl: "Morphing single oscillator plus sub and noise, a 12 dB SVF filter, mono or 10-voice poly, with A/B, undo/redo and MIDI Learn.", feature: "FabFilter One", year: "2002" },
-    { id: "caldera", name: "Caldera", kind: "Multi-filter · effect", cat: "filter", version: "3.1", presets: 57, color: "#d8862e", midi: true, sidechain: true,
+    { id: "caldera", name: "Caldera", sub: "Multi-filter", task: "shape", kind: "Multi-filter · effect", cat: "filter", version: "3.1", presets: 57, color: "#d8862e", midi: true, sidechain: true,
       hl: "Up to four filters with eleven styles, bell, shelf and notch shapes, per-filter drive and delay, 4× oversampling and 50 drag-and-drop modulation slots.", feature: "FabFilter Volcano", year: "May 2005" },
-    { id: "obsidian", name: "Obsidian", kind: "Polysynth · instrument", cat: "synth", version: "3.1", presets: 60, color: "#a890f0",
+    { id: "obsidian", name: "Obsidian", sub: "Polysynth", task: "create", kind: "Polysynth · instrument", cat: "synth", version: "3.1", presets: 60, color: "#a890f0",
       hl: "Four oscillators, four filters, built-in effects, an arpeggiator, up to 64 voices and 100 drag-and-drop modulation slots.", feature: "FabFilter Twin", year: "December 2005" },
-    { id: "strata", name: "Strata", kind: "Tape delay · effect", cat: "delay", version: "3.1", presets: 60, color: "#c49450", midi: true, sidechain: true,
+    { id: "strata", name: "Strata", sub: "Tape delay", task: "finish", kind: "Tape delay · effect", cat: "delay", version: "3.1", presets: 60, color: "#c49450", midi: true, sidechain: true,
       hl: "Stereo delay with tape or stretch mode, 15 extra taps per line, six loop filters, lo-fi, diffuse, ducking and pitch-shift effects, freeze and 50 modulation slots.", feature: "FabFilter Timeless", year: "October 2006" },
-    { id: "basalt", name: "Basalt", kind: "Live dual filter · effect", cat: "filter", version: "1.2", presets: 31, color: "#e8764a",
+    { id: "basalt", name: "Basalt", sub: "Live dual filter", task: "shape", kind: "Live dual filter · effect", cat: "filter", version: "1.2", presets: 31, color: "#e8764a",
       hl: "Caldera stripped down for performance: big controls, a large drag display, Link Filters, undo/redo, hover tips and built-in help.", feature: "FabFilter Simplon", year: "October 2006" },
-    { id: "gneiss", name: "Gneiss", kind: "Compressor · effect", cat: "dynamics", version: "2.1", presets: 46, color: "#b65a52", sidechain: true,
+    { id: "gneiss", name: "Gneiss", sub: "Compressor", task: "mix", kind: "Compressor · effect", cat: "dynamics", version: "2.1", presets: 46, color: "#b65a52", sidechain: true,
       hl: "14 styles plus upward compression, ratio to Inf:1, optional lookahead, up to 32× oversampling, a 6-band sidechain EQ, MIDI triggering and loudness metering.", feature: "FabFilter Pro-C", year: "August 2007" },
-    { id: "mica", name: "Mica", kind: "Equalizer · effect", cat: "eq", version: "2.1", presets: 39, color: "#d6cf4e",
+    { id: "mica", name: "Mica", sub: "Equalizer", task: "mix", kind: "Equalizer · effect", cat: "eq", version: "2.1", presets: 39, color: "#d6cf4e",
       hl: "Up to 24 bands in ten shapes, slopes to 96 dB/oct, zero-latency, natural or linear phase, dynamic and spectral EQ, EQ Match and a spectrum analyser.", feature: "FabFilter Pro-Q", year: "November 2009" },
-    { id: "flint", name: "Flint", kind: "Saturating filter · effect", cat: "filter", version: "1.1", presets: 24, color: "#c8862e",
+    { id: "flint", name: "Flint", sub: "Saturating filter", task: "shape", kind: "Saturating filter · effect", cat: "filter", version: "1.1", presets: 24, color: "#c8862e",
       hl: "Monolith's 12 dB filter as a light low/high pass with input drive, self-oscillation and a ±6-octave envelope follower.", feature: "FabFilter Micro", year: "January 2010" },
-    { id: "granite", name: "Granite", kind: "Limiter · effect", cat: "dynamics", version: "2.1", presets: 40, color: "#9aa3ab",
+    { id: "granite", name: "Granite", sub: "Limiter", task: "finish", kind: "Limiter · effect", cat: "dynamics", version: "2.1", presets: 40, color: "#9aa3ab",
       hl: "Eight styles, true-peak limiting, up to 32× oversampling, look-ahead, external sidechain, dither and EBU R128 loudness metering.", feature: "FabFilter Pro-L", year: "October 2010" },
-    { id: "slate", name: "Slate", kind: "Gate · effect", cat: "dynamics", version: "2.1", presets: 39, color: "#7f8ea0", midi: true, sidechain: true,
+    { id: "slate", name: "Slate", sub: "Gate and expander", task: "mix", kind: "Gate · effect", cat: "dynamics", version: "2.1", presets: 39, color: "#7f8ea0", midi: true, sidechain: true,
       hl: "Gate, expander and ducker with six styles, up to 100:1 and 80 dB range, lookahead, mid/side, sidechain filters and MIDI triggering.", feature: "FabFilter Pro-G", year: "May 2011" },
-    { id: "magma", name: "Magma", kind: "Multiband distortion · effect", cat: "distortion", version: "2.1", presets: 59, color: "#e2553a", midi: true, sidechain: true,
+    { id: "magma", name: "Magma", sub: "Multiband distortion", task: "distort", kind: "Multiband distortion · effect", cat: "distortion", version: "2.1", presets: 59, color: "#e2553a", midi: true, sidechain: true,
       hl: "Up to six bands with 28 tube, tape, amp, saturation and FX styles, linear-phase crossovers and 50 drag-and-drop modulation slots with XLFOs, envelopes and XY pads.", feature: "FabFilter Saturn", year: "March 2012" },
-    { id: "talc", name: "Talc", kind: "De-esser · effect", cat: "dynamics", version: "1.1", presets: 22, color: "#c9d1c0",
+    { id: "talc", name: "Talc", sub: "De-esser", task: "mix", kind: "De-esser · effect", cat: "dynamics", version: "1.1", presets: 22, color: "#c9d1c0",
       hl: "Single-vocal or allround detection, wide-band or linear-phase split-band, sidechain filters over a live spectrum and up to 15 ms look-ahead.", feature: "FabFilter Pro-DS", year: "October 2012" },
-    { id: "schist", name: "Schist", kind: "Multiband dynamics · effect", cat: "dynamics", version: "2.1", presets: 41, color: "#9c8a6e", sidechain: true,
+    { id: "schist", name: "Schist", sub: "Multiband dynamics", task: "mix", kind: "Multiband dynamics · effect", cat: "dynamics", version: "2.1", presets: 41, color: "#9c8a6e", sidechain: true,
       hl: "Up to six freely placed bands that compress or expand, up or down, to Inf:1 for limiting and gating, with dynamic, linear or minimum phase.", feature: "FabFilter Pro-MB", year: "October 2013" },
-    { id: "geode", name: "Geode", kind: "Reverb · effect", cat: "reverb", version: "2.0", presets: 46, color: "#a58fd0",
+    { id: "geode", name: "Geode", sub: "Reverb", task: "finish", kind: "Reverb · effect", cat: "reverb", version: "2.0", presets: 46, color: "#a58fd0",
       hl: "Modern, Vintage and Plate algorithms, a stepless space control, decay rate and post EQs, ducking, freeze and impulse response import, at zero latency.", feature: "FabFilter Pro-R", year: "November 2016" },
-    { id: "malachite", name: "Malachite", kind: "Acid synth · instrument", cat: "synth", version: "1.1", presets: 22, color: "#3cd08c",
+    { id: "malachite", name: "Malachite", sub: "Acid bass synth", task: "create", kind: "Acid synth · instrument", cat: "synth", version: "1.1", presets: 22, color: "#3cd08c",
       hl: "A squelchy resonant filter with accent and slide, driven by a 16-step sequencer with 64 patterns that follows the host tempo.", feature: "Roland TB-303", year: "1981" }
   ];
-  const CATS = [["all", "All"], ["synth", "Synths"], ["filter", "Filters"], ["delay", "Delay"], ["dynamics", "Dynamics"], ["eq", "EQ"], ["distortion", "Distortion"], ["reverb", "Reverb"]];
+  // Tasks: what a producer wants to do; each plugin belongs to one (plugins.json "task").
+  const CATS = [["all", "All", "All fifteen, in release order."], ["create", "Create", "Synths and instruments: a subtractive synth, a polysynth and an acid bass synth with its own sequencer."],
+    ["shape", "Shape", "Filters and movement: resonant multi-filters, a live performance filter and a light saturating filter."],
+    ["distort", "Distort", "Saturation and multiband distortion, from warm tape to broken."],
+    ["mix", "Mix", "EQ, compression, gating, multiband dynamics and de-essing."],
+    ["finish", "Finish", "Space, echo and loudness: a reverb, a tape delay and a limiter."]];
+  // Newsletter: set to the Buttondown username to show the signup section.
+  const BUTTONDOWN_USER = "";
   const repo = p => "https://github.com/natehouk/" + p.id;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -529,12 +583,13 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
   // Catalogue
   const grid = document.getElementById("grid");
   grid.innerHTML = PLUGINS.map((p, i) => `
-    <article class="card" id="${p.id}" data-cat="${p.cat}" style="--c:${p.color}">
+    <article class="card" id="${p.id}" data-cat="${p.task}" style="--c:${p.color}">
       <div class="shot"><img src="${IMG[p.id]}" alt="${esc(p.name)} interface" loading="lazy" width="760" height="475"></div>
       <div class="body">
-        <div class="spec"><span class="dot" aria-hidden="true"></span><span class="label num">No. ${String(i + 1).padStart(2, "0")} · ${p.cat === "eq" ? "EQ" : p.cat}</span></div>
+        <div class="spec"><span class="dot" aria-hidden="true"></span><span class="label num">No. ${String(i + 1).padStart(2, "0")} · ${CATS.find(c => c[0] === p.task)[1]}</span></div>
         <h3>${esc(p.name)} <span class="v">v${p.version}</span></h3>
-        <p class="kind">${esc(p.kind)}</p>
+        <p class="sub">${esc(p.sub)}</p>
+        ${p.audio ? `<audio controls preload="none" src="${p.audio}" aria-label="${esc(p.name)} demo"></audio>` : ""}
         <p class="hl">${esc(p.hl)}</p>
         <dl>
           <dt>Presets</dt><dd>${p.presets} factory</dd>
@@ -544,7 +599,8 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
           <dt>CLAP ID</dt><dd><code>com.epsilonrecords.${p.id}</code></dd>
         </dl>
         <div class="actions">
-          <a class="btn primary" href="${repo(p)}/releases/latest" target="_blank" rel="noopener">Download</a>
+          <a class="btn primary" href="#download" data-event="Card download" data-plugin="${p.name}">Download</a>
+          <a class="btn" href="${repo(p)}/blob/main/docs/MANUAL.md" target="_blank" rel="noopener">Manual</a>
           <a class="btn" href="${repo(p)}" target="_blank" rel="noopener">Source</a>
         </div>
       </div>
@@ -556,21 +612,23 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
 
   // Filters
   const filters = document.getElementById("filters");
-  const count = c => c === "all" ? PLUGINS.length : PLUGINS.filter(p => p.cat === c).length;
+  const count = c => c === "all" ? PLUGINS.length : PLUGINS.filter(p => p.task === c).length;
+  const blurb = document.getElementById("task-blurb");
   filters.innerHTML = CATS.map(([c, l]) => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === "all"}">${l}<span class="n num">${count(c)}</span></button>`).join("");
+  blurb.textContent = CATS[0][2];
   filters.addEventListener("click", e => {
     const b = e.target.closest(".chip"); if (!b) return;
     const c = b.dataset.cat;
     filters.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
     grid.querySelectorAll(".card").forEach(card => { card.hidden = !(c === "all" || card.dataset.cat === c); });
+    blurb.textContent = CATS.find(x => x[0] === c)[2];
+    plausible("Task filter", { props: { task: c } });
   });
 
-  // Clean-room table
-  document.getElementById("lineage-rows").innerHTML = PLUGINS.map(p => `<tr><td>${esc(p.name)}</td><td>${esc(p.feature)}</td><td>${esc(p.year)}</td></tr>`).join("");
 
   // Releases
   document.getElementById("releases").innerHTML = PLUGINS.map(p =>
-    `<a href="${repo(p)}/releases/latest" target="_blank" rel="noopener"><b>${esc(p.name)}</b><span>v${p.version} ↗</span></a>`).join("");
+    `<a href="${repo(p)}/releases/latest" target="_blank" rel="noopener" data-event="Download" data-kind="zip" data-plugin="${p.name}"><b>${esc(p.name)}</b><span>v${p.version} ↗</span></a>`).join("");
 
   // Platform tabs
   const NAMES = PLUGINS.map(p => p.name).join(",");
@@ -578,7 +636,7 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
     mac: {
       zip: "macOS 10.13+ (Apple Silicon + Intel)", formats: ["VST3", "AU", "CLAP"],
       rows: [["VST3", ".vst3", "~/Library/Audio/Plug-Ins/VST3"], ["AU", ".component", "~/Library/Audio/Plug-Ins/Components"], ["CLAP", ".clap", "~/Library/Audio/Plug-Ins/CLAP"]],
-      extra: { title: "Clear the quarantine flag", text: "Builds are ad-hoc signed, not notarized. One command clears the flag for every Epsilon plugin:", code: `xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{${NAMES}}*` }
+      extra: { title: "Clear the quarantine flag", text: "Plugins copied from a zip are quarantined by macOS until the builds are notarized. The collection installer above avoids this step; if you install from zips, one command clears the flag for every Epsilon plugin:", code: `xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/*/{${NAMES}}*` }
     },
     win: {
       zip: "Windows x64", formats: ["VST3", "CLAP", "VST2"],
@@ -620,6 +678,53 @@ make -C plugins/&lt;Name&gt; WINDOWS=true \
     const n = list[(i + (e.key === "ArrowRight" ? 1 : list.length - 1)) % list.length]; n.focus(); show(n.dataset.os);
   });
   show(detected);
+
+  // Collection installer: the newest "suite-*" release of the index repo, read from the GitHub API at load.
+  // Until the macOS package is notarized, Mac users are told how to open it.
+  const SUITE_NOTARIZED = false;
+  const SUITE_ASSET = { mac: [".pkg", "macOS 10.13+ · Apple Silicon and Intel"], win: [".exe", "Windows 10 and 11 · x64"], linux: [".tar.gz", "Linux · x86_64"] };
+  const OS_NAME = { mac: "macOS", win: "Windows", linux: "Linux" };
+  const MB = n => (n / 1048576).toFixed(0) + " MB";
+  fetch("https://api.github.com/repos/natehouk/epsilon-plugins/releases?per_page=20")
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(list => {
+      const rel = list.find(r => !r.draft && /^suite-/.test(r.tag_name));
+      if (!rel) throw new Error("no suite release");
+      const order = [detected, ...["mac", "win", "linux"].filter(o => o !== detected)];
+      const buttons = order.map(os => {
+        const a = rel.assets.find(x => x.name.endsWith(SUITE_ASSET[os][0])); if (!a) return "";
+        return `<a class="btn${os === detected ? " primary" : ""}" href="${a.browser_download_url}" data-event="Download" data-kind="suite" data-os="${os}" title="${esc(SUITE_ASSET[os][1])}">${OS_NAME[os]}${os === detected ? " (yours)" : ""} · ${MB(a.size)}</a>`;
+      }).join("");
+      document.getElementById("suite-buttons").innerHTML = buttons;
+      const sums = rel.assets.find(x => x.name === "SHA256SUMS.txt");
+      document.getElementById("suite-meta").innerHTML = `Version ${esc(rel.tag_name.replace(/^suite-/, ""))} · <a href="${rel.html_url}" target="_blank" rel="noopener">release notes</a>` +
+        (sums ? ` · <a href="${sums.browser_download_url}">SHA-256 checksums</a>` : "");
+      if (!SUITE_NOTARIZED && detected === "mac")
+        document.getElementById("suite-text").innerHTML = 'Choose the plugins and formats you want; VST3, AU and CLAP are selected for you. Until the installer is notarized, macOS may say it cannot check it: open <b>System Settings › Privacy &amp; Security</b> and click <b>Open Anyway</b> (<a href="install#macos">step by step</a>). The installed plugins need no further steps.';
+      if (detected === "win")
+        document.getElementById("suite-text").innerHTML = 'Choose the plugins and formats you want; VST3 and CLAP are selected for you. If Windows SmartScreen warns about an unknown publisher, click <b>More info › Run anyway</b> (<a href="install#windows">step by step</a>).';
+      if (detected === "linux")
+        document.getElementById("suite-text").textContent = "Unpack the archive and run ./install.sh to install every plugin for your user, or name the ones you want.";
+    })
+    .catch(() => {
+      document.getElementById("suite-text").textContent = "The collection installer is on its way. Until then, install from the individual zips below.";
+      document.getElementById("zips").open = true;
+    });
+
+  // Newsletter (Buttondown): shown once BUTTONDOWN_USER is set.
+  if (BUTTONDOWN_USER) {
+    const f = document.getElementById("signup-form");
+    f.action = "https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(BUTTONDOWN_USER);
+    f.addEventListener("submit", () => plausible("Newsletter signup"));
+    document.getElementById("news").hidden = false;
+  }
+
+  // Analytics events for clicks on anything with data-event (Plausible custom events; no cookies, no personal data).
+  document.addEventListener("click", e => {
+    const el = e.target.closest("[data-event]"); if (!el) return;
+    const props = {}; ["kind", "os", "plugin"].forEach(k => { if (el.dataset[k]) props[k] = el.dataset[k]; });
+    plausible(el.dataset.event, { props });
+  });
 
   // Copy buttons
   document.addEventListener("click", e => {
